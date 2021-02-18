@@ -1,0 +1,48 @@
+/********************************************************************
+  kaeru_17
+	Vert Count = 8
+	Face Count = 6
+	Min X:   -29	Max X:    29
+	Min Y:   -39	Max Y:     8
+	Min Z:     0	Max Z:     0
+	MaxSize = 39
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int kaeru_17_box[] = { -29, 29, -39, 8, 0, 0, 39, 0 };
+Vtx kaeru_17_vtx[] = {
+	{ -1, 8, 0, 0, 1942, 2464, 38, 38, 38, 255 },
+	{ -24, 2, 0, 0, 3259, 2136, 38, 38, 38, 255 },
+	{ -29, -20, 0, 0, 3560, 927, 38, 38, 38, 255 },
+	{ -17, -36, 0, 0, 2828, 97, 38, 38, 38, 255 },
+	{ 6, -39, 0, 0, 1549, -94, 38, 38, 38, 255 },
+	{ 22, -32, 0, 0, 631, 306, 38, 38, 38, 255 },
+	{ 29, -15, 0, 0, 195, 1200, 38, 38, 38, 255 },
+	{ 23, 3, 0, 0, 575, 2205, 38, 38, 38, 255 },
+};
+
+
+Gfx kaeru_17_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:kaeru_17	Color:kaeru_17	Tri:6	Vtx:8 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(kaeru_17_lut),
+	gsDPLoadMultiBlock(kaeru_17_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 56, 36, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&kaeru_17_vtx[0], 8, 0),
+	gsSP2Triangles(0, 1, 2, 2, 0, 2, 3, 2),
+	gsSP2Triangles(0, 3, 4, 2, 0, 4, 5, 2),
+	gsSP2Triangles(0, 5, 6, 2, 6, 7, 0, 1),
+	gsSPEndDisplayList(),
+};

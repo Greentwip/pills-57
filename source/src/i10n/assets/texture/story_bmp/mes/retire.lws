@@ -1,0 +1,420 @@
+LWSC
+1
+
+FirstFrame 0
+LastFrame 202
+FrameStep 1
+PreviewFirstFrame 0
+PreviewLastFrame 202
+PreviewFrameStep 1
+FramesPerSecond 60.000000
+
+LoadObject C:\dr_mario\result\model\r_etire.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  16
+  3 83.25 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  1.02 14.93 0 0 0 -33 1 1 1
+  16 1 0 0 0
+  -8.73 14.93 0 0 0 22.6 1 1 1
+  22 1 0 0 0
+  -15.9189 19.9914 0 0 0 -11.8618 1 1 1
+  28 1 0 0 0
+  -18.0757 17.2652 0 0 0 -11.0342 1 1 1
+  40 1 0 0 0
+  -21.5757 16.5152 0 0 0 4.46576 1 1 1
+  48 1 0 0 0
+  -21 17.5 0 0 0 -2.8 1 1 1
+  56 1 0 0 0
+  -21.75 16.75 0 0 0 0 1 1 1
+  60 1 0 0 0
+  -21.75 11.75 0 0 0 -6 1 1 1
+  80 1 0 0 0
+  -21.75 16.75 0 0 0 6.7 1 1 1
+  100 1 0 0 0
+  -21.75 22.75 0 0 0 -1.2 1 1 1
+  120 1 0 0 0
+  -21.75 16.75 0 0 0 0 1 1 1
+  140 1 0 0 0
+  -21.75 13 0 0 0 -7.3 1 1 1
+  156 0 0 0 0
+  -21.75 16.75 0 0 0 0 1 1 1
+  172 0 0 0 0
+  -21.75 21.25 0 0 0 7.499999 1 1 1
+  188 0 0 0 0
+  -21.75 17.37402 0 0 0 1.040039 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\r_e_tire.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  17
+  3 79.25 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  3 79.25 0 0 0 0 0.01 1 1
+  4 1 0 0 0
+  1.32 11.49 0 0 0 -25.1 1 1 1
+  24 1 0 0 0
+  -4.93 12.99 0 0 0 17.3 1 1 1
+  32 1 0 0 0
+  -8.68 16.24 0 0 0 -22.3 1 1 1
+  40 1 0 0 0
+  -14.93 14.74 0 0 0 22.8 1 1 1
+  48 1 0 0 0
+  -9.18 13.24 0 0 0 -9.89998 1 1 1
+  56 1 0 0 0
+  -11 12.5 0 0 0 0 1 1 1
+  64 1 0 0 0
+  -11 18 0 0 0 3.7 1 1 1
+  84 1 0 0 0
+  -11 12.5 0 0 0 0 1 1 1
+  104 1 0 0 0
+  -11 8.5 0 0 0 4.1 1 1 1
+  124 1 0 0 0
+  -11 11.7 0 0 0 0.8199999 1 1 1
+  140 0 0 0 0
+  -11 12.5 0 0 0 0 1 1 1
+  144 1 0 0 0
+  -11 15 0 0 0 7.999999 1 1 1
+  160 0 0 0 0
+  -11 11.25 0 0 0 -8.599998 1 1 1
+  176 0 0 0 0
+  -11 7.75 0 0 0 -20.9 1 1 1
+  192 0 0 0 0
+  -11 10.9547 0 0 0 -3.209326 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\re_t_ire.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  15
+  3 83.25 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  3 83.25 0 0 0 0 0.01 1 1
+  20 1 0 0 0
+  1.965 23.64 0 0 0 -34.09999 1 1 1
+  36 1 0 0 0
+  -4.785 20.89 0 0 0 14.5 1 1 1
+  44 1 0 0 0
+  -2.535 23.64 0 0 0 -9.80002 1 1 1
+  52 1 0 0 0
+  -2.75 18.75 0 0 0 0 1 1 1
+  60 1 0 0 0
+  -2.75 7.75 0 0 0 -8.4 1 1 1
+  72 1 0 0 0
+  -2.75 25 0 0 0 0 1 1 1
+  92 1 0 0 0
+  -2.75 23 0 0 0 4.6 1 1 1
+  112 1 0 0 0
+  -2.75 18.75 0 0 0 0 1 1 1
+  132 1 0 0 0
+  -2.75 15.875 0 0 0 -2.2 1 1 1
+  140 1 0 0 0
+  -2.75 14 0 0 0 -3.5 1 1 1
+  148 0 0 0 0
+  -2.75 18.75 0 0 0 5.869694e-007 1 1 1
+  176 0 0 0 0
+  -2.75 22.25 0 0 0 -6.899997 1 1 1
+  192 0 0 0 0
+  -2.75 17.05655 0 0 0 -3.113954 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\ret_i_re.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  14
+  3 80.25 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  3 80.25 0 0 0 0 0.01 1 1
+  36 1 0 0 0
+  3.6 14.92 0 0 0 21 1 1 1
+  48 1 0 0 0
+  9.1 15.17 0 0 0 -18.5 1 1 1
+  56 1 0 0 0
+  4.35 14.17 0 0 0 8.999999 1 1 1
+  64 1 0 0 0
+  5.5 13.25 0 0 0 0 1 1 1
+  72 1 0 0 0
+  5.5 8.5 0 0 0 -11.5 1 1 1
+  88 1 0 0 0
+  5.5 13.25 0 0 0 0 1 1 1
+  104 1 0 0 0
+  5.5 16.75 0 0 0 9.3 1 1 1
+  120 1 0 0 0
+  5.5 13.25 0 0 0 0 1 1 1
+  140 0 0 0 0
+  5.5 11 0 0 0 24.4 1 1 1
+  160 0 0 0 0
+  3.75 15.75 0 0 0 12.1 1 1 1
+  176 0 0 0 0
+  5.5 16.25 0 0 0 1.200003 1 1 1
+  192 0 0 0 0
+  5.5 13.60791 0 0 0 0.1206058 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LockedChannels 3612
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\reti_r_e.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  15
+  3 83.25 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  3 83.25 0 0 0 0 0.01 1 1
+  44 1 0 0 0
+  6.525 20.825 0 0 0 23.1 1 1 1
+  60 1 0 0 0
+  15.525 20.825 0 0 0 -18.9 1 1 1
+  68 1 0 0 0
+  11.775 20.325 0 0 0 12.6 1 1 1
+  76 1 0 0 0
+  14.75 18.5 0 0 0 0 1 1 1
+  80 1 0 0 0
+  14.75 13.75 0 0 0 7.5 1 1 1
+  92 1 0 0 0
+  14.75 18.5 0 0 0 0 1 1 1
+  104 1 0 0 0
+  14.75 22 0 0 0 -5.1 1 1 1
+  116 1 0 0 0
+  14.75 18.5 0 0 0 0 1 1 1
+  128 1 0 0 0
+  14.75 14.25348 0 0 0 -0.1183352 1 1 1
+  140 0 0 0 0
+  14.75 11 0 0 0 8.1 1 1 1
+  156 0 0 0 0
+  14.75 15.25 0 0 0 -4.7 1 1 1
+  172 0 0 0 0
+  14.75 18 0 0 0 -4.5 1 1 1
+  188 0 0 0 0
+  14.75 14.30576 0 0 0 -0.695996 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\retir_e.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  15
+  3 80.25 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  3 80.25 0 0 0 0 0.01 1 1
+  56 1 0 0 0
+  9.375 12.6 0 0 0 19.6 1 1 1
+  68 1 0 0 0
+  9.375 12.6 0 0 0 -12.1 1 1 1
+  76 1 0 0 0
+  11.875 16.1 0 0 0 14.9 1 1 1
+  80 1 0 0 0
+  16.125 18.35 0 0 0 18.2 1 1 1
+  82 1 0 0 0
+  21.375 15.1 0 0 0 14.9 1 1 1
+  88 1 0 0 0
+  26 13.5 0 0 0 -10.6 1 1 1
+  94 1 0 0 0
+  24.25 12.25 0 0 0 0 1 1 1
+  98 1 0 0 0
+  24.25 7.75 0 0 0 10.5 1 1 1
+  110 1 0 0 0
+  24.25 12.25 0 0 0 0 1 1 1
+  122 1 0 0 0
+  24.25 16.75 0 0 0 -7.8 1 1 1
+  138 1 0 0 0
+  24.25 16.1875 0 0 0 -6.824999 1 1 1
+  140 0 0 0 0
+  24.25 12.25 0 0 0 0 1 1 1
+  154 1 0 0 0
+  24.25 16.02395 0 0 0 -6.541517 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+AmbientColor 255 255 255
+AmbIntensity 0.250000
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  5
+  -2 2 -2 45 35 0 1 1 1
+  0 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  98 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  140 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  154 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 0
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  5
+  -2 2 -2 45 35 0 1 1 1
+  0 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  98 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  140 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  154 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 0
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  5
+  -2 2 -2 45 35 0 1 1 1
+  0 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  98 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  140 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  154 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 0
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  5
+  -2 2 -2 45 35 0 1 1 1
+  0 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  98 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  140 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  154 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 0
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  5
+  -2 2 -2 45 35 0 1 1 1
+  0 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  98 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  140 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  154 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 0
+
+ShowCamera 1 7
+CameraMotion (unnamed)
+  9
+  5
+  0 0 -323.25 0 0 0 1 1 1
+  0 1 0 0 0
+  0 0 -323.25 0 0 0 1 1 1
+  98 1 0 0 0
+  0 0 -323.25 0 0 0 1 1 1
+  140 0 0 0 0
+  0 0 -323.25 0 0 0 1 1 1
+  154 1 0 0 0
+  0 0 -323.25 0 0 0 1 1 1
+  202 0 0 0 0
+EndBehavior 1
+LockedChannels 3
+ZoomFactor 3.200000
+Resolution 0
+CustomSize 96 208
+PixelAspectRatio 2
+SegmentMemory 2200000
+Antialiasing 1
+AdaptiveSampling 1
+AdaptiveThreshold 16
+FilmSize 2
+FieldRendering 0
+MotionBlur 0
+DepthOfField 0
+
+SolidBackdrop 1
+BackdropColor 0 0 0
+ZenithColor 0 40 80
+SkyColor 120 180 240
+GroundColor 50 40 30
+NadirColor 100 80 60
+FogType 0
+DitherIntensity 1
+AnimatedDither 0
+
+RenderMode 2
+RayTraceEffects 0
+DataOverlayLabel  
+SaveAnimationName C:\dr_mario\result\retire.avi
+AnimationType 2
+EndPlugin
+
+ViewMode 5
+ViewAimpoint 0.000000 0.000000 0.000000
+ViewDirection 0.082030 -0.542798 0.000000
+ViewZoomFactor 8.418252
+GridNumber 10
+GridSize 50.000000
+ShowMotionPath 1
+ShowBGImage 0
+ShowFogRadius 0
+ShowRedraw 0
+ShowSafeAreas 0
+ShowFieldChart 0

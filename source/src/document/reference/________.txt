@@ -1,0 +1,56 @@
+
+******************************************* 任天堂ロゴ
+
+******************************************* aiMain30.c + aiGraphic30.h
+
+u16	logo_graphic_flag;			// 終了フラグ...TRUE:終了  FALSE:続行
+u16	show_prog;					// デモ用シーケンスデータ構造体配列のどこを実行しているか．
+
+// デモ用シーケンスデータ構造体
+typedef struct {
+	u16		interval;			// データを読むまでのインターバル
+	u16		model_num;			// 動作対象となるオブジェクトモデルの添え字ナンバ
+	u8		move_c;				// 動作(enum指定)
+	f32		wide_aim_c;			// 動作によって使われ方が変わるワーク
+	f32		rcount_c;			// 回転用ワーク
+}ShowData;
+ShowData w_show;				// 作業用データワーク
+
+// オブジェクトモデルデータ
+typedef struct {
+	f32		r_now;				// Ｚの回転角度
+	f32		s;					// スケール値
+	f32		x,y;				// 表示位置
+	u8		move;				// 動作(enum指定)
+	u8		color;				// カラー(enum指定)
+	u8		ccount;				// フェードアウトカウンタ
+	f32		wide_aim;			// 動作用ワーク
+	f32		rcount;				// 回転用ワーク
+}ModelData;
+ModelData logo_model[LOGO_NUM];	// オブジェクトモデル
+
+void logo_model_init(void);		// オブジェクトモデルを初期化する．
+
+void logo_model_set( ModelData *, f32, f32, f32, f32, u8, u8, u8, f32, f32 );
+								// オブジェクトモデルにデータをセットする(logo_model_init()から呼ばれる)
+
+
+
+******************************************* aiGraphic30.c + aiGraphic30.h
+
+static Vp vp = { ～ };				// ビューポート構造体
+Gfx logo_init_dl[] = { ～ };		// 描画の初期化用ＤＬ
+Vtx logo_vertex[] = { ～ };			// 頂点データ
+Gfx draw_logo_dl[] = { ～ };		// 描画用ＤＬ
+typedef struct {
+	Mtx		projection;				// プロジェクションマトリクス
+	Mtx		viewing;				// ビューマトリクス
+}Dynamic;
+Dynamic		dynamic[2];				// ダブルバッファ用
+Mtx			logo_matrix[LOGO_NUM];	// ローカルマトリクス
+
+ShowData	model_show[] = { ～ };	// SHOW DATA. Nintendo LOGO デモのｼｰｹﾝｽﾃﾞｰﾀ．
+
+void call_the_gdl( ModelData *, Mtx *, u8, RgbMeet * );
+									// カラー値によってパレット変更(パレット内部をいじる)し、描画用ＤＬで描画
+

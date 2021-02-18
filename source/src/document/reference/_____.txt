@@ -1,0 +1,362 @@
+//ﾋﾙﾀﾙﾋ word search
+
+ここで定義、ワーク化しているものは、 main10.c など多くのソースで使用されている。
+音楽関係の enum も存在する。
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ evsworks.c.h オチゲー等総合ワーク
+
+#define SPRITE_ANTI	D_CBUTTONS		// ｽﾌﾟﾗｲﾄｱﾝﾁｴｲﾘｱｽ
+#define	R_ROLL		(A_BUTTON|Z_TRIG)	// ｶﾌﾟｾﾙ Rﾛｰﾙ
+#define	L_ROLL		B_BUTTON		//   ..  Lﾛｰﾙ
+#define SELECT		A_BUTTON		// 選択	 selection
+#define CANSEL		B_BUTTON		// ｷｬﾝｾﾙ rejection
+#define	LEVER_UP	U_JPAD			// 上
+#define	LEVER_DOWN	D_JPAD			// 下
+#define	LEVER_LEFT	L_JPAD			// 左
+#define	LEVER_RIGHT	R_JPAD			// 右
+#define	LEVER_MINUS	L_JPAD			// - (左)
+#define	LEVER_PLUS	R_JPAD			// + (右)
+
+enum {	// 曲番号
+	SEQ_Fever,	// ”フィーバー”
+	SEQ_Chill,	// ”チル”
+	SEQ_Dizzy,	// ”ディジー”
+	SEQ_Opening,	// ”オープニング”
+	SEQ_Menu,	// ”メニュー”
+	SEQ_VSEnd,	// ”ＶＳゲーム終了”
+	SEQ_Win,	// ”勝利”
+	SEQ_Lose,	// ”敗北”
+	SEQ_Gingle,	// ”ジングル”
+	SEQ_Clear,	// ”コーヒーブレイク”
+	SEQ_Clear2,	// ”コーヒーブレイク２”
+	SEQ_MAX,
+};
+enum {	// ＳＥ番号
+	SE_gFreeFall,	// ”自由落下音”
+	SE_gVrsErase,	// ”ｳｲﾙｽ有り列消去”
+	SE_gVrsErsAl,	// ”ｳｲﾙｽ全消去”
+	SE_gSpeedUp,	// ”ｶﾌﾟｾﾙ落下ｽﾋﾟｰﾄﾞｱｯﾌﾟ”
+	SE_gCombo,	// ”連鎖”
+	SE_gPause,	// ”ポーズ”
+	SE_gCapErase,	// ”ｶﾌﾟｾﾙのみの列消去”
+	SE_mDecide,	// ”（メニュー）決定”
+	SE_mLeftRight,	// ”（メニュー）左右移動”
+	SE_mUpDown,	// ”（めにゅー）上下移動”
+	SE_gLeftRight,	// ”ｶﾌﾟｾﾙ左右”
+	SE_gTouchDown,	// ”ｶﾌﾟｾﾙ着地”
+	SE_gCapRoll,	// ”ｶﾌﾟｾﾙ回転”
+	SE_xNoRequest,	// ”ﾘｸｴｽﾄ無しサイン”
+};
+
+#define LEVEL_MAX	  20	// ｹﾞｰﾑﾚﾍﾞﾙ
+#define PLAYER_MAX	   4	// ﾌﾟﾚｲﾔｰ数
+#define MFx		  12	// ｹﾞｰﾑﾌｨｰﾙﾄﾞMAX x,y
+#define MFy		  21	//
+#define FALL_CNT	  14	// 落下ｶｳﾝﾀ
+#define	PIXEL_MAX	   6	// ﾌﾞﾛｯｸﾋﾟｸｾﾙ
+#define ERASE_CNT1	  10	// ｲﾚｰｽｶｳﾝﾀ1
+#define ERASE_CNT2	  10	//    ..　　2
+#define NEXTCAP_X	 160	//
+#define NEXTCAP_Y	  20	//
+#define NEXT_S_WAIT    0	//
+#define	PAUSE_NOREQ	  77	// 非ﾎﾟｰｽﾞ要請
+#define	CMB_THROUGH	   7	// "ｺﾝﾎﾞ"補間数
+#define	SCORE_MAX	   6	// ｽｺｱｲﾝﾃﾞｸｽ
+#define	MAGA_MAX	 256	// ﾏｶﾞｼﾞﾝ（ﾈｸｽﾄｶﾌﾟｾﾙのﾜｰｸ）max
+#define	ID_MAX		   7	// .id max
+#define LEVLIMIT	  23	// 内部ﾚﾍﾞﾙ上限
+#define	STD_MFieldX    8	// Mﾌｨｰﾙﾄﾞ標準 Xｻｲｽﾞ
+#define	STD_MFieldY   17	//             Yｻｲｽﾞ( 見えない列含む )
+#define	MFITEM_SMALL   8	// Mﾌｨｰﾙﾄﾞｱｲﾃﾑｻｲｽﾞ S
+#define	MFITEM_BIG	  10	//       ..        L
+#define ACCEL_DIV	  10	// ｽﾋﾟｰﾄﾞﾚﾍﾞﾙｱｯﾌﾟﾀｲﾐﾝｸﾞ( ﾃﾞﾌｫﾙﾄ )
+#define DELETE_LINE    4	//
+#define PINPOINT_CHG 120	// ﾋﾟﾝﾎﾟｲﾝﾄ攻撃時ｶｳﾝﾄﾘﾐｯﾄ
+#define JOYrTIMEvm 13500	// DrMｹﾞｰﾑ時ｺﾝﾄﾛｰﾗ読みとりﾀｲﾐﾝｸﾞ( vsMEN )
+#define JOYrTIMEvc 10500	//              ..              ( vsCPU )
+
+enum {	// ﾌﾟﾛｸﾞﾗﾑｽﾃｰﾀｽ evs_prgstat
+	PRG_OPEN,		//-ｵｰﾌﾟﾝﾌｪｰﾄﾞ
+	PRG_READY,		// ﾚﾃﾞｨ
+	PRG_GAME,		// ｹﾞｰﾑ
+	PRG_CLEAR,		// ｹﾞｰﾑｸﾘｱｰ
+	PRG_OVER,		// ｹﾞｰﾑｵｰﾊﾞｰ
+	PRG_PAUSE,		//-ﾎﾟｰｽﾞ
+	PRG_PAUSE_NF,		// ﾌｫﾝﾄﾅｼﾎﾟｰｽﾞ
+	PRG_1P_WIN,		// 1P勝利
+	PRG_2P_WIN,		// 2P勝利
+	PRG_3P_WIN,		// 3P勝利
+	PRG_4P_WIN,		//-4P勝利
+	PRG_DRAW,		// ﾄﾞﾛｰ
+	PRG_EXITVS,		// 対戦ﾓｰﾄﾞ終了
+	PRG_JUDGEWAIT,		// 判定ｳｴｲﾄ
+	PRG_CLOSE,		// ｸﾛｰｽﾞﾌｪｰﾄﾞ
+};
+
+enum {	// ｹﾞｰﾑｽﾃｰﾀｽ pw->gs
+	GST_NO_USE,		//-非使用
+	GST_1ST,		// ﾌｧ-ｽﾄﾌﾚｰﾑ
+	GST_INIT,		// ｲﾆｼｬﾗｲｽﾞ中
+	GST_MFIELD,		// mﾌｨｰﾙﾄﾞ表示
+	GST_GAME,		// ｹﾞｰﾑ進行中
+	GST_PAUSE,		//-ﾎﾟｰｽﾞ
+	GST_OVER,		// ｹﾞｰﾑｵｰﾊﾞｰ
+	GST_CLEAR,		// ｸﾘｱｰ
+	GST_EN_OVER,		// 敵ｹﾞｰﾑｵｰﾊﾞｰ
+	GST_EN_CLEAR,		// 敵ｸﾘｱｰ
+};
+
+enum {	// mﾌｨｰﾙﾄﾞｽﾃｰﾀｽ pw->mt
+	MF_INIT,	// mﾌｨｰﾙﾄﾞｲﾆｼｬﾗｲｽﾞ中
+	MF_NORMAL,	// 通常処理中
+	MF_ERASE,	// 消去決定及び消去中
+	MF_FALL,	// 落下決定及び落下中
+	MF_BOUNCE,	// ｶｰｿﾙｶﾌﾟｾﾙﾊﾞｳﾝﾄﾞ中
+};
+
+enum {	// ｹﾞｰﾑｽﾋﾟｰﾄﾞ pw->sp
+	SPEED_LOW,
+	SPEED_MID,
+	SPEED_HIGH,
+	SPEED_MAX,
+};
+
+enum {	// ﾌﾞﾛｯｸｽﾃｰﾀｽ pw->blk[][].st
+	MB_CAPS_U,		//-ｶﾌﾟｾﾙ上向き
+	MB_CAPS_D,		//  ..  下 ..
+	MB_CAPS_L,		//  ..  左 ..
+	MB_CAPS_R,		//  ..  右 ..
+	MB_CAPS_BALL,		//  ..  玉
+	MB_VIRUS_A,		//-ｳｲﾙｽA
+	MB_VIRUS_B,		// ｳｲﾙｽB
+	MB_VIRUS_C,		// ｳｲﾙｽC
+	MB_ERASE_CAPS,		// ｶﾌﾟｾﾙ消滅中
+	MB_ERASE_VIRUS,		//-ｳｲﾙｽ   ..
+	MB_NOTHING,		// 何もない
+};
+
+enum {	// ｺﾝﾄﾛｰﾙｶﾌﾟｾﾙｽﾃｰﾀｽ pw->cap(nex).st
+	ONES_NONE,	//-表示無し
+	ONES_FLYI,	// 投げﾊﾟﾀｰﾝ初期
+	ONES_FLYN,	// 投げられ中
+	ONES_INIT,	// 新規表示 = ONES_ooAB
+	ONES_ooAB,	// ﾊﾟﾀｰﾝ A
+	ONES_8_AB,	//-  ..  B
+	ONES_ooBA,	//   ..  C
+	ONES_8_BA,	//   ..  D
+	ONES_STOP,	// その場で停止
+	ONES_BLOK,	// 硬化
+};
+
+enum {	// ｶﾗｰ (属性) pw->blk[][].co, pw->cap(nex).co
+	COL_RED,			// 順序固定
+	COL_YELLOW,			//    ..
+	COL_BLUE,			//    ..
+	COL_NOTHING,
+};
+
+enum {	// ﾏﾄﾘｸｽﾌﾞﾛｯｸ落下ﾌﾗｸﾞ pw->blk[][].ff
+	FALL_OFF,
+	FALL_ON,
+};
+
+enum {	// 当たり判定 use "SHIF(x)"
+	MBLK_UL,	//(U L),( U ),(U R),(URR)
+	MBLK_U,		//( L ),( C ),( R ),(R R)
+	MBLK_UR,	//(D L),( D ),(D R),(DRR)
+	MBLK_URR,
+	MBLK_L,
+	MBLK_C,
+	MBLK_R,
+	MBLK_RR,
+	MBLK_DL,
+	MBLK_D,
+	MBLK_DR,
+	MBLK_DRR,
+};
+
+// pw->pu[x]
+enum {
+	PU_CPUFLG,
+	PU_CPULEV,
+	PU_DEMOno,
+};
+
+// pw->pu[PU_CPULEV]
+enum {
+	PMD_CPU0,
+	PMD_CPU1,
+	PMD_CPU2,
+};
+
+// pw->pu[PU_CPUFLG]
+#define	DEMO_PLAYER 2
+
+enum {	// ｹﾞｰﾑ設定 evs_gamesel
+	GSL_1PLAY,
+	GSL_2PLAY,
+	GSL_4PLAY,
+	GSL_VSCPU,
+	GSL_1DEMO,
+	GSL_2DEMO,
+	GSL_4DEMO,
+	GSL_MAX,
+};
+
+enum {	// ﾃｰﾌﾞﾙ内 0,1,2番の意味pw->vsp.ac(.fo)
+	BOMB_FORMT,
+	BOMB_COUNT,
+	BOMB_TABLE,
+};
+#define BOMBING_MIN 2
+#define BOMBING_MAX 4
+
+#define	JOYKEP	3600
+#define	STARTJ	255
+#define	ENDOFJ	254
+
+typedef struct {
+	u8	st,co;
+} VIBLOCKm;
+typedef struct {
+	u8	count;
+	u8	joykey;
+} KEYSEQ;
+
+typedef struct {	// ｶﾌﾟｾﾙﾜｰｸ
+	u8	st;		// 状態 			:(上記enum)ONES_****
+	u8	wc;		// 非表示ｳｴｲﾄｶｳﾝﾄ( 1>=強制 )
+	u8	mx,my;		// mﾌｨｰﾙﾄﾞx,y(8x15)
+	u8	ca;		// ｶﾗｰa番号			:(上記enum)COL_***
+	u8	cb;		//  ..b    ..
+	u8	sp;		// fall_speed[ｲﾝﾃﾞｸｽ], ｶｳﾝﾀ上限
+	u8	cn;		//     ..     ｶｳﾝﾀ( next時は cap_magagine[ｲﾝﾃﾞｸｽ] )
+	u16	bc;		// ﾌﾞﾛｯｸ化ｶｳﾝﾀ
+	u8	fc;		// ﾌﾗｲﾝｸﾞｶｳﾝﾀ
+	u8	bd;		// ﾌﾞﾛｯｸ化ｶｳﾝﾀ
+} CONCAP;
+
+typedef struct {	// mﾌｨｰﾙﾄﾞ 1ﾌﾞﾛｯｸﾜｰｸ
+	u8	st;		// ﾌﾞﾛｯｸの種類 			:(上記enum)MB_*****_**
+	u8	co;		// ｶﾗｰ番号 			:(上記enum)COL_***
+	u8	ff;		// 落下中ｽﾃｰﾀｽ
+	u8	rf;		// 病原菌作成予約ﾌﾗｸﾞbyｳﾙﾋﾟｰ
+	u16	wk[4];		// 操作ﾜｰｸ
+	float	fc;		// 浮動小数点ｶｳﾝﾀ
+} BLKCAP;
+
+typedef struct {	// 前回ﾃﾞｰﾀ取得ﾜｰｸ( 処理切替等でのﾌﾟﾚｲﾔｰ設定記憶ｴﾘｱ )
+	u8	mt[2];		// .mt
+	u8	vp;		// .vir.vm
+	u8	vm;		// .vir.vm
+	u8	mp;		// .mp
+	u8	cs;		// .cap.st
+	u8	vs;		// .vs
+	short	rx;		// .rx
+} PREVWK;
+
+typedef struct {	// 対戦ﾜｰｸ
+	u16	hi,sc;		// ﾊｲｽｺｱ, ｽｺｱ
+	u8	wi,lo;		// 勝利数, 勝利者ﾌﾗｸﾞ
+	u8	mcb,mec;	// (max)ｺﾝﾎﾞｶｳﾝﾀ, 連続消し数
+	u8	ncb,nec;	// (now)ｺﾝﾎﾞｶｳﾝﾀ, 連続消し数
+	u8	si,ei;		// 消去開始時ｶﾌﾟｾﾙ&ｳｲﾙｽ数, 消去ｶﾌﾟｾﾙ&ｳｲﾙｽ数
+	u8	sv,ev;		// 消去開始時ｳｲﾙｽ数, 消去ｳｲﾙｽ数
+	u8	up;		// 非使用
+	u8	an;		// 攻撃相手( ﾋﾟﾝﾎﾟｲﾝﾄ時 )
+	int	pc;		// 攻撃用ｶｳﾝﾀ( ﾋﾟﾝﾎﾟｲﾝﾄ時 )
+	u8	ac[18];		// 攻撃ｶﾌﾟｾﾙ集計
+	u8	fo[10];		// 被爆ｶﾌﾟｾﾙｾｯﾄ
+} VSPLAY;
+
+typedef struct {	// 1ﾌﾟﾚｲﾔ総合ﾜｰｸ
+	int	aa;		//( ﾃﾞｰﾀ保護ﾜｰｸ、未使用 )
+	u8	pn;		// ﾌﾟﾚｲﾔｰ no. 0-3
+	u8	gs;		// ｹﾞｰﾑｽﾃｰﾀｽ
+	u8	mt;		// ﾏﾄﾘｸｽｽﾃｰﾀｽ MB_***
+	u8	pe;		// ﾋﾟｸｾﾙ数
+	u16	wx,wy;		// ﾜｰﾙﾄﾞ左上座標(ｶﾌﾟｾﾙ用)
+	u16	nx,ny;		// ﾈｸｽﾄ x,y座標(wx,wy+α)
+	u8	sx,sy;		// ｹﾞｰﾑﾌｨｰﾙﾄﾞｻｲｽﾞx,y( default 8x16 )
+	u8	lv;		// 設定ﾚﾍﾞﾙ(0-29)
+	u8	sp;		// 設定ｽﾋﾟｰﾄﾞ 			:(上記enum)SPEED_***
+	u8	mp;		// Mﾌｨｰﾙﾄﾞ作成ﾌﾟﾛｸﾞﾗﾑ		:(上記enum)MFP_***
+	u8	vs;		// ｳｲﾙｽ残数
+	u8	id;		// 設定値検索ｲﾝﾃﾞｸｽ ... ex.１Ｐ時と２Ｐ対戦時の１Ｐとは、使用するﾃﾞｰﾀが違う時に使用するｲﾝﾃﾞｸｽ
+	u8	dg;		// ﾃﾞﾊﾞｯｸﾞｸﾞﾘｯﾄﾞ on/off
+	u8	pu[3];		// 0:TRUE==ｺﾝﾋﾟｭｰﾀ, 1:LEVEL( 0,1,2 ), 2:ﾃﾞﾓ no.
+	u8	ef;		// 消去,落下用ｶｳﾝﾀ
+	CONCAP	cap;		// 現在操作するｶﾌﾟｾﾙﾜｰｸ
+	CONCAP	nex;		// ﾈｸｽﾄｶﾌﾟｾﾙﾜｰｸ
+	BLKCAP  blk[MFy][MFx];	// ﾌﾞﾛｯｸﾜｰｸ
+	PREVWK	prv;		// 前回ﾃﾞｰﾀ取得ﾜｰｸ
+	VSPLAY*	ene[4];		// 敵対戦ﾜｰｸﾎﾟｲﾝﾀ
+	VSPLAY	vsp;		// 対戦用ﾜｰｸ
+	int	zz;		//( ﾃﾞｰﾀ保護ﾜｰｸ, 未使用 )
+} PWORK;
+
+u8 	evs_fram1st;			// 1stﾌﾚｰﾑ y/n
+u8 	evs_seqence = TRUE;		// ｼｰｹﾝｽ on/off
+u8	evs_seqnumb = SEQ_Fever;	// ｼｰｹﾝｽ番号
+u16 	evs_seffect;			// SE no.
+u8	evs_selmenu;			// ｾﾚｸﾄﾒﾆｭｰ
+u8	evs_selmen2;			// ｾﾚｸﾄﾒﾆｭｰ2P
+u8	evs_playmax;			// ﾌﾟﾚｲﾔｰ数max( ｺﾝﾄﾛｰﾗ数 )
+u8	evs_playcnt = 1;		// ﾌﾟﾚｲﾔｰ
+PWORK	evs_playwrk[PLAYER_MAX];	// ｹﾞｰﾑ総合処理
+u8	evs_prgstat;			// ｹﾞｰﾑｽﾃｰﾀｽ
+u8	evs_taskbar = FALSE;		// ﾀｽｸﾊﾞｰ
+u8	evs_bground;			// 背景
+u8	evs_pauplay;			// ﾎﾟｰｽﾞ優先ﾌﾟﾚｲﾔ
+short	evs_fadecol = 0;		// ｶﾗｰﾌｪｰﾀﾞｰ
+u8	evs_dsjudge;			// 判定描画
+u8	evs_gamesel;			// ﾀｲﾄﾙでのｹﾞｰﾑｾﾚｸﾄ 0-3 == 1P,2P,4P,vsCPU
+u8	evs_capinsh = FALSE;		// 
+u8	evs_keyrept[2] ={ 12,6 };	// ｷｰﾘﾋﾟｰﾄ
+u8	evs_attak4p = TRUE;		// TRUE=ﾋﾟﾝﾎﾟｲﾝﾄ
+int	evs_maincnt;			// ﾒｲﾝｶｳﾝﾀ
+int	evs_grphcnt;			// ｸﾞﾗﾌｨｯｸｶｳﾝﾀ
+u8	evs_mainx10;			// main10処理中ﾌﾗｸﾞ
+u8	evs_graph10;			// graphic10許可ﾌﾗｸﾞ
+u8	evs_aceldiv;			// 落下速度ﾚﾍﾞﾙｱｯﾌﾟ( 何個毎にｽﾋﾟｰﾄﾞｱｯﾌﾟするか )
+u8	evs_nextprg;			// ｹﾞｰﾑ終了時帰り先
+
+u8	flying_cnt[] = { 40, 20, 20, };	// ｶﾌﾟｾﾙ投げられてからカーソルになるまでのかうんた
+u8	bonus_wait[][3] = {		// ｶｰｿﾙｶﾌﾟｾﾙ y=1~3時, 余力ｳｴｲﾄ
+	{  2,  2,  2, },{  1,  1,  1, },{  1,  0,  1, },
+};
+u8	touch_down_wait[] = { 1, 2, 2, 2 };		// ｶﾌﾟｾﾙ下にﾌﾞﾛｯｸが有る時の追加ｳｴｲﾄ( != 0 )
+u8	game_speed[] = {  0, 10, 15, 55, };		// ｽﾋﾟｰﾄﾞ初期ｲﾝﾃﾞｸｽ by fall_speed[]
+u8	fall_speed[] = { 				// 落下ｽﾋﾟｰﾄﾞﾃﾞｰﾀ
+	39,37,35,33,31,29,27,25,23,21,19,18,17,16,15,
+	14,13,12,11,10, 9, 9, 8, 8, 7, 7, 6, 6, 5, 5,
+	 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4,
+	 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 1,
+};
+u8	next_wait[] = {  0,30,30,30,30,30,30, };// 次ｶﾌﾟｾﾙへのｳｴｲﾄ
+u8	score_1p[][SCORE_MAX] =	{ 		// ｽｺｱ計算 表示時はｘ１００する
+	{  1, 2, 4, 8,16,32, },
+	{  2, 4, 8,16,32,64, },
+	{  3, 6,12,24,48,96, },
+};
+u8	gamesel_index[] = { 0,1,3, 1, 0,1,3 };	// ｹﾞｰﾑｾﾚｸﾄによるPWORK.id 
+char 	speed_str[][5]  = {			// ｽﾋﾟｰﾄﾞﾚﾍﾞﾙﾌｫﾝﾄﾊﾟﾀﾝ
+	"LOW", "MED", " HI", "HI",
+};
+u8	cap_magagine[MAGA_MAX];			// ｶﾌﾟｾﾙﾏｶﾞｼﾞﾝ
+
+// 下記ｷｰｼｰｹﾝｽ関連
+#ifdef PAD_SEQ_KEEP
+VIBLOCKm viskeep[ID_MAX][MFy][MFx];		// Mﾌｨｰﾙﾄﾞ
+u8	 magkeep[3][MAGA_MAX];			// ﾏｶﾞｼﾞﾝ
+KEYSEQ	 joykeep[ID_MAX][JOYKEP];		// ｺﾝﾄﾛｰﾗ
+u8	 levkeep[ID_MAX+1][2];			// level,speed
+#endif
+
+// ｺﾝﾄﾛｰﾗﾜｰｸ
+u8	joygmf[MAXCONTROLLERS];	// 下記使用ﾌﾗｸﾞ					
+u16	joygam[MAXCONTROLLERS];	// ｹﾞｰﾑ用ｺﾝﾄﾛｰﾗﾌﾗｸﾞ				
+
+
+
+

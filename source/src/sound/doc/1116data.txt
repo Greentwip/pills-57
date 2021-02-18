@@ -1,0 +1,42 @@
+
+修正したBGMデータとSEデータをお送りいたします。
+お手数ですが更新お願いいたします。
+詳細は以下の通りです。
+
+○データの内容
+
+Chill.bin	修正
+ChillFF.bin	修正
+End_A.bin
+End_B.bin
+End_C.bin
+Ending.bin
+Fever.bin	修正
+FeverFF.bin	修正
+Game_C.bin	修正
+Game_CFF.bin	修正
+Game_D.bin	すいませんがデータは以前のままです。
+Game_DFF.bin	すいませんがデータは以前のままです。
+Game_E.bin
+Game_EFF.bin
+Menu.bin
+Opening.bin
+Staffv1.bin
+Staffv2.bin
+Story_A.bin
+Story_B.bin
+Story_C.bin
+Title.bin	修正
+
+se.bfx
+se.h
+
+drmario.wbk	修正
+drmario.ptr	修正
+
+
+何か問題などがございましたらご連絡下さい。
+
+Creative section
+
+T's music Co.,ltd.

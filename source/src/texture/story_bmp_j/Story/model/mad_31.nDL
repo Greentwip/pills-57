@@ -1,0 +1,50 @@
+/********************************************************************
+  mad_31
+	Vert Count = 9
+	Face Count = 7
+	Min X:   -29	Max X:    27
+	Min Y:    -8	Max Y:    27
+	Min Z:     0	Max Z:     0
+	MaxSize = 29
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mad_31_box[] = { -29, 27, -8, 27, 0, 0, 29, 0 };
+Vtx mad_31_vtx[] = {
+	{ -17, 14, 0, 0, 879, 1223, 38, 38, 38, 255 },
+	{ -29, 6, 0, 0, 99, 539, 38, 38, 38, 255 },
+	{ -19, -7, 0, 0, 708, -255, 38, 38, 38, 255 },
+	{ 10, -5, 0, 0, 2731, -111, 38, 38, 38, 255 },
+	{ 21, -8, 0, 0, 3427, -309, 38, 38, 38, 255 },
+	{ 27, 13, 0, 0, 3874, 1099, 38, 38, 38, 255 },
+	{ 12, 19, 0, 0, 2824, 1514, 38, 38, 38, 255 },
+	{ 4, 27, 0, 0, 2294, 2014, 38, 38, 38, 255 },
+	{ -13, 27, 0, 0, 1156, 2048, 38, 38, 38, 255 },
+};
+
+
+Gfx mad_31_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mad_31	Color:mad_31	Tri:7	Vtx:9 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(mad_31_lut),
+	gsDPLoadMultiBlock(mad_31_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 6, 5, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mad_31_vtx[0], 9, 0),
+	gsSP2Triangles(0, 1, 2, 2, 0, 2, 3, 2),
+	gsSP2Triangles(4, 5, 6, 2, 7, 8, 0, 1),
+	gsSP2Triangles(3, 4, 6, 0, 6, 7, 0, 0),
+	gsSP1Triangle(3, 6, 0, 0),
+	gsSPEndDisplayList(),
+};

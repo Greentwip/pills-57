@@ -1,0 +1,92 @@
+#include "def.h"
+#include "local.h"
+
+//--------------------- 常駐 ﾌﾞｰﾄｾｸﾞﾒﾝﾄ
+beginseg
+	name    "boot"
+	flags   BOOT OBJECT
+	entry   boot
+	stack   bootStack + STACKSIZE
+	include "bootsegment.o"
+endseg
+
+//--------------------- 常駐 ｺｰﾄﾞｴﾝﾄﾘｰ
+beginseg
+	name    "code_entry"
+#if defined(COMPRESSED)
+	flags   RAW
+	include "code_entry.seg"
+#else
+	after   "boot"
+	flags   OBJECT
+	include "code_entry.o"
+#endif
+endseg
+
+//--------------------- 常駐 ｺｰﾄﾞｾｸﾞﾒﾝﾄ
+beginseg
+	name    "code"
+#if defined(COMPRESSED)
+	flags   RAW
+	include "code.zzz"
+#else
+	after   "code_entry"
+	flags   OBJECT
+	include "codesegment.o"
+	include "$(ROOT)/usr/lib/PR/rspboot.o"
+	include "$(ROOT)/usr/lib/PR/aspMain.o"
+	include "$(ROOT)/usr/lib/PR/gspF3DEX2.fifo.o"
+	include "$(ROOT)/usr/lib/PR/gspS2DEX.fifo.o"
+#endif
+endseg
+
+//--------------------- 常駐 wﾌﾚｰﾑﾊﾞｯﾌｧ
+beginseg
+	name    "fbuffer"
+	flags   OBJECT
+	address 0x803B5000
+	include "fbuffer.o"
+endseg
+
+//--------------------- 常駐 ﾌﾘｰｴﾘｱ
+beginseg
+	name    "gfxfree"
+	flags   OBJECT
+	address 0x80205000
+	include "gfxfree.o"
+endseg
+
+//--------------------------- サウンドデータ
+#include "sound/sound_data.spec"
+
+//--------------------------- ストーリーモード画面のデータ
+#if LOCAL==JAPAN
+#include "texture/story_bmp_j/story.spec"
+#elif LOCAL==AMERICA
+#include "texture/story_bmp/story.spec"
+#elif LOCAL==CHINA
+#include "texture/story_bmp/story.spec"
+#endif
+
+//--------------------------- メニュー画面のデータ
+#include "texture/menu/menu_data.spec"
+
+//--------------------------- ゲーム画面のデータ
+#include "texture/game/game_data.spec"
+
+//--------------------------- キャラアニメデータ
+#include "texture/character/char_data.spec"
+
+//--------------------------- 操作説明画面のデータ
+#include "texture/tutorial/tutorial_data.spec"
+
+//--------------------------- ﾘﾝｸ
+beginwave
+	name    "game"
+	include "boot"
+	include "code_entry"
+	include "code"
+	include "fbuffer"
+	include "gfxfree"
+endwave
+

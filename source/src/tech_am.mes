@@ -1,0 +1,123 @@
+
+// パスワード
+static char _mesPassword[] = "~0     Password~n~z";
+
+// 縦10行　横18文字
+//（キー待ち：PRESS ANY KEY表示）
+
+
+//●ＥＡＳＹをコンティニューしてクリア
+static char _mesEasyCont[]=
+"~h~1"
+"~n"
+"~n"
+"~n"
+"~n"
+"Congratulations!~n"
+"Next time try to~n"
+"finish EASY~n"
+"without losing.~n"
+"~w2~z";
+
+//●ＥＡＳＹをノーミスでクリア
+static char _mesEasyNoCont[]=
+"~h~1"
+"~n"
+"~n"
+"~n"
+"~n"
+"Congratulations! You~n"
+"finished EASY without~n"
+"losing.~n"
+"Now try NORMAL.~n"
+"~w2~z";
+
+//●ＮＯＲＭＡＬをコンティニューしてクリア
+static char _mesNormalCont[]=
+"~h~6"
+"~n"
+"~n"
+"~n"
+"~n"
+"Congratulations!~n"
+"Next time try to~n"
+"finish NORMAL~n"
+"without losing.~n"
+"~w2~z";
+
+
+//●ＮＯＲＭＡＬをノーミスでクリア
+static char _mesNormalNoCont[]=
+"~h~6"
+"~n"
+"~n"
+"~n"
+"~n"
+"Congratulations! You~n"
+"finished NORMAL~n"
+"without losing.~n"
+"Now try HARD.~n"
+"~w2~z";
+
+
+//●ＨＡＲＤをコンティニューしてクリア
+static char _mesHardCont[]=
+"~h~4"
+"~n"
+"~n"
+"~n"
+"~n"
+"Congratulations!~n"
+"Next time try to~n"
+"finish HARD~n"
+"without losing.~n"
+"~w2~z";
+
+
+//●ＨＡＲＤをノーミスでクリア
+static char _mesHardNoCont[]=
+"~h~4"
+"Congratulations! You~n"
+"finished HARD~n"
+"without losing.~n"
+"Great job! Now let me~n"
+"tell you a secret.~n"
+"Hold down the Z Button~n"
+"while selecting the~n"
+"HARD Story Mode level~n"
+"and the level will~n"
+"become SUPER HARD."
+"~w2~z";
+
+
+//●ＳＨＡＲＤをコンティニューしてクリア
+static char _mesSHardCont[]=
+"~h~2"
+"~n"
+"~n"
+"~n"
+"~n"
+"Congratulations!~n"
+"Next time try to~n"
+"finish SUPER HARD~n"
+"without losing.~n"
+"~w2~z";
+
+//"　でも、コンティニューをしたのは~n"
+//"　　　　ざんねんだったね。~n"
+//"こんどこそ、ノーコンティニューでの~n"
+//"　　　クリアにちょうせんだ！~n"
+
+
+//●ＳＨＡＲＤをノーミスでクリア
+static char _mesSHardNoCont[]=
+"~h~2"
+"~n"
+"~n"
+"~n"
+"Congratulations! You~n"
+"finished SUPER HARD~n"
+"without losing.~n"
+"Amazing! You are truly~n"
+"A Dr. Mario expert!~n"
+"~w2~z";

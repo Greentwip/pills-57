@@ -1,0 +1,111 @@
+
+//---------------- ．ｃファイル
+aiBG32.c	クリアデモに使用するＢＧデータ
+aigraphic30.c	NINTENDOロゴ画面 初期化以外のすべて
+aiGraphic31.c	タイトル画面 初期化以外のすべて
+aiGraphic32.c	クリアデモ 初期化以外のすべて
+aimain30.c	NINTENDOロゴ画面 初期化
+aiMain31.c	タイトル画面 初期化
+aiMain32.c	クリアデモ 初期化
+aiset.c		ＶＳーＣＰＵ頭脳
+aiSP32.c	クリアデモのキャラクタグラフィックデータ
+aiTitleBG.c	タイトルに使用するＢＧ
+audio.c		オーディオ
+bground1.c	オチゲーＢＧ
+evsworks.c	オチゲーワーク
+fontmgr.c	デバッグフォント作成
+fontwrk.c	
+functions.c	機能プログラム集
+gfxfree.c	ＤＭＡエリア
+graphic.c	描画中枢
+graphic03.c	カラーチェッカー描画
+graphic10.c	オチゲー描画タスク作成
+joy.c		コントローラ（現在、スレッド化していない）
+main.c		ジェネラル
+main03.c	カラーチェッカーメイン
+main10.c	オチゲーメイン
+main1x.c	オチゲー初期設定
+nnsched.c	ＮＮスケジューラ
+rgbAdjust.c	
+spfree.c	スプライトマネージャ使用エリア
+spmgr.c		スプライトマネージャ
+sprite.c	オチゲースプライトデータ
+static.c	ディスプレイリスト集
+umotor.c	しびれる～
+vr_init.c	オチゲー、ゲーム前初期配置
+ziBG1.c		
+ziChara1.c	
+ziGraphic20.c	
+ziGraphic21.c	
+ziMain20.c	
+ziMain21.c	
+ziRCPinit2.c	
+ziSPinit20.c	
+
+//--------------------- ．ｈファイル
+aiGraphic31.h	
+aiGraphic30.h	
+aiGraphic32.h	
+aiset.h		
+aiSP32.h	（未使用）
+audio.h		
+aiTTEX.h	クリアデモデータの extern宣言
+bground.h	オチゲーＢＧ
+evsworks.h	オチゲーヘッダ
+fontarc.h	
+fontmgr.h	
+fontstd.h	
+functions.h	
+graphic.h	
+joy.h		
+main.h		
+message.h	
+nnsched.h	
+rgbAdjust.h	
+segment.h	
+spmgr.h		
+sprite.h	オチゲースプライト
+static.h	
+umotor.h	
+vr_init.h	
+vram.h		
+zi.h		
+ziBG1.h		
+ziChara1.h	
+ziDemoSeq.h	
+
+//----------------- スプライト追加について
+
+１．graphic10にて（”虫眼鏡”参照）
+
+    １．関数「SetFirstForDraw_Graph10()」にてスプライト設定関数を定義
+    ２．領域「uOT_MBlock」に、スプライトデータを領域に加える
+    ３．１で指定した関数名でプログラム作成
+
+２．スプライトマネージャ使用法（関数「SetMario1st()」「RunMario1st()」参照
+
+        １．SetMario1stにて初期設定
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            spf->predl：起動したいディスプレイリストがあったら
+		  　アドレスを入れる
+            spf->func ：(int(*)())プログラム登録（表示しているだけなら入れない）
+                        ここでは RunMario1st を登録している
+            spf->fptr0：(void*)登録プログラムに渡す引数
+
+        ２．RunMario1stにて実行（ 各スプライト操作関数については spmgr.cを参照 )
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	    １．ANIDAT構造体に従いアニメーションデータを作成
+	    ２．ここでは、各ケースについてアニメーションを変更している
+
+//----------------- ボタン操作について( "?"はプレイヤー番号０～３ )
+
+    joynew[?]	今回のボタン
+    joyupd[?]	トリガー
+    joycur[?]   上下左右キーリピート
+
+	上記ワークを検索すればｏ．ｋ．
+
+
+
+
+

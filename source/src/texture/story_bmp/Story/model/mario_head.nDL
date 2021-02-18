@@ -1,0 +1,37 @@
+/********************************************************************
+  mario_head
+	Vert Count = 4
+	Face Count = 2
+	Min X:   -10	Max X:    10
+	Min Y:     0	Max Y:    20
+	Min Z:     0	Max Z:     0
+	MaxSize = 20
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mario_head_box[] = { -10, 10, 0, 20, 0, 0, 20, 0 };
+Vtx mario_head_vtx[] = {
+	{ -10, 20, 0, 0, 32, 2016, 38, 38, 38, 255 },
+	{ -10, 0, 0, 0, 32, 704, 38, 38, 38, 255 },
+	{ 10, 0, 0, 0, 1168, 704, 38, 38, 38, 255 },
+	{ 10, 20, 0, 0, 1168, 2016, 38, 38, 38, 255 },
+};
+
+
+Gfx mario_head_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mario_head	Color:mario_head	Tri:2	Vtx:4 */
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(etcparts_d_lut),
+	gsDPLoadMultiBlock(etcparts_d_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 6, 5, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mario_head_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

@@ -1,0 +1,42 @@
+/********************************************************************
+  tree_b
+	Vert Count = 4
+	Face Count = 2
+	Min X:   -41	Max X:    42
+	Min Y:    -4	Max Y:   100
+	Min Z:     0	Max Z:     0
+	MaxSize = 100
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int tree_b_box[] = { -41, 42, -4, 100, 0, 0, 100, 0 };
+Vtx tree_b_vtx[] = {
+	{ -41, 100, 0, 0, 3072, 4480, 38, 38, 38, 255 },
+	{ -41, -4, 0, 0, 3072, 0, 38, 38, 38, 255 },
+	{ 42, -4, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 42, 100, 0, 0, 0, 4480, 38, 38, 38, 255 },
+};
+
+
+Gfx tree_b_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:tree_b	Color:trees_b	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, tree_b_lut),
+	gsDPLoadMultiBlock_4b(tree_b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 48, 70, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&tree_b_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

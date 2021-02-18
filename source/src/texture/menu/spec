@@ -1,0 +1,110 @@
+#include "local.h"
+
+beginseg
+	name    "code"
+	flags   BOOT OBJECT
+	entry   boot
+	stack   bootStack
+	include "../../i10n/tools/codesegment.o"
+endseg
+
+beginseg
+	name    "menu_char"
+	flags   OBJECT
+	address 0
+	include "menu_char.o"
+endseg
+
+beginseg
+	name    "menu_common"
+	flags   OBJECT
+	address 0
+	include "menu_common.o"
+endseg
+
+beginseg
+	name    "menu_level"
+	flags   OBJECT
+	address 0
+	include "menu_level.o"
+endseg
+
+beginseg
+	name    "menu_main"
+	flags   OBJECT
+	address 0
+	include "menu_main.o"
+endseg
+
+beginseg
+	name    "menu_name"
+	flags   OBJECT
+	address 0
+	include "menu_name.o"
+endseg
+
+beginseg
+	name    "menu_p2"
+	flags   OBJECT
+	address 0
+	include "menu_p2.o"
+endseg
+
+beginseg
+	name    "menu_p4"
+	flags   OBJECT
+	address 0
+	include "menu_p4.o"
+endseg
+
+beginseg
+	name    "menu_rank"
+	flags   OBJECT
+	address 0
+	include "menu_rank.o"
+endseg
+
+beginseg
+	name    "menu_setup"
+	flags   OBJECT
+	address 0
+	include "menu_setup.o"
+endseg
+
+beginseg
+	name    "menu_story"
+	flags   OBJECT
+	address 0
+	include "menu_story.o"
+endseg
+
+beginseg
+	name    "menu_cont"
+	flags   OBJECT
+	address 0
+	include "menu_cont.o"
+endseg
+
+beginseg
+	name    "menu_kasa"
+	flags   OBJECT
+	address 0
+	include "menu_kasa.o"
+endseg
+
+beginwave
+	name "data"
+	include "code"
+	include "menu_char"
+	include "menu_common"
+	include "menu_level"
+	include "menu_main"
+	include "menu_name"
+	include  "menu_p2"
+	include  "menu_p4"
+	include "menu_rank"
+	include "menu_setup"
+	include "menu_story"
+	include "menu_cont"
+	include "menu_kasa"
+endwave

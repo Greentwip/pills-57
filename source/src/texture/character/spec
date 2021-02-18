@@ -1,0 +1,149 @@
+#include "local.h"
+
+beginseg
+	name    "code"
+	flags   BOOT OBJECT
+	entry   boot
+	stack   bootStack
+	include "$(DM64ROOT)/tool/codesegment.o"
+endseg
+
+beginseg
+	name    "anime_a"
+	flags   OBJECT
+	address 0
+	include "anime_a.o"
+endseg
+
+beginseg
+	name    "anime_b"
+	flags   OBJECT
+	address 0
+	include "anime_b.o"
+endseg
+
+beginseg
+	name    "anime_c"
+	flags   OBJECT
+	address 0
+	include "anime_c.o"
+endseg
+
+beginseg
+	name    "anime_d"
+	flags   OBJECT
+	address 0
+	include "anime_d.o"
+endseg
+
+beginseg
+	name    "anime_e"
+	flags   OBJECT
+	address 0
+	include "anime_e.o"
+endseg
+
+beginseg
+	name    "anime_f"
+	flags   OBJECT
+	address 0
+	include "anime_f.o"
+endseg
+
+beginseg
+	name    "anime_g"
+	flags   OBJECT
+	address 0
+	include "anime_g.o"
+endseg
+
+beginseg
+	name    "anime_h"
+	flags   OBJECT
+	address 0
+	include "anime_h.o"
+endseg
+
+beginseg
+	name    "anime_i"
+	flags   OBJECT
+	address 0
+	include "anime_i.o"
+endseg
+
+beginseg
+	name    "anime_j"
+	flags   OBJECT
+	address 0
+	include "anime_j.o"
+endseg
+
+beginseg
+	name    "anime_k"
+	flags   OBJECT
+	address 0
+	include "anime_k.o"
+endseg
+
+beginseg
+	name    "anime_l"
+	flags   OBJECT
+	address 0
+	include "anime_l.o"
+endseg
+
+beginseg
+	name    "anime_m"
+	flags   OBJECT
+	address 0
+	include "anime_m.o"
+endseg
+
+beginseg
+	name    "anime_n"
+	flags   OBJECT
+	address 0
+	include "anime_n.o"
+endseg
+
+beginseg
+	name    "anime_o"
+	flags   OBJECT
+	address 0
+	include "anime_o.o"
+endseg
+
+beginseg
+	name    "anime_mario"
+	flags   OBJECT
+	address 0
+	include "anime_mario.o"
+endseg
+
+beginseg
+	name    "anime_virus_b"
+	flags   OBJECT
+	address 0
+	include "anime_virus_b.o"
+endseg
+
+beginseg
+	name    "anime_virus_r"
+	flags   OBJECT
+	address 0
+	include "anime_virus_r.o"
+endseg
+
+beginseg
+	name    "anime_virus_y"
+	flags   OBJECT
+	address 0
+	include "anime_virus_y.o"
+endseg
+
+beginseg
+	name    "anime_smog"
+	flags   OBJECT
+	address 0
+	include "anime_smog.o"
+endseg

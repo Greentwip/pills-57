@@ -1,0 +1,43 @@
+/********************************************************************
+  rocks_b4
+	Vert Count = 4
+	Face Count = 2
+	Min X:   -44	Max X:    45
+	Min Y:    -4	Max Y:    85
+	Min Z:     0	Max Z:     0
+	MaxSize = 85
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int rocks_b4_box[] = { -44, 45, -4, 85, 0, 0, 85, 0 };
+Vtx rocks_b4_vtx[] = {
+	{ -44, 85, 0, 0, 0, 4096, 38, 38, 38, 255 },
+	{ -44, -4, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 45, -4, 0, 0, 4096, 0, 38, 38, 38, 255 },
+	{ 45, 85, 0, 0, 4096, 4096, 38, 38, 38, 255 },
+};
+
+
+Gfx rocks_b4_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:rocks_b4	Color:rocks_b	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0),
+	gsDPSetPrimColor(255, 255, 230, 230, 230, 255),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, rocks_b_lut),
+	gsDPLoadMultiBlock_4b(rocks_b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 64, 64, 0, G_TX_CLAMP, G_TX_CLAMP, 6, 6, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&rocks_b4_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

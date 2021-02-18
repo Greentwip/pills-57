@@ -1,0 +1,56 @@
+/********************************************************************
+  mario_35b
+	Vert Count = 13
+	Face Count = 11
+	Min X:   -26	Max X:    22
+	Min Y:   -28	Max Y:    30
+	Min Z:     0	Max Z:     0
+	MaxSize = 30
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mario_35b_box[] = { -26, 22, -28, 30, 0, 0, 30, 0 };
+Vtx mario_35b_vtx[] = {
+	{ 20, 14, 0, 0, -2, 2311, 38, 38, 38, 255 },
+	{ -19, 8, 0, 0, 2260, 1909, 38, 38, 38, 255 },
+	{ 2, -21, 0, 0, 1049, 157, 38, 38, 38, 255 },
+	{ 20, -14, 0, 0, -3, 594, 38, 38, 38, 255 },
+	{ 22, 14, 0, 0, -129, 2311, 38, 38, 38, 255 },
+	{ 4, 30, 0, 0, 936, 3281, 38, 38, 38, 255 },
+	{ -13, 29, 0, 0, 1929, 3240, 38, 38, 38, 255 },
+	{ -20, 17, 0, 0, 2315, 2503, 38, 38, 38, 255 },
+	{ 22, 21, 0, 0, -89, 2731, 38, 38, 38, 255 },
+	{ -22, -10, 0, 0, 2457, 784, 38, 38, 38, 255 },
+	{ -26, -16, 0, 0, 2660, 435, 38, 38, 38, 255 },
+	{ -11, -28, 0, 0, 1814, -313, 38, 38, 38, 255 },
+	{ -26, -1, 0, 0, 2669, 1369, 38, 38, 38, 255 },
+};
+
+
+Gfx mario_35b_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mario_35b	Color:mario_35	Tri:11	Vtx:13 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(mario_35_lut),
+	gsDPLoadMultiBlock(mario_35_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 48, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mario_35b_vtx[0], 13, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 0, 1),
+	gsSP2Triangles(2, 3, 0, 0, 5, 6, 7, 2),
+	gsSP2Triangles(0, 8, 5, 1, 5, 7, 1, 0),
+	gsSP2Triangles(0, 5, 1, 0, 1, 9, 2, 1),
+	gsSP2Triangles(9, 10, 2, 1, 10, 11, 2, 1),
+	gsSP1Triangle(1, 12, 9, 1),
+	gsSPEndDisplayList(),
+};

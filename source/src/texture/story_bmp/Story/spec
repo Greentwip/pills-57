@@ -1,0 +1,11 @@
+// ‚±‚ÌÌ§²Ù‚ÍXV‚³‚ê‚Ü‚¹‚ñ
+
+beginseg
+	name "code"
+	flags BOOT OBJECT
+	entry boot
+	stack bootStack
+	include "codesegment.o"
+endseg
+
+#include "segment.spc"

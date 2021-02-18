@@ -1,0 +1,60 @@
+beginseg
+	name    "code"
+	flags   BOOT OBJECT
+	entry   boot
+	stack   bootStack
+	include "../../i10n/tools/codesegment.o"
+endseg
+
+beginseg
+	name    "game_al"
+	flags   OBJECT
+	address 0
+	include "game_al.o"
+endseg
+
+beginseg
+	name    "game_p1"
+	flags   OBJECT
+	address 0
+	include "game_p1.o"
+endseg
+
+beginseg
+	name    "game_p2"
+	flags   OBJECT
+	address 0
+	include "game_p2.o"
+endseg
+
+beginseg
+	name    "game_p4"
+	flags   OBJECT
+	address 0
+	include "game_p4.o"
+endseg
+
+beginseg
+	name    "game_ls"
+	flags   OBJECT
+	address 0
+	include "game_ls.o"
+endseg
+
+beginseg
+	name    "game_item"
+	flags   OBJECT
+	address 0
+	include "game_item.o"
+endseg
+
+beginwave
+	name "data"
+	include "code"
+	include "game_al"
+	include "game_p1"
+	include "game_p2"
+	include "game_p4"
+	include "game_ls"
+	include "game_item"
+endwave

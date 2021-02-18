@@ -1,0 +1,42 @@
+/********************************************************************
+  door
+	Vert Count = 4
+	Face Count = 2
+	Min X:     0	Max X:    14
+	Min Y:   -10	Max Y:    15
+	Min Z:     0	Max Z:     0
+	MaxSize = 15
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int door_box[] = { 0, 14, -10, 15, 0, 0, 15, 0 };
+Vtx door_vtx[] = {
+	{ 0, 13, 0, 0, 2369, 1728, 38, 38, 38, 255 },
+	{ 0, -9, 0, 0, 2369, 1472, 38, 38, 38, 255 },
+	{ 14, -10, 0, 0, 2185, 1459, 38, 38, 38, 255 },
+	{ 14, 15, 0, 0, 2185, 1753, 38, 38, 38, 255 },
+};
+
+
+Gfx door_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:door	Color:door	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, mariohouse_lut),
+	gsDPLoadMultiBlock_4b(mariohouse_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 64, 64, 0, G_TX_WRAP, G_TX_WRAP, 6, 6, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&door_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

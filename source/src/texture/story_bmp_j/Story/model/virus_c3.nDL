@@ -1,0 +1,68 @@
+/********************************************************************
+  virus_c3
+	Vert Count = 21
+	Face Count = 19
+	Min X:   -19	Max X:    20
+	Min Y:   -14	Max Y:    27
+	Min Z:    -3	Max Z:    -3
+	MaxSize = 27
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int virus_c3_box[] = { -19, 20, -14, 27, -3, -3, 27, 0 };
+Vtx virus_c3_vtx[] = {
+	{ 0, -10, -3, 0, 1302, 214, 38, 38, 38, 255 },
+	{ 7, -14, -3, 0, 892, -32, 38, 38, 38, 255 },
+	{ 16, -8, -3, 0, 354, 347, 38, 38, 38, 255 },
+	{ 19, 3, -3, 0, 141, 1048, 38, 38, 38, 255 },
+	{ -17, 6, -3, 0, 2412, 1218, 38, 38, 38, 255 },
+	{ -18, -5, -3, 0, 2472, 534, 38, 38, 38, 255 },
+	{ -10, -12, -3, 0, 1964, 128, 38, 38, 38, 255 },
+	{ 0, 21, -3, 0, 1339, 2150, 38, 38, 38, 255 },
+	{ -6, 27, -3, 0, 1692, 2528, 38, 38, 38, 255 },
+	{ -9, 22, -3, 0, 1880, 2198, 38, 38, 38, 255 },
+	{ 18, 4, -3, 0, 218, 1110, 38, 38, 38, 255 },
+	{ 20, 8, -3, 0, 78, 1356, 38, 38, 38, 255 },
+	{ 17, 15, -3, 0, 302, 1755, 38, 38, 38, 255 },
+	{ 17, 23, -3, 0, 302, 2261, 38, 38, 38, 255 },
+	{ 8, 20, -3, 0, 841, 2107, 38, 38, 38, 255 },
+	{ -14, 26, -3, 0, 2217, 2479, 38, 38, 38, 255 },
+	{ -17, 14, -3, 0, 2365, 1737, 38, 38, 38, 255 },
+	{ -4, -9, -3, 0, 1589, 278, 38, 38, 38, 255 },
+	{ -19, 10, -3, 0, 2525, 1482, 38, 38, 38, 255 },
+	{ -17, 7, -3, 0, 2374, 1256, 38, 38, 38, 255 },
+	{ 5, 26, -3, 0, 993, 2470, 38, 38, 38, 255 },
+};
+
+
+Gfx virus_c3_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:virus_c3	Color:virus_c3	Tri:19	Vtx:21 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(virus_c3_lut),
+	gsDPLoadMultiBlock(virus_c3_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 40, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&virus_c3_vtx[0], 21, 0),
+	gsSP2Triangles(0, 1, 2, 2, 0, 2, 3, 2),
+	gsSP2Triangles(4, 5, 6, 2, 7, 8, 9, 2),
+	gsSP2Triangles(10, 11, 12, 2, 12, 13, 14, 2),
+	gsSP2Triangles(9, 15, 16, 2, 4, 6, 17, 2),
+	gsSP2Triangles(16, 18, 19, 2, 10, 12, 14, 0),
+	gsSP2Triangles(7, 9, 16, 0, 7, 16, 19, 0),
+	gsSP2Triangles(14, 20, 7, 1, 10, 14, 7, 0),
+	gsSP2Triangles(10, 7, 19, 0, 17, 0, 3, 0),
+	gsSP2Triangles(17, 3, 10, 0, 19, 4, 17, 0),
+	gsSP1Triangle(17, 10, 19, 0),
+	gsSPEndDisplayList(),
+};

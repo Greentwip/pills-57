@@ -1,0 +1,382 @@
+LWSC
+1
+
+FirstFrame 1
+LastFrame 136
+FrameStep 1
+PreviewFirstFrame 0
+PreviewLastFrame 136
+PreviewFrameStep 1
+FramesPerSecond 60.000000
+
+LoadObject C:\dr_mario\stageclear\model\clea_R_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  37.75 -13.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  37.75 -13.25 0 0 0 720 0.9249998 0.9249998 1
+  40 1 0 0 0
+  37.75 -13.25 0 0 0 720 1 1 1
+  76 1 0 0 0
+  37.75 -13.25 0 0 0 726.9998 0.7999999 0.7999999 1
+  112 1 0 0 0
+  37.75 -13.25 0 0 0 720 0.925 0.9249998 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 24
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\clea_R.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  37.75 -13.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  37.75 -13.25 0 0 0 720 0.9249998 0.9249998 1
+  40 1 0 0 0
+  37.75 -13.25 0 0 0 720 1 1 1
+  76 1 0 0 0
+  37.75 -13.25 0 0 0 726.9998 0.7999999 0.7999999 1
+  112 1 0 0 0
+  37.75 -13.25 0 0 0 720 0.925 0.9249998 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 24
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\cle_A_r_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  20.25 -16.75 0 0 0 0 2 2 1
+  0 1 0 0 0
+  20.25 -16.75 0 0 0 720 0.9349999 0.9349999 1
+  40 1 0 0 0
+  20.25 -16.75 0 0 0 720 1 1 1
+  68 1 0 0 0
+  20.25 -16.75 0 0 0 712.7001 0.7999999 0.7999999 1
+  108 1 0 0 0
+  20.25 -16.75 0 0 0 720 0.9349999 0.9349999 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\cle_A_r.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  20.25 -16.75 0 0 0 0 2 2 1
+  0 1 0 0 0
+  20.25 -16.75 0 0 0 720 0.9349999 0.9349999 1
+  40 1 0 0 0
+  20.25 -16.75 0 0 0 720 1 1 1
+  68 1 0 0 0
+  20.25 -16.75 0 0 0 712.7001 0.7999999 0.7999999 1
+  108 1 0 0 0
+  20.25 -16.75 0 0 0 720 0.9349999 0.9349999 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\cl_E_ar_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  2 -14.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  2 -14.25 0 0 0 720 0.925 0.925 1
+  40 1 0 0 0
+  2 -14.25 0 0 0 720 1 1 1
+  60 1 0 0 0
+  2 -14.25 0 0 0 729.4998 0.8 0.7999999 1
+  108 1 0 0 0
+  2 -14.25 0 0 0 720 0.925 0.925 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\cl_E_ar.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  2 -14.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  2 -14.25 0 0 0 720 0.925 0.925 1
+  40 1 0 0 0
+  2 -14.25 0 0 0 720 1 1 1
+  60 1 0 0 0
+  2 -14.25 0 0 0 729.4998 0.8 0.7999999 1
+  108 1 0 0 0
+  2 -14.25 0 0 0 720 0.925 0.925 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\c_L_ear_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  -16.25 -18.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  -16.25 -18.25 0 0 0 720 0.945 0.945 1
+  40 1 0 0 0
+  -16.25 -18.25 0 0 0 720 1 1 1
+  52 1 0 0 0
+  -16.25 -18.25 0 0 0 712.7003 0.7999999 0.7999999 1
+  100 1 0 0 0
+  -16.25 -18.25 0 0 0 720 0.9450001 0.945 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\c_L_ear.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  -16.25 -18.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  -16.25 -18.25 0 0 0 720 0.945 0.945 1
+  40 1 0 0 0
+  -16.25 -18.25 0 0 0 720 1 1 1
+  52 1 0 0 0
+  -16.25 -18.25 0 0 0 712.7003 0.7999999 0.7999999 1
+  100 1 0 0 0
+  -16.25 -18.25 0 0 0 720 0.9450001 0.945 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\C_lear_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  -34.5 -16.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  -34.5 -16.25 0 0 0 720 0.975 0.975 1
+  40 1 0 0 0
+  -34.5 -16.25 0 0 0 720 1 1 1
+  44 1 0 0 0
+  -34.5 -16.25 0 0 0 726.0996 0.7999998 0.8 1
+  92 1 0 0 0
+  -34.5 -16.25 0 0 0 720 0.975 0.975 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\C_lear.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  -34.5 -16.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  -34.5 -16.25 0 0 0 720 0.975 0.975 1
+  40 1 0 0 0
+  -34.5 -16.25 0 0 0 720 1 1 1
+  44 1 0 0 0
+  -34.5 -16.25 0 0 0 726.0996 0.7999998 0.8 1
+  92 1 0 0 0
+  -34.5 -16.25 0 0 0 720 0.975 0.975 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\al_L_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  22 9.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  22 9.25 0 0 0 720 0.9000001 0.9 1
+  40 1 0 0 0
+  22 9.25 0 0 0 720 1 1 1
+  64 1 0 0 0
+  22 6.75 0 0 0 728.1996 0.7999998 0.7999999 1
+  112 1 0 0 0
+  22 9.25 0 0 0 720 0.9 0.9 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\al_L.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  22 9.25 0 0 0 0 2 2 1
+  0 1 0 0 0
+  22 9.25 0 0 0 720 0.9000001 0.9 1
+  40 1 0 0 0
+  22 9.25 0 0 0 720 1 1 1
+  64 1 0 0 0
+  22 6.75 0 0 0 728.1996 0.7999998 0.7999999 1
+  112 1 0 0 0
+  22 9.25 0 0 0 720 0.9 0.9 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\a_L_l_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  2.5 11 0 0 0 0 2 2 1
+  0 1 0 0 0
+  2.5 11 0 0 0 720 0.95 0.95 1
+  40 1 0 0 0
+  2.5 11 0 0 0 720 1 1 1
+  56 1 0 0 0
+  2.5 8.5 0 0 0 708.6 0.7999999 0.7999999 1
+  104 1 0 0 0
+  2.5 11 0 0 0 720 0.95 0.95 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\a_L_l.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  2.5 11 0 0 0 0 2 2 1
+  0 1 0 0 0
+  2.5 11 0 0 0 720 0.95 0.95 1
+  40 1 0 0 0
+  2.5 11 0 0 0 720 1 1 1
+  56 1 0 0 0
+  2.5 8.5 0 0 0 708.6 0.7999999 0.7999999 1
+  104 1 0 0 0
+  2.5 11 0 0 0 720 0.95 0.95 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\A_ll_i.lwo
+ShowObject 4 2
+ObjectMotion (unnamed)
+  9
+  5
+  -15.75 10.75 0 0 0 0 2 2 1
+  0 1 0 0 0
+  -15.75 10.75 0 0 0 722.4 0.97 0.97 1
+  40 1 0 0 0
+  -15.75 10.75 0 0 0 720 1 1 1
+  48 1 0 0 0
+  -15.75 7.75 0 0 0 726.5995 0.7999999 0.7999999 1
+  96 1 0 0 0
+  -15.75 10.75 0 0 0 722.4 0.97 0.97 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\stageclear\model\A_ll.lwo
+ShowObject 4 2
+ObjectMotion (unnamed)
+  9
+  5
+  -15.75 10.75 0 0 0 0 2 2 1
+  0 1 0 0 0
+  -15.75 10.75 0 0 0 722.4 0.97 0.97 1
+  40 1 0 0 0
+  -15.75 10.75 0 0 0 720 1 1 1
+  48 1 0 0 0
+  -15.75 7.75 0 0 0 726.5995 0.7999999 0.7999999 1
+  96 1 0 0 0
+  -15.75 10.75 0 0 0 722.4 0.97 0.97 1
+  136 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+AmbientColor 255 255 255
+AmbIntensity 0.250000
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  3
+  -2 2 -2 45 35 0 1 1 1
+  0 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  40 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  136 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 1
+
+ShowCamera 1 7
+CameraMotion (unnamed)
+  9
+  1
+  0 0 -345.09 0 0 0 1 1 1
+  0 0 0 0 0
+EndBehavior 1
+LockedChannels 3
+ZoomFactor 3.200000
+Resolution 1
+PixelAspectRatio 2
+SegmentMemory 2200000
+Antialiasing 0
+AdaptiveSampling 1
+AdaptiveThreshold 16
+FilmSize 2
+FieldRendering 0
+MotionBlur 0
+DepthOfField 0
+
+SolidBackdrop 1
+BackdropColor 0 0 0
+ZenithColor 0 40 80
+SkyColor 120 180 240
+GroundColor 50 40 30
+NadirColor 100 80 60
+FogType 0
+DitherIntensity 1
+AnimatedDither 0
+
+RenderMode 2
+RayTraceEffects 0
+DataOverlayLabel  
+
+ViewMode 5
+ViewAimpoint 0.000000 0.000000 0.000000
+ViewDirection 0.300197 -0.314159 0.000000
+ViewZoomFactor 4.000000
+GridNumber 10
+GridSize 50.000000
+ShowMotionPath 1
+ShowBGImage 0
+ShowFogRadius 0
+ShowRedraw 0
+ShowSafeAreas 0
+ShowFieldChart 0

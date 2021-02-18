@@ -1,0 +1,22 @@
+/********************************************************************
+  evening_dummy_tex
+	Vert Count = 6
+	Face Count = 2
+	Min X:    -1	Max X:     1
+	Min Y:    -1	Max Y:     1
+	Min Z:     0	Max Z:     0
+	MaxSize = 1
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+Vtx evening_dummy_tex_vtx[] = {
+	{ 1, -1, 0, 0, 0, 0, 0, 0, 0, 255 },
+};
+
+#include	"texture\back_evening.txt"
+#include	"texture\menu_cloud_a.txt"
+#include	"texture\menu_cloud_b.txt"
+#include	"texture\menu_cloud_c.txt"
+
+Gfx evening_dummy_tex_dl[] = {
+	gsSPEndDisplayList(),
+};

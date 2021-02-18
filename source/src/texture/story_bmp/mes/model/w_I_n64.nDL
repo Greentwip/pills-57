@@ -1,0 +1,47 @@
+/********************************************************************
+  w_I_n64
+	Vert Count = 4
+	Face Count = 2
+	Min X:    -8	Max X:     8
+	Min Y:   -16	Max Y:    16
+	Min Z:     0	Max Z:     0
+	MaxSize = 16
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int w_I_n64_box[] = { -8, 8, -16, 16, 0, 0, 16, 0 };
+Vtx w_I_n64_vtx[] = {
+	{ -8, 16, 0, 0, 0, 2048, 38, 38, 38, 255 },
+	{ -8, -16, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 8, -16, 0, 0, 1024, 0, 38, 38, 38, 255 },
+	{ 8, 16, 0, 0, 1024, 2048, 38, 38, 38, 255 },
+};
+
+#if LOCAL==CHINA
+#include	"../../../i10n/assets/zh/story_bmp/mes/texture/w_i_n64.txt"
+#else
+#include	"texture/w_i_n64.txt"
+#endif
+
+Gfx w_I_n64_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:w_I_n64	Color:w_I_n64	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, w_i_n64_lut),
+	gsDPLoadMultiBlock_4b(w_i_n64_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 16, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 4, 5, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&w_I_n64_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

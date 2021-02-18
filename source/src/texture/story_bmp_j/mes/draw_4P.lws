@@ -1,0 +1,160 @@
+LWSC
+1
+
+FirstFrame 0
+LastFrame 110
+FrameStep 1
+PreviewFirstFrame 0
+PreviewLastFrame 110
+PreviewFrameStep 1
+FramesPerSecond 60.000000
+
+LoadObject C:\dr_mario\result\model\D_raw64.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  -22.8 11.7528 0 90 0 0 0.9 0.9 1
+  0 1 0 0 0
+  -22.8 11.7528 0 0 0 0 0.9 0.9 1
+  16 1 0 0 0
+  -24.06 8.46 0 0 0 -3.989999 0.9 0.9 1
+  48 1 0 0 0
+  -26.16 13.556 0 0 0 8.4 0.9 0.9 1
+  80 1 0 0 0
+  -22.9181 11.8159 0 0 0 0.285187 0.9 0.9 1
+  110 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\d_R_aw64.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  -9.375 12.674 0 90 0 0 0.9 0.9 1
+  0 1 0 0 0
+  -9.375 12.674 0 0 0 0 0.9 0.9 1
+  16 1 0 0 0
+  -12.875 15.026 0 0 0 5.319998 0.9 0.9 1
+  52 1 0 0 0
+  -12.525 11.792 0 0 0 -3.01 0.9 0.9 1
+  84 1 0 0 0
+  -9.99072 12.47173 0 0 0 -0.6660073 0.9 0.9 1
+  110 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\dr_A_w64.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  6
+  3.325 12.772 0 90 0 0 0.9 0.9 1
+  0 1 0 0 0
+  3.325 12.772 0 0 0 0 0.9 0.9 1
+  16 1 0 0 0
+  1.225 11.498 0 0 0 13.3 0.9 0.9 1
+  44 1 0 0 0
+  1.225 15.32 0 0 0 -3.989999 0.9 0.9 1
+  72 1 0 0 0
+  5.075 11.89 0 0 0 -5.81 0.9 0.9 1
+  100 1 0 0 0
+  3.671759 12.5869 0 0 0 1.196965 0.9 0.9 1
+  110 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\result\model\dra_W64.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  5
+  22.3 12.674 0 90 0 0 0.9 0.9 1
+  0 1 0 0 0
+  22.3 12.674 0 0 0 0 0.9 0.9 1
+  16 1 0 0 0
+  24.225 14.144 0 0 0 -4.48 0.9 0.9 1
+  48 1 0 0 0
+  23.875 11.106 0 0 0 3.85 0.9 0.9 1
+  80 1 0 0 0
+  22.40066 12.56757 0 0 0 0.262927 0.9 0.9 1
+  110 1 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+AmbientColor 255 255 255
+AmbIntensity 0.250000
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  2
+  -2 2 -2 45 35 0 1 1 1
+  0 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  110 1 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 0
+
+ShowCamera 1 7
+CameraMotion (unnamed)
+  9
+  2
+  0 0 -300 0 0 0 1 1 1
+  0 1 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  110 1 0 0 0
+EndBehavior 1
+LockedChannels 3
+ZoomFactor 3.200000
+Resolution 0
+CustomSize 96 208
+PixelAspectRatio 2
+SegmentMemory 2200000
+Antialiasing 1
+AdaptiveSampling 1
+AdaptiveThreshold 16
+FilmSize 2
+FieldRendering 0
+MotionBlur 0
+DepthOfField 0
+
+SolidBackdrop 1
+BackdropColor 0 0 0
+ZenithColor 0 40 80
+SkyColor 120 180 240
+GroundColor 50 40 30
+NadirColor 100 80 60
+FogType 0
+DitherIntensity 1
+AnimatedDither 0
+
+RenderMode 2
+RayTraceEffects 0
+DataOverlayLabel  
+SaveAnimationName C:\dr_mario\エフェクト関連\result\win_2Pbottle.avi
+AnimationType 2
+EndPlugin
+
+ViewMode 0
+ViewAimpoint 0.000000 0.000000 0.000000
+ViewDirection -3.145082 -0.064580 -0.005236
+ViewZoomFactor 14.373303
+GridNumber 10
+GridSize 50.000000
+ShowMotionPath 1
+ShowBGImage 0
+ShowFogRadius 0
+ShowRedraw 0
+ShowSafeAreas 0
+ShowFieldChart 0

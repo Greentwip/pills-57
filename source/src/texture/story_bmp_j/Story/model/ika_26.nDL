@@ -1,0 +1,60 @@
+/********************************************************************
+  ika_26
+	Vert Count = 16
+	Face Count = 14
+	Min X:   -29	Max X:    29
+	Min Y:   -27	Max Y:    33
+	Min Z:     0	Max Z:     0
+	MaxSize = 33
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int ika_26_box[] = { -29, 29, -27, 33, 0, 0, 33, 0 };
+Vtx ika_26_vtx[] = {
+	{ -6, 27, 0, 0, 2815, 1667, 38, 38, 38, 255 },
+	{ -19, 28, 0, 0, 2901, 2387, 38, 38, 38, 255 },
+	{ -22, 9, 0, 0, 1837, 2538, 38, 38, 38, 255 },
+	{ 23, 11, 0, 0, 1934, 84, 38, 38, 38, 255 },
+	{ 24, 21, 0, 0, 2490, 10, 38, 38, 38, 255 },
+	{ 17, 26, 0, 0, 2742, 421, 38, 38, 38, 255 },
+	{ 10, 33, 0, 0, 3136, 808, 38, 38, 38, 255 },
+	{ -29, -1, 0, 0, 1317, 2917, 38, 38, 38, 255 },
+	{ -22, -9, 0, 0, 868, 2540, 38, 38, 38, 255 },
+	{ 23, -11, 0, 0, 737, 122, 38, 38, 38, 255 },
+	{ 29, -1, 0, 0, 1290, -231, 38, 38, 38, 255 },
+	{ 9, -22, 0, 0, 115, 844, 38, 38, 38, 255 },
+	{ 20, -22, 0, 0, 110, 284, 38, 38, 38, 255 },
+	{ -2, -27, 0, 0, -145, 1444, 38, 38, 38, 255 },
+	{ -13, -21, 0, 0, 231, 2059, 38, 38, 38, 255 },
+	{ -23, -20, 0, 0, 290, 2605, 38, 38, 38, 255 },
+};
+
+
+Gfx ika_26_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:ika_26	Color:ika_26	Tri:14	Vtx:16 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(ika26_lut),
+	gsDPLoadMultiBlock(ika26_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 48, 42, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&ika_26_vtx[0], 16, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(5, 6, 0, 1, 3, 5, 0, 0),
+	gsSP2Triangles(3, 0, 2, 0, 2, 7, 8, 2),
+	gsSP2Triangles(9, 10, 3, 1, 9, 3, 2, 0),
+	gsSP2Triangles(9, 2, 8, 0, 11, 12, 9, 1),
+	gsSP2Triangles(11, 9, 8, 0, 13, 11, 8, 0),
+	gsSP2Triangles(14, 13, 8, 0, 8, 15, 14, 1),
+	gsSPEndDisplayList(),
+};

@@ -1,0 +1,47 @@
+/********************************************************************
+  los_E80
+	Vert Count = 4
+	Face Count = 2
+	Min X:   -16	Max X:    16
+	Min Y:   -18	Max Y:    18
+	Min Z:     0	Max Z:     0
+	MaxSize = 18
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int los_E80_box[] = { -16, 16, -18, 18, 0, 0, 18, 0 };
+Vtx los_E80_vtx[] = {
+	{ -16, 18, 0, 0, 0, 2304, 38, 38, 38, 255 },
+	{ -16, -18, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 16, -18, 0, 0, 2048, 0, 38, 38, 38, 255 },
+	{ 16, 18, 0, 0, 2048, 2304, 38, 38, 38, 255 },
+};
+
+#if LOCAL==CHINA
+#include	"../../../i10n/assets/zh/story_bmp/mes/texture/los_e80.txt"
+#else
+#include	"texture/los_e80.txt"
+#endif
+
+Gfx los_E80_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:los_E80	Color:los_E80	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, los_e80_lut),
+	gsDPLoadMultiBlock_4b(los_e80_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 32, 36, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&los_E80_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

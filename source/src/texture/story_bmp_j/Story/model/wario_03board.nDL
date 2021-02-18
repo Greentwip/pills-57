@@ -1,0 +1,71 @@
+/********************************************************************
+  wario_03board
+	Vert Count = 22
+	Face Count = 16
+	Min X:   -30	Max X:    29
+	Min Y:    -6	Max Y:    48
+	Min Z:     0	Max Z:     0
+	MaxSize = 48
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int wario_03board_box[] = { -30, 29, -6, 48, 0, 0, 48, 0 };
+Vtx wario_03board_vtx[] = {
+	{ 5, 48, 0, 0, 1419, 1567, 38, 38, 38, 255 },
+	{ -14, 47, 0, 0, 2566, 1520, 38, 38, 38, 255 },
+	{ -17, 40, 0, 0, 2743, 1010, 38, 38, 38, 255 },
+	{ 20, 39, 0, 0, 522, 997, 38, 38, 38, 255 },
+	{ -22, 39, 0, 0, 3037, 944, 38, 38, 38, 255 },
+	{ -30, 25, 0, 0, 3472, 19, 38, 38, 38, 255 },
+	{ 29, 26, 0, 0, 9, 19, 38, 38, 38, 255 },
+	{ 20, 32, 0, 0, 522, 532, 38, 38, 38, 255 },
+	{ -24, 8, 0, 0, 3159, 623, 38, 38, 38, 255 },
+	{ -17, -6, 0, 0, 2697, -58, 38, 38, 38, 255 },
+	{ -2, -4, 0, 0, 1835, 8, 38, 38, 38, 255 },
+	{ -30, 25, 0, 0, 3472, 1533, 38, 38, 38, 255 },
+	{ -28, 14, 0, 0, 3371, 944, 38, 38, 38, 255 },
+	{ -21, 11, 0, 0, 2977, 760, 38, 38, 38, 255 },
+	{ 29, 26, 0, 0, 9, 1533, 38, 38, 38, 255 },
+	{ 16, -5, 0, 0, 747, -7, 38, 38, 38, 255 },
+	{ 24, 3, 0, 0, 267, 398, 38, 38, 38, 255 },
+	{ 24, 14, 0, 0, 267, 923, 38, 38, 38, 255 },
+	{ 4, -6, 0, 0, 1462, -78, 38, 38, 38, 255 },
+	{ 24, 14, 0, 0, 241, 925, 38, 38, 38, 255 },
+	{ 28, 19, 0, 0, 30, 1182, 38, 38, 38, 255 },
+	{ 29, 26, 0, 0, 10, 1542, 38, 38, 38, 255 },
+};
+
+
+Gfx wario_03board_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:wario_03board	Color:wario03_a	Tri:6	Vtx:8 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(wario03_a_lut),
+	gsDPLoadMultiBlock(wario03_a_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 56, 24, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&wario_03board_vtx[0], 22, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 0, 2, 0),
+	gsSP2Triangles(4, 5, 6, 2, 4, 6, 7, 2),
+	gsSP2Triangles(7, 3, 2, 0, 2, 4, 7, 0),
+
+/* Group:wario_03board	Color:wario03_b	Tri:10	Vtx:14 */
+	gsDPLoadTLUT_pal256(wario03_b_lut),
+	gsDPLoadMultiBlock(wario03_b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 56, 24, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(8, 9, 10, 2, 11, 12, 13, 2),
+	gsSP2Triangles(14, 11, 13, 0, 15, 16, 17, 2),
+	gsSP2Triangles(18, 15, 17, 0, 19, 20, 21, 2),
+	gsSP2Triangles(17, 14, 13, 0, 10, 18, 17, 0),
+	gsSP2Triangles(13, 8, 10, 0, 10, 17, 13, 0),
+	gsSPEndDisplayList(),
+};

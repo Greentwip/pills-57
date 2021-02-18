@@ -1,0 +1,77 @@
+/********************************************************************
+  ground_long
+	Vert Count = 32
+	Face Count = 16
+	Min X:  -160	Max X:   160
+	Min Y:     0	Max Y:    20
+	Min Z:     0	Max Z:     0
+	MaxSize = 160
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int ground_long_box[] = { -160, 160, 0, 20, 0, 0, 160, 0 };
+Vtx ground_long_vtx[] = {
+	{ -120, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ -160, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+	{ -160, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ -120, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ 40, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ 0, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+	{ 0, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 40, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ -80, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ -120, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ -80, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ -120, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+	{ 80, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ 40, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 80, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ 40, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+	{ -80, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ -40, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ -80, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+	{ -40, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ 120, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ 80, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+	{ 80, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 120, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ 0, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ -40, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 0, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ -40, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+	{ 160, 20, 0, 0, 5120, 2560, 38, 38, 38, 255 },
+	{ 120, 0, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 160, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ 120, 20, 0, 0, 0, 2560, 38, 38, 38, 255 },
+};
+
+
+Gfx ground_long_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:ground_long	Color:ground_a	Tri:16	Vtx:32 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadTLUT_pal16(0, ground_a_lut),
+	gsDPLoadMultiBlock_4b(ground_a_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 80, 40, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&ground_long_vtx[0], 32, 0),
+	gsSP2Triangles(0, 1, 2, 2, 1, 0, 3, 2),
+	gsSP2Triangles(4, 5, 6, 2, 5, 4, 7, 2),
+	gsSP2Triangles(8, 9, 10, 2, 9, 8, 11, 2),
+	gsSP2Triangles(12, 13, 14, 2, 13, 12, 15, 2),
+	gsSP2Triangles(16, 17, 18, 2, 17, 16, 19, 2),
+	gsSP2Triangles(20, 21, 22, 2, 21, 20, 23, 2),
+	gsSP2Triangles(24, 25, 26, 2, 25, 24, 27, 2),
+	gsSP2Triangles(28, 29, 30, 2, 29, 28, 31, 2),
+	gsSPEndDisplayList(),
+};

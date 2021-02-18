@@ -1,0 +1,47 @@
+/********************************************************************
+  apple
+	Vert Count = 7
+	Face Count = 5
+	Min X:   -13	Max X:    13
+	Min Y:   -14	Max Y:    14
+	Min Z:     0	Max Z:     0
+	MaxSize = 14
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int apple_box[] = { -13, 13, -14, 14, 0, 0, 14, 0 };
+Vtx apple_vtx[] = {
+	{ 1, -14, 0, 0, 722, 0, 38, 38, 38, 255 },
+	{ -13, 4, 0, 0, -18, 967, 38, 38, 38, 255 },
+	{ -13, -8, 0, 0, -18, 341, 38, 38, 38, 255 },
+	{ -3, 14, 0, 0, 551, 1536, 38, 38, 38, 255 },
+	{ 10, 10, 0, 0, 1234, 1308, 38, 38, 38, 255 },
+	{ 13, 2, 0, 0, 1404, 853, 38, 38, 38, 255 },
+	{ 10, -11, 0, 0, 1234, 171, 38, 38, 38, 255 },
+};
+
+
+Gfx apple_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:apple	Color:apple	Tri:5	Vtx:7 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadTLUT_pal256(apple_lut),
+	gsDPLoadMultiBlock(apple_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 24, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&apple_vtx[0], 7, 0),
+	gsSP2Triangles(0, 1, 2, 2, 0, 3, 1, 1),
+	gsSP2Triangles(0, 4, 3, 1, 0, 5, 4, 1),
+	gsSP1Triangle(0, 6, 5, 1),
+	gsSPEndDisplayList(),
+};

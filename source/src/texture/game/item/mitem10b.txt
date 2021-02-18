@@ -1,0 +1,34 @@
+#if defined(USE_TEX_ADDR)
+extern unsigned short mitem10b_lut[];
+extern unsigned char mitem10b_tex[];
+void *mitem10b_tex_addr[] = {
+#if defined(NON_PALETTE)
+	0,
+#else
+	mitem10b_lut,
+#endif
+#if defined(NON_TEXTURE)
+	0,
+#else
+	mitem10b_tex,
+#endif
+};
+#endif
+
+#if defined(USE_TEX_SIZE)
+unsigned short mitem10b_tex_size[] = { 2, 1, 4, 0, };
+#endif
+
+#if !defined(NON_PALETTE)
+unsigned short mitem10b_lut[] = {
+0x1224,0x0ab3,0x09a1,0x0a29,0x0b7f,0x0c7f,0x14ff,0x763f,0xd73f,0x2955,0x5cf7,0xaec5,0x0001,0x11e5,0xcfcb,0xffff,
+};
+#endif
+
+#if !defined(NON_TEXTURE)
+unsigned char mitem10b_tex[] = {
+0x00,
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+};
+#endif
+

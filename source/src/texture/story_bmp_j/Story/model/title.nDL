@@ -1,0 +1,133 @@
+/********************************************************************
+  title
+	Vert Count = 44
+	Face Count = 22
+	Min X:  -132	Max X:   132
+	Min Y:   -42	Max Y:    43
+	Min Z:     0	Max Z:     0
+	MaxSize = 132
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int title_box[] = { -132, 132, -42, 43, 0, 0, 132, 0 };
+Vtx title_vtx[] = {
+	{ -132, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ -108, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ -132, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ -108, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ -108, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ -84, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ -108, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ -84, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ -84, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ -60, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ -84, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ -60, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ -60, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ -36, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ -60, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ -36, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ -36, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ -12, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ -36, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ -12, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ -12, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ 12, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ -12, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ 12, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ 12, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ 36, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ 12, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ 36, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ 36, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ 60, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ 36, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ 60, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ 60, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ 84, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ 60, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ 84, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ 84, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ 108, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ 84, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ 108, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+	{ 108, -42, 0, 0, -5, 0, 38, 38, 38, 255 },
+	{ 132, 43, 0, 0, 1525, 5435, 38, 38, 38, 255 },
+	{ 108, 43, 0, 0, 0, 5435, 38, 38, 38, 255 },
+	{ 132, -42, 0, 0, 1525, 0, 38, 38, 38, 255 },
+};
+
+
+Gfx title_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:title	Color:title_a	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadTLUT_pal256(title_a_lut),
+	gsDPLoadMultiBlock(title_a_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&title_vtx[0], 32, 0),
+	gsSP2Triangles(0, 1, 2, 2, 1, 0, 3, 2),
+
+/* Group:title	Color:title_b	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_b_lut),
+	gsDPLoadMultiBlock(title_b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(4, 5, 6, 2, 5, 4, 7, 2),
+
+/* Group:title	Color:title_c	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_c_lut),
+	gsDPLoadMultiBlock(title_c_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(8, 9, 10, 2, 9, 8, 11, 2),
+
+/* Group:title	Color:title_d	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_d_lut),
+	gsDPLoadMultiBlock(title_d_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(12, 13, 14, 2, 13, 12, 15, 2),
+
+/* Group:title	Color:title_e	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_e_lut),
+	gsDPLoadMultiBlock(title_e_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(16, 17, 18, 2, 17, 16, 19, 2),
+
+/* Group:title	Color:title_f	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_f_lut),
+	gsDPLoadMultiBlock(title_f_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(20, 21, 22, 2, 21, 20, 23, 2),
+
+/* Group:title	Color:title_g	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_g_lut),
+	gsDPLoadMultiBlock(title_g_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(24, 25, 26, 2, 25, 24, 27, 2),
+
+/* Group:title	Color:title_h	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_h_lut),
+	gsDPLoadMultiBlock(title_h_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(28, 29, 30, 2, 29, 28, 31, 2),
+
+/* Group:title	Color:title_i	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_i_lut),
+	gsDPLoadMultiBlock(title_i_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSPVertex(&title_vtx[32], 12, 0),
+	gsSP2Triangles(0, 1, 2, 2, 1, 0, 3, 2),
+
+/* Group:title	Color:title_j	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_j_lut),
+	gsDPLoadMultiBlock(title_j_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(4, 5, 6, 2, 5, 4, 7, 2),
+
+/* Group:title	Color:title_k	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal256(title_k_lut),
+	gsDPLoadMultiBlock(title_k_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 24, 85, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(8, 9, 10, 2, 9, 8, 11, 2),
+	gsSPEndDisplayList(),
+};

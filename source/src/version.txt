@@ -1,0 +1,7 @@
+#include "debug.h"
+
+// ƒo[ƒWƒ‡ƒ“î•ñ
+#if defined(ROM_VERSION)
+const char _debugVersionDate[] = __DATE__;
+const char _debugVersionTime[] = __TIME__;
+#endif

@@ -1,0 +1,35 @@
+#include "local.h"
+
+#if LOCAL==JAPAN
+
+static const char _mesWriting[] =
+	"セーブちゅう。~n"
+	"でんげんを  ~n"
+	"きらないでください。~z";
+
+static const char _mesDeleting[] =
+	"さくじょちゅう。~n"
+	"でんげんを  ~n"
+	"きらないでください。~z";
+
+#elif LOCAL==AMERICA
+
+static const char _mesWriting[] =
+	"Now saving.~n"
+	"Do not turn power off.~z";
+
+static const char _mesDeleting[] =
+	"Now deleting.~n"
+	"Do not turn power off.~z";
+
+#elif LOCAL==CHINA
+
+static const char _mesWriting[] =
+	"Now saving.~n"
+	"Do not turn power off.~z";
+
+static const char _mesDeleting[] =
+	"Now deleting.~n"
+	"Do not turn power off.~z";
+
+#endif

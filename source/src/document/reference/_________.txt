@@ -1,0 +1,298 @@
+/**												**/
+/*		コーヒーブレイクの演技を追加する方法	 */
+/**												**/
+
+
+  < はじめに >
+  まず、aiMain32.c(main32()関数) では、
+  初期化処理と終了処理のみ行い、それ以外のすべての処理は aiGraphic32.c(graphic32()) から呼び出しています．
+  関数のソースは aiMain32.c と aiGrapchic32.c にまたがって記述されております、ごちゃごちゃで申し訳ありません．
+
+
+  < 初期化 >
+  初期化処理は aiMain32.c の cdemo_initialize()関数で行っています．
+  cdemo_initialize()では、init_32data()関数で構造体のゼロクリアを行い、
+  そのあと、クリアしたスピード(LOW/MID/HI)とレベル(5/10/15/20/25)により、
+  コーヒーブレイクのシナリオデータを用意します．
+
+
+  < シナリオデータ >
+  選ばれたシナリオデータは Scenario32構造体の配列である Scene[] に用意されます．
+  Scene[]にデータを入れているのは、
+  		scenario_0123( u8 ),scenario_4( u8 ),scenario_5( u8 ),scenario_6( u8 ),scenario_7( u8 )関数です．
+  この関数内では、scene_input( ～ )関数が連続的に多数、呼ばれています．
+  scene_input( ～ )は、一度呼ばれると Scene[drama_count]に対して、引数で渡されてきたデータを入れます．
+  ひとつのフィールドにデータを入れたのち、drama_count変数をインクリメントしています．drama_countはグローバルです．
+  drama_countは、シナリオデータの入力とともに、進行にも使用されます．
+  cdemo_initialize()では、コーヒーブレイクのすべてのデータを入力し終えたのち、drama_countを 0 に戻しています．
+
+  Scene[]によってコーヒーブレイクシナリオは成り立っています．
+  なにかの動きを付け加える場合は、scenario_???( u8 )関数に、いくつかの scene_input( ～ )関数を加えます．
+
+
+  < シナリオデータの入力 >
+  scene_input( ～ )関数は Scene[]にデータを用意します．
+
+	  実際のシナリオ実行は aiGraphic32.c - graphic32()関数内から呼ばれる PerformanceSection32()関数が処理します．
+	  PerformanceSection32()では、Scene[drama_count]にアクセス、メンバの interval をデクリメントします．
+	  interval == 0 になったら、メンバ *setup が指す関数を呼びます．
+	  このとき、Scene[drama_count]のポインタを引数で渡します．
+	  (*setup)()関数が必要とするデータは Scene[drama_count]のメンバ *pointer_a から後、すべてです．
+
+	  スプライトやＢＧに「移動」や「振動」「カラー変換」などの動きを登録するには、
+	  act_bg_sss, act_bg_ssf, act_bg_sff(ＢＧの場合)、act_spr_sss, act_spr_ssf, act_spr_sff(スプライトの場合)を使います．
+	  これら act_関数は、スプライトやＢＧに「移動」や「振動」をさせる関数ポインタを登録します．
+	  この、「移動」などの動きを処理する関数は、act_関数とは別に do_関数を冠しています．
+	  act_関数は、PerformanceSection32()からシナリオデータとして呼ばれる関数で、
+	  do_関数は、スプライトやＢＧの構造体に直接アクセスし、操作するモノです．
+	  この場合の set_a 以下のワークは do_関数が使用するワークに渡されます．
+
+
+  -- (*setup)()関数の種類 --
+	*setupに入る関数ポインタは、すべて act_を冠したモノです．
+
+	ＢＧ描画を登録します．
+	void act_bg_setup( Scenario32 * );
+				|				*pointer_a   -- テクスチャポインタ(u8の配列)
+				|				*pointer_b   -- TLUTポインタ
+				|				*pointer_c   -- unuse.
+				|				set_a		 -- 描画位置Ｘ
+				|				set_b		 --         Ｙ
+				|				chk_a        -- 横幅
+				|				chk_b        -- 縦幅
+				|				feel_a		 -- 透明度(0～255)
+			    --				feel_b		 -- unuse.
+
+	ＢＧ描画を削除します．
+	void act_bg_delete( Scenario32 * );
+				|--				set_a		 -- TRUE:描画以外の動きをすべてやめます．
+												ZERO:すべてを削除します(通常はこちらを使用してください)．
+
+	スプライトとＢＧにさまざまな動きを登録します．
+	void act_spr_sss( Scenario32 * );
+	void act_spr_ssf( Scenario32 * );
+	void act_spr_sff( Scenario32 * );	ここまでｽﾌﾟﾗｲﾄ用
+	void act_bg_sss( Scenario32 * );
+	void act_bg_ssf( Scenario32 * );
+	void act_bg_sff( Scenario32 * );	ここまでＢＧ用
+				|--				*pointer_a   -- 登録する「動き」の関数ポインタ
+
+
+	煙のスプライトを登録します．特殊な関数で、*aim は無視されます．
+	汎用性のない関数なので使うことはないと思われます．
+	void act_spr_smoke( Scenario32 * );
+				|				*pointer_a   -- unuse.
+				|				*pointer_b   -- unuse.
+				|				*pointer_c   -- unuse.
+				|				set_a		 -- 登録するスプライトナンバ(cdemo_spr[n]の n を指定)
+				|				set_b		 -- 描画Ｙ位置を指定、Ｘ位置は155で固定．
+				|				chk_a        -- 目標Ｙ位置
+				|				chk_b        -- Ｙ移動量
+				|				feel_a		 -- 目標Ｘ位置
+			    --				feel_b		 -- Ｘ移動量
+
+	スプライトの描画を登録．
+	void act_spr_setup( Scenario32 * );
+				|				*pointer_a   -- テクスチャポインタ(u8の配列)
+				|				*pointer_b   -- TLUTポインタ
+				|				*pointer_c   -- ﾃｸｽﾁｬ構造体ポインタ(uObjTxtr)
+				|				set_a		 -- 描画Ｘ位置
+				|				set_b		 -- 描画Ｙ位置
+				|				chk_a        -- 横幅
+				|				chk_b        -- 縦幅
+				|				feel_a		 -- 透明度
+			    --				feel_b		 -- unuse.
+
+	蛭田さんのプログラムのｸﾞﾗﾌｨｯｸﾃﾞｰﾀをｽﾌﾟﾗｲﾄ描画に使う場合、以下の div を付けたモノを呼び出します．
+	引数は上記のモノと同一です．
+	void act_spr_setup_div( Scenario32 * );
+
+	スプライトを削除します．
+	void act_spr_delete( Scenario32 * );
+				|--				set_a		 -- TRUE:描画以外のすべての動きをやめます．
+												ZERO:描画を含めて、スプライトを削除します．
+	スプライトを連続削除します．
+	void act_spr_delete_pl( Scenario32 * );
+				|				set_a		 -- 削除開始ナンバ
+				--				set_b		 -- このナンバまで削除します．
+								set_a = 3 で set_b = 10 のときは、cdemo_spr[3]～cdemo_spr[10]までの描画をやめます．
+
+	SPFREE構造体のメンバ、predlにポインタをセットします．
+	void act_spr_predl( Scenario32 * );
+				|				*pointer_a   -- predlに入れるＤＬポインタ．ほか未使用．
+
+	SPFREE構造体のメンバ、funcにポインタをセットします．
+	void act_spr_func( Scenario32 * );
+				|				*pointer_b   -- funcに入れる関数ポインタ．ほか未使用．
+
+	SPFREE構造体のメンバ、predl,func,workにアクセスします．
+	void act_spr_spfree( Scenario32 * );
+				|				*pointer_a   -- predlに入れるＤＬポインタ．
+				|				*pointer_b   -- funcに入れる関数ポインタ．
+				|				*pointer_c   -- unuse.
+				|				set_a		 -- TRUEなら predlにポインタを入れる
+				|				set_b		 -- unuse.
+				|				chk_a        -- TRUEなら funcにポインタを入れる
+				|				chk_b        -- unuse.
+				|				feel_a		 -- TRUEなら workをゼロクリアする．
+			    --				feel_b		 -- unuse.
+
+	スプライトにアニメを登録(アニメに関しては蛭田さんのドキュメントを参照してください)．
+	void act_spr_anime( Scenario32 * );
+				|				*pointer_a   -- アニメ構造体ポインタ
+				|				*pointer_b   -- unuse.
+				|				*pointer_c   -- unuse.
+				|				set_a		 -- アニメ登録関数(SpmReserveSeqAni( ～ ))の第３引数
+				|				set_b		 -- 初期アニメインデックス(通常 0 )
+				|				chk_a        -- アニメ登録関数(SpmReserveSeqAni( ～ ))の第４引数
+				|				chk_b        -- アニメ登録関数(SpmReserveSeqAni( ～ ))の第５引数
+				|				feel_a		 -- アニメ登録関数(SpmReserveSeqAni( ～ ))の第６引数
+			    --				feel_b		 -- アニメ登録関数(SpmReserveSeqAni( ～ ))の第７引数
+
+	void act_music_play( Scenario32 * );	 -- set_a に奏でたい曲ナンバを入れます．
+	void act_music_stop( Scenario32 * );	 -- すべての音を止めます．
+	void act_sound_play( Scenario32 * );	 -- set_a に鳴らしたい効果音ナンバを入れます．
+
+	シナリオデータの進行をジャンプしたり戻ったりします．「コイン」で使用しています．
+	void act_goto_scene( Scenario32 * );
+				|				set_a		 -- set_b によって絶対値指定か相対値指定の定数が入ります．
+				--				set_b		 -- ABSOLUTE_N(絶対値指定), RELATIVE_N(相対値指定)
+
+	finish_time_count32を操作します．
+	このカウンタが 0 でないとコーヒーブレイクプログラムは終わりません．
+	void act_count_down( Scenario32 * );
+				|--				set_a		 -- 通常マイナス値を入れておきます．
+
+
+
+	-- do_関数 --
+	透明度操作．---> act_bg_sss, act_spr_sssを使用
+	void do_bg_alpha( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_spr_alpha( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- 目標透明度
+				|--				set_b		 -- きざみ値( 0 の場合は、目標透明度にセット)
+
+	振動プログラム．---> act_bg_sss, act_spr_sssを使用
+	void do_bg_yvibrate( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_bg_xvibrate( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_spr_yvibrate( SPFREE *, Object32 *, FreeBuf32 * );
+	void do_spr_xvibrate( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- 初期振幅(単位：ドット)
+				|				set_b		 -- 0 固定
+				|				chk_a        -- 振動が収まる時間単位(chk_aのフレーム数同じ振幅を繰り返す)
+				|--				chk_b        -- 0 固定
+
+	シザリング操作．---> act_bg_sss, act_spr_sssを使用
+	void do_bg_scissor( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_spr_scissor( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- シザリング左上Ｘ座標
+				|				set_b		 -- 			  Ｙ座標
+				|				chk_a        -- シザリング右下Ｘ座標
+				|				chk_b        --				  Ｙ座標
+				|				feel_a		 -- 毎フレーム、左上Ｘ座標をマイナス、右下Ｘ座標にプラス
+			    --				feel_b		 -- 毎フレーム、    Ｙ                    Ｙ
+
+	研究室専用のシザリング操作(ほかでは使用できないと思われます)．---> act_bg_sss, act_spr_sssを使用
+	void do_bg_labo_scissor( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_spr_labo_scissor( SPFREE *, Object32 *, FreeBuf32 * );
+				|--				通常のシザリング操作と同一ですが、feel_a, feel_b だけ違います．
+				|				feel_a		 -- 毎フレーム、左上Ｘ座標をプラス、右下Ｘ座標にマイナス
+			    --				feel_b		 -- 毎フレーム、    Ｙ                    Ｙ
+
+	移動．---> act_bg_ssf, act_spr_ssfを使用
+	void do_bg_xmove( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_bg_ymove( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_spr_ymove( SPFREE *, Object32 *, FreeBuf32 * );
+	void do_spr_xmove( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- 目標位置．
+				|				set_b		 -- １ﾌﾚｰﾑに移動するドット*1000 ( n )
+				|				chk_a        -- １ﾌﾚｰﾑごとの加速値			( n + m )
+				|				chk_b        -- １ﾌﾚｰﾑごとの加速値の加速値  ( m + l )
+				|				feel_a		 -- no meaning
+			    --				feel_b		 -- unuse
+
+	行ったり来たりの移動(ＡとＢを行き来します)．---> act_spr_ssfを使用
+	void do_spr_return_ymove( SPFREE *, Object32 *, FreeBuf32 * );
+	void do_spr_return_xmove( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- 目標位置Ａ
+				|				set_b		 -- Ａへの１ﾌﾚｰﾑ移動ドット*1000
+				|				chk_a        -- 目標位置Ｂ
+				|--				chk_b        -- Ｂへの１ﾌﾚｰﾑ移動ドット*1000
+
+	輝度調整．スプライトやＢＧのTLUTを操作し、指定されるＲＧＢ色の目標輝度％まで変化させます．
+																			---> act_bg_sss, act_spr_sssを使用
+	void do_bg_bright( uObjBg *, Bg32 *, FreeBuf32 * );
+	void do_spr_bright( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- 目標輝度％(0～100)
+				|				set_b		 -- 輝度％きざみ値
+				|				chk_a        -- 0 固定
+				|				chk_b        -- Ｒ
+				|				feel_a		 -- Ｂ
+			    --				feel_b		 -- Ｇ
+
+	放物線移動１．do_spr_gravitateのほうは正確な放物線を描きません．
+				  do_spr_gravitate2のほうを使ってください．---> act_spr_ssfを使用
+	void do_spr_gravitate( SPFREE *, Object32 *, FreeBuf32 * );  実装してはいますが、使用しないでください．
+	void do_spr_gravitate2( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- 初速度
+				|				set_b		 -- 終了時間(時間ワークがこの値に到達したら放物線移動を終わります)
+				|				chk_a        -- 通常 0 (時間ワークです、放物線を途中から始めたいときはここを操作します)
+				|				chk_b        -- 重力(通常0.98ですが、これ以下のほうがそれらしくなります)
+				|				feel_a		 -- 角度(この関数はＸ値を生成しませんので、あまり意味がありません)
+			    --				feel_b		 -- unuse.
+
+	マリオが巨大化するときの専用関数です．
+	汎用には組んでありませんのでこれ以外には使えないと思います．---> act_spr_sssを使用
+	void do_spr_bmario( SPFREE *, Object32 *, FreeBuf32 * );
+
+	マリオがスターを取ったときなどにきらきら明滅するための関数です．
+	64*64の大きさのマリオをきらきらさせるとき以外、使えないと思います．---> act_spr_sssを使用
+	void do_mario_kirakira( SPFREE *, Object32 *, FreeBuf32 * );
+				|--				set_a		 -- きらきらしている時間(ﾌﾚｰﾑ)
+
+	クラウンがｱﾆﾒするための専用関数です．---> act_spr_sssを使用
+	void do_clown_anime( SPFREE *, Object32 *, FreeBuf32 * );
+
+	スプライトの拡縮関数です．---> act_spr_sssを使用
+	void do_spr_xscale2abs( SPFREE *, Object32 *, FreeBuf32 * );
+	void do_spr_yscale2abs( SPFREE *, Object32 *, FreeBuf32 * );
+				|				set_a		 -- 目標拡縮率
+				|				set_b		 -- 目標までのきざみ値 * 10 (25 --> 2.5)
+				|				chk_a        -- もともとの座標
+				|				chk_b        -- 拡縮中心座標(幅との相対値)
+				|				feel_a		 -- スプライトの幅
+			    --				feel_b		 -- 初期拡縮率
+
+
+
+
+  > example -- ｽﾌﾟﾗｲﾄ描画を登録 -- <
+	scene_input(
+				20,							interval     --  20ﾌﾚｰﾑ･ｳｪｲﾄ
+				(void*)&cdemo_spr[3],		*aim         --  ｽﾌﾟﾗｲﾄ構造体の cdemo_spr[3] にアクセス．
+				(void*)act_spr_setup,		*setup       --  「ｽﾌﾟﾗｲﾄ描画を登録する」関数のポインタ．
+				(void*)TEX_fukidasi_3,		*pointer_a   --  テクスチャポインタ．
+				(void*)TLUT_fukidasi_3,		*pointer_b   --  TLUTポインタ．
+				(void*)&cdemo_spr_tex[3],	*pointer_c   --  テクスチャデータ(uObjTxtr構造体)をどこに用意するか．
+				190,97,						set_a, set_b --  画面描画位置．
+				32,32,						chk_a, chk_b --  ｽﾌﾟﾗｲﾄの大きさ．
+				255,						feel_a       --  透明度(0～255)
+				ZERO						feel_b       --  unuse
+	);
+
+  > example -- ｽﾌﾟﾗｲﾄの移動 -- <
+	scene_input(
+				80,							interval     --  80ﾌﾚｰﾑ・ｳｪｲﾄ
+				(void*)&cdemo_spr[5],       *aim         --  ｽﾌﾟﾗｲﾄ構造体のcdemo_spr[5]にアクセス．
+				(void*)act_spr_ssf,         *setup       --  以下のデータをｽﾌﾟﾗｲﾄ構造体に渡す．
+				(void*)do_spr_ymove,        *pointer_a   --  「Ｙ移動」する関数のポインタ
+				NULL,                       *pointer_b   --  unuse
+				NULL,                       *pointer_c   --  unuse
+				78,                         set_a		 --  移動終了位置．
+				1000,                       set_b		 --  １ﾌﾚｰﾑに移動するドット*1000 ( n )
+				0,                          chk_a        --  １ﾌﾚｰﾑごとの加速値			 ( n + m )
+				3,                          chk_b        --  １ﾌﾚｰﾑごとの加速値の加速値  ( m + l )
+				-2.0,						feel_a		 --  no meaning
+				ZERO						feel_b		 --  unuse
+	);
+

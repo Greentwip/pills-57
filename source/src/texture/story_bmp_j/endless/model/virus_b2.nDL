@@ -1,0 +1,57 @@
+/********************************************************************
+  virus_b2
+	Vert Count = 14
+	Face Count = 12
+	Min X:   -19	Max X:    20
+	Min Y:   -12	Max Y:    25
+	Min Z:    -4	Max Z:    -4
+	MaxSize = 25
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int virus_b2_box[] = { -19, 20, -12, 25, -4, -4, 25, 0 };
+Vtx virus_b2_vtx[] = {
+	{ 2, 20, -4, 0, 1155, 2235, 38, 38, 38, 255 },
+	{ -7, 25, -4, 0, 1760, 2562, 38, 38, 38, 255 },
+	{ -12, 17, -4, 0, 2123, 2023, 38, 38, 38, 255 },
+	{ -19, -2, -4, 0, 2586, 786, 38, 38, 38, 255 },
+	{ -12, -12, -4, 0, 2113, 116, 38, 38, 38, 255 },
+	{ -4, -8, -4, 0, 1533, 345, 38, 38, 38, 255 },
+	{ 16, 16, -4, 0, 168, 1996, 38, 38, 38, 255 },
+	{ 9, 24, -4, 0, 676, 2499, 38, 38, 38, 255 },
+	{ -18, 14, -4, 0, 2527, 1852, 38, 38, 38, 255 },
+	{ 8, -11, -4, 0, 714, 155, 38, 38, 38, 255 },
+	{ 19, -9, -4, 0, -4, 297, 38, 38, 38, 255 },
+	{ 18, -2, -4, 0, 66, 781, 38, 38, 38, 255 },
+	{ 20, 7, -4, 0, -96, 1368, 38, 38, 38, 255 },
+	{ 16, 12, -4, 0, 168, 1734, 38, 38, 38, 255 },
+};
+
+
+Gfx virus_b2_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:virus_b2	Color:virus_b2	Tri:12	Vtx:14 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(virus_b2_lut),
+	gsDPLoadMultiBlock(virus_b2_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 40, 0, G_TX_WRAP, G_TX_WRAP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&virus_b2_vtx[0], 14, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(6, 7, 0, 1, 8, 3, 5, 0),
+	gsSP2Triangles(9, 10, 11, 2, 5, 9, 11, 0),
+	gsSP2Triangles(8, 5, 11, 0, 11, 12, 13, 2),
+	gsSP2Triangles(8, 11, 13, 0, 13, 6, 0, 0),
+	gsSP2Triangles(2, 8, 13, 0, 13, 0, 2, 0),
+	gsSPEndDisplayList(),
+};

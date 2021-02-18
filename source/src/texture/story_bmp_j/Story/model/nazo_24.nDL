@@ -1,0 +1,53 @@
+/********************************************************************
+  nazo_24
+	Vert Count = 11
+	Face Count = 9
+	Min X:   -28	Max X:    33
+	Min Y:   -24	Max Y:    22
+	Min Z:     0	Max Z:     0
+	MaxSize = 33
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int nazo_24_box[] = { -28, 33, -24, 22, 0, 0, 33, 0 };
+Vtx nazo_24_vtx[] = {
+	{ 12, -23, 0, 0, 2395, -90, 38, 38, 38, 255 },
+	{ 33, -1, 0, 0, 3617, 1264, 38, 38, 38, 255 },
+	{ 20, 8, 0, 0, 2859, 1815, 38, 38, 38, 255 },
+	{ 4, 14, 0, 0, 1882, 2199, 38, 38, 38, 255 },
+	{ -7, 22, 0, 0, 1252, 2708, 38, 38, 38, 255 },
+	{ -14, 13, 0, 0, 794, 2153, 38, 38, 38, 255 },
+	{ 16, 18, 0, 0, 2618, 2434, 38, 38, 38, 255 },
+	{ -6, -24, 0, 0, 1292, -166, 38, 38, 38, 255 },
+	{ -24, 13, 0, 0, 215, 2153, 38, 38, 38, 255 },
+	{ -28, -5, 0, 0, -58, 1015, 38, 38, 38, 255 },
+	{ -18, -18, 0, 0, 558, 215, 38, 38, 38, 255 },
+};
+
+
+Gfx nazo_24_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:nazo_24	Color:nazo_24	Tri:9	Vtx:11 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(nazo_24_lut),
+	gsDPLoadMultiBlock(nazo_24_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 56, 36, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&nazo_24_vtx[0], 11, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(2, 6, 3, 1, 0, 2, 3, 0),
+	gsSP2Triangles(7, 0, 3, 0, 7, 3, 5, 0),
+	gsSP2Triangles(5, 8, 9, 2, 5, 9, 10, 2),
+	gsSP1Triangle(5, 10, 7, 0),
+	gsSPEndDisplayList(),
+};

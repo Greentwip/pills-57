@@ -1,0 +1,15 @@
+
+static const char _mesBootTvErr[]=
+"This game is not designed~n"
+"for use on this system.~z";
+
+static const char _mesBootContErr[]=
+"There is no controller~n"
+"connected. Please turn OFF~n"
+"the Nintendo* 64 and insert~n"
+"a controller in socket 1.~z";
+
+static const char _mesBootCSumErr[]=
+"A Backup File is damaged.~n"
+"Press the A Button to delete this file.~z";
+

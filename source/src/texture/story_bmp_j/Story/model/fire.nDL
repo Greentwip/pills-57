@@ -1,0 +1,75 @@
+/********************************************************************
+  fire
+	Vert Count = 24
+	Face Count = 16
+	Min X:    -8	Max X:     8
+	Min Y:     0	Max Y:    15
+	Min Z:    -8	Max Z:     8
+	MaxSize = 15
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int fire_box[] = { -8, 8, 0, 15, -8, 8, 15, 0 };
+Vtx fire_vtx[] = {
+	{ 0, 0, 0, 0, 1024, 0, 0, 0, 0, 255 },
+	{ -8, 0, 0, 0, 2048, 0, 0, 0, 0, 255 },
+	{ -8, 15, 0, 0, 2048, 2048, 0, 0, 0, 255 },
+	{ 0, 15, 0, 0, 1024, 2048, 0, 0, 0, 255 },
+	{ 8, 0, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ 8, 15, 0, 0, 0, 2048, 0, 0, 0, 255 },
+	{ 5, 15, 5, 0, 2048, 2048, 0, 0, 0, 255 },
+	{ 5, 0, 5, 0, 2048, 0, 0, 0, 0, 255 },
+	{ 0, 0, 0, 0, 3072, 0, 0, 0, 0, 255 },
+	{ 0, 15, 0, 0, 3072, 2048, 0, 0, 0, 255 },
+	{ -5, 0, -5, 0, 4096, 0, 0, 0, 0, 255 },
+	{ -5, 15, -5, 0, 4096, 2048, 0, 0, 0, 255 },
+	{ 0, 15, 8, 0, 6144, 2048, 38, 38, 38, 255 },
+	{ 0, 0, 8, 0, 6144, 0, 38, 38, 38, 255 },
+	{ 0, 0, 0, 0, 5120, 0, 38, 38, 38, 255 },
+	{ 0, 15, 0, 0, 5120, 2048, 38, 38, 38, 255 },
+	{ 0, 0, -8, 0, 4096, 0, 38, 38, 38, 255 },
+	{ 0, 15, -8, 0, 4096, 2048, 38, 38, 38, 255 },
+	{ -5, 15, 5, 0, 8192, 2048, 76, 76, 76, 255 },
+	{ -5, 0, 5, 0, 8192, 0, 76, 76, 76, 255 },
+	{ 0, 0, 0, 0, 7168, 0, 76, 76, 76, 255 },
+	{ 0, 15, 0, 0, 7168, 2048, 76, 76, 76, 255 },
+	{ 5, 0, -5, 0, 6144, 0, 76, 76, 76, 255 },
+	{ 5, 15, -5, 0, 6144, 2048, 76, 76, 76, 255 },
+};
+
+
+Gfx fire_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:fire	Color:fire_a	Tri:4	Vtx:6 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, fire_lut),
+	gsDPLoadMultiBlock_4b(fire_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 128, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 7, 5, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&fire_vtx[0], 24, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSP2Triangles(4, 0, 3, 0, 3, 5, 4, 1),
+
+/* Group:fire	Color:fire_b	Tri:4	Vtx:6 */
+	gsSP2Triangles(6, 7, 8, 2, 8, 9, 6, 1),
+	gsSP2Triangles(9, 8, 10, 2, 10, 11, 9, 1),
+
+/* Group:fire	Color:fire_c	Tri:4	Vtx:6 */
+	gsSP2Triangles(12, 13, 14, 2, 14, 15, 12, 1),
+	gsSP2Triangles(15, 14, 16, 2, 16, 17, 15, 1),
+
+/* Group:fire	Color:fire_d	Tri:4	Vtx:6 */
+	gsSP2Triangles(18, 19, 20, 2, 20, 21, 18, 1),
+	gsSP2Triangles(21, 20, 22, 2, 22, 23, 21, 1),
+	gsSPEndDisplayList(),
+};

@@ -1,0 +1,25 @@
+
+BGMデータと今朝お話が出ました
+SEのチューニング表をお送りいたします。
+曲データ（Volume調整）もお送りしておきます。
+更新してください。
+詳細は以下の通りです。
+
+○データの内容
+
+drmario.ptr	サンプルウエーブのポインタ情報
+drmario.wbk	サンプルウエーブのバイナリデータ
+
+Fever.bin	ゲーム中"Fever"曲データ
+Chill.bin	ゲーム中"Chill"曲データ
+Game_C.bin	ゲーム中"Game_C"曲データ
+Game_D.bin	ゲーム中"Game_D"曲データ
+Menu.bin	ゲーム中"Menu"曲データ
+Title.bin	ゲーム中"Title"曲データ
+
+
+何か問題などがございましたらご連絡下さい。
+
+Creative section
+
+T's music Co.,ltd.

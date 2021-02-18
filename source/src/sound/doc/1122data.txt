@@ -1,0 +1,16 @@
+
+SEを追加したデータをお送りいたします。
+お手数ですが更新お願いいたします。
+詳細は以下の通りです。
+
+○データの内容
+
+Game_D2.bin	ゲーム中”Game_D”通常
+Game_D2F.bin	ゲーム中”Game_D”TempoUpバージョン
+
+
+何か問題などがございましたらご連絡下さい。
+
+Creative section
+
+T's music Co.,ltd.

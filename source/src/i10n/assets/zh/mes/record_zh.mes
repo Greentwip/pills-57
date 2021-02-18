@@ -1,0 +1,14 @@
+static const char _mesWriting[] =
+
+	
+	"存储中~n"
+
+	"请勿关闭电源.~z";
+
+
+static const char _mesDeleting[] =
+
+	"删除中~n"
+
+	"请勿关闭电源.~z";
+

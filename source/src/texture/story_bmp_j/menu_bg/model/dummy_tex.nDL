@@ -1,0 +1,12 @@
+Vtx dummy_tex_vtx[] = {
+	{ 1, -1, 0, 0, 0, 0, 255, 255, 255, 255 },
+};
+
+#include	"texture\back.txt"
+#include	"texture\menu_cloud_a.txt"
+#include	"texture\menu_cloud_b.txt"
+#include	"texture\menu_cloud_c.txt"
+
+Gfx dummy_tex_dl[] = {
+	gsSPEndDisplayList(),
+};

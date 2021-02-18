@@ -1,0 +1,279 @@
+
+#define MSG_COLOR "~7"
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_1_1[] =
+MSG_COLOR
+"大家好！~n"
+"我是帕拉贡。~w2~z";
+
+
+static const char mes_1_2[] =
+
+MSG_COLOR
+"我在这里告诉你~n"
+"如何玩马力欧医~n"
+"生。~n"
+"请注意! ~w2~z";
+
+
+static const char mes_1_3[] =
+MSG_COLOR
+"这个游戏是把维~n"
+"生素药丸扔进瓶~n"
+"子消灭病毒。~w2~z"
+
+"这个游戏是把维~n"
+"生素药丸扔进瓶~n"
+"子消灭病毒。~w2~z";
+
+
+static const char mes_1_4[] =
+MSG_COLOR
+
+"按Ａ和Ｂ键旋转~n"
+"药丸。~w2~z";
+
+
+static const char mes_1_5[] =
+MSG_COLOR
+"纵向或横向排列~n"
+"四个或以上同色~n"
+"药丸可以消除它~n"
+"们。~w2~z";
+
+
+static const char mes_1_6[] =
+MSG_COLOR
+"消灭瓶中所有病~n"
+"毒就可以过关。~w2~z";
+
+
+
+static const char mes_1_7[] =
+MSG_COLOR
+
+"如果瓶子装满的~n"
+"话，游戏就结束~n"
+"了。~w2~z";
+
+static const char mes_1_8[] =
+MSG_COLOR
+"就先到这里吧，~n"
+"等会儿见！~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_2_1[] =
+MSG_COLOR
+"现在让我向你介~n"
+"绍二人对战的游~n"
+"戏规则。~w2~z";
+
+
+static const char mes_2_2[] =
+MSG_COLOR
+"要赢得比赛，就~n"
+"要比对手更快地~n"
+"消灭病毒。~w2~z";
+
+
+static const char mes_2_3[] =
+MSG_COLOR
+"如果你的瓶子装~n"
+"满到瓶口的话，~n"
+"你就输了。~w2~z";
+
+static const char mes_2_4[] =
+MSG_COLOR
+"完成连消可以把~n"
+"垃圾送给对手。~w2~z";
+
+
+static const char mes_2_5[] =
+MSG_COLOR
+"连消次数越多,~n"
+"送出去的垃圾就~n"
+"越多！~w2~z";
+
+static const char mes_2_6[] =
+MSG_COLOR
+"完成两次连消送~n"
+"出两个垃圾。~w2~z";
+
+//"完成一次连消送出两个垃圾。~w2~z";
+
+static const char mes_2_7[] =
+MSG_COLOR
+"完成三次连消送~n"
+"出三个垃圾。完~n"
+"成四次连消送出~n"
+"四个垃圾。~w2~z";
+
+
+static const char mes_2_8[] =
+MSG_COLOR
+"一次最多送出四~n"
+"个垃圾。~w2~z";
+
+static const char mes_2_9[] =
+MSG_COLOR
+"就先到这里吧，~n"
+"等会儿见！~w2~z";
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_3_1[] =
+MSG_COLOR
+"现在让我向你介~n"
+"绍四人对战的游~n"
+"戏规则。~w2~z";
+
+static const char mes_3_2[] =
+MSG_COLOR
+"要赢得比赛，就~n"
+"要比对手更快地~n"
+"消灭病毒。~w2~z";
+
+static const char mes_3_3[] =
+MSG_COLOR
+"如果你的瓶子装~n"
+"满到瓶口的话，~n"
+"你就输了。~w2~z";
+
+static const char mes_3_4[] =
+MSG_COLOR
+"完成连消可以把~n"
+"垃圾送给对手。~w2~z";
+
+static const char mes_3_5[] =
+MSG_COLOR
+"连消的颜色决定~n"
+"你的垃圾会送到~n"
+"哪里去。~w2~z";
+
+static const char mes_3_6[] =
+MSG_COLOR
+
+"如果是蓝色，在~n"
+"你右边的玩家会~n"
+"收到垃圾。~w2~z";
+
+
+static const char mes_3_7[] =
+MSG_COLOR
+"如果是黄色，在~n"
+"你右边的第二个~n"
+"玩家会收到垃圾。~w2~z";
+
+
+static const char mes_3_8[] =
+MSG_COLOR
+"如果是红色，在~n"
+"你右边的第三个~n"
+"玩家会收到垃圾。~w2~z";
+
+static const char mes_3_9[] =
+MSG_COLOR
+"一次消掉两种颜~n"
+"色可以让两个玩~n"
+"家收到垃圾。~w2~z";
+
+
+static const char mes_3_10[] =
+MSG_COLOR
+"如果在你右边的~n"
+"没有人你送出的~n"
+"垃圾就到最左边。~w2~z";
+
+
+static const char mes_3_11[] =
+MSG_COLOR
+"在分组对战模式~n"
+"下，你送给同伴~n"
+"的垃圾。~w2~z";
+
+
+
+static const char mes_3_12[] =
+MSG_COLOR
+"会送到你们的~n"
+"储备箱，~w2~z";
+
+static const char mes_3_13[] =
+MSG_COLOR
+"储备箱中的垃圾~n"
+"会自动加到~w2~z";
+
+static const char mes_3_14[] =
+MSG_COLOR
+"下一次你或你的~n"
+"同伴送给对手的~n"
+"垃圾中。~w2~z";
+
+
+static const char mes_3_15[] =
+MSG_COLOR
+"就先到这里吧，~n"
+"等会儿见！~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_4_1[] =
+MSG_COLOR
+"现在我要给你一~n"
+"些提示。~w2~z";
+
+static const char mes_4_2[] =
+MSG_COLOR
+"首先，纵向拼出~n"
+"同色药丸更容易。~w2~z";
+
+static const char mes_4_3[] =
+MSG_COLOR
+"但当你的技巧熟~n"
+"练后，尽量也横~n"
+"向拼色。~w2~z";
+
+static const char mes_4_4[] =
+MSG_COLOR
+"你完成连消时，~n"
+"会播放一段特别~n"
+"的旋律。~w2~z";
+
+static const char mes_4_5[] =
+MSG_COLOR
+"别忘了！每过十~n"
+"个药丸下落的速~n"
+"度会加快。~w2~z";
+
+static const char mes_4_6[] =
+MSG_COLOR
+"当剩下的病毒不~n"
+"多时，音乐的速~n"
+"度会加快。~w2~z";
+
+static const char mes_4_7[] =
+MSG_COLOR
+"当你的瓶子快要~n"
+"装满时，会开始~n"
+"出现警告音乐。~w2~z";
+
+static const char mes_4_8[] =
+MSG_COLOR
+"危险！~n"
+"你最好加快速度！~w2~z";
+
+static const char mes_4_9[] =
+MSG_COLOR
+"我要说的都说了。~n"
+"现在开始游戏吧！~w2~z";
+
+static const char mes_4_10[] =
+MSG_COLOR
+"后会有期！~n"
+"再见！~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////

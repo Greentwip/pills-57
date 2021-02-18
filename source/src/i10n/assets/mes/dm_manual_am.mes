@@ -1,0 +1,291 @@
+
+#define MSG_COLOR "~7"
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_1_1[] =
+MSG_COLOR
+"Hello, everyone!~n"
+"I'm Paragoom.~w2~z";
+
+static const char mes_1_2[] =
+MSG_COLOR
+"I'm here to tell~n"
+"you how to play~n"
+"Dr. Mario. Please~n"
+"pay attention.~w2~z";
+
+static const char mes_1_3[] =
+MSG_COLOR
+"It's all about~n"
+"vitamins! Toss 'em~n"
+"into the bottle to~n"
+"destroy viruses.~w2~z";
+
+static const char mes_1_4[] =
+MSG_COLOR
+"Press the A and~n"
+"B Buttons to~n"
+"rotate capsules.~w2~z";
+
+static const char mes_1_5[] =
+MSG_COLOR
+"Clear vitamins by~n"
+"making four or~n"
+"more matching~n"
+"columns or rows.~w2~z";
+
+static const char mes_1_6[] =
+MSG_COLOR
+"Clear a stage by~n"
+"destroying all~n"
+"of the viruses~n"
+"in the bottle.~w2~z";
+
+static const char mes_1_7[] =
+MSG_COLOR
+"If the bottle gets~n"
+"filled all the way~n"
+"to the top, your~n"
+"game will be over.~w2~z";
+
+static const char mes_1_8[] =
+MSG_COLOR
+"That's all~n"
+"for now. I'll~n"
+"see you later!~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_2_1[] =
+MSG_COLOR
+"Now I'll tell~n"
+"you about the~n"
+"Two-Player Vs.~n"
+"game rules!~w2~z";
+
+static const char mes_2_2[] =
+MSG_COLOR
+"Destroy all the~n"
+"viruses faster~n"
+"than your rival~n"
+"does to win.~w2~z";
+
+static const char mes_2_3[] =
+MSG_COLOR
+"If your bottle~n"
+"fills up all the~n"
+"way to the top,~n"
+"you'll lose.~w2~z";
+
+static const char mes_2_4[] =
+MSG_COLOR
+"Clear combos~n"
+"to send garbage~n"
+"to your opponent.~w2~z";
+
+static const char mes_2_5[] =
+MSG_COLOR
+"The more combos~n"
+"you clear, the~n"
+"more garbage~n"
+"you'll send!~w2~z";
+
+static const char mes_2_6[] =
+MSG_COLOR
+"Clear two combos~n"
+"to send two~n"
+"pieces of garbage.~w2~z";
+
+//"Clear one combo~n"
+//"to send two~n"
+//"pieces of garbage.~w2~z";
+
+static const char mes_2_7[] =
+MSG_COLOR
+"Clear three combos~n"
+"for three pieces,~n"
+"four combos for~n"
+"four pieces.~w2~z";
+
+static const char mes_2_8[] =
+MSG_COLOR
+"But four pieces~n"
+"is the most you~n"
+"can send at one~n"
+"time.~w2~z";
+
+static const char mes_2_9[] =
+MSG_COLOR
+"That's all~n"
+"for now! I'll~n"
+"see you later!~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_3_1[] =
+MSG_COLOR
+"Now I'll tell~n"
+"you about the~n"
+"Four-Player Vs.~n"
+"game rules!~w2~z";
+
+static const char mes_3_2[] =
+MSG_COLOR
+"Destroy all the~n"
+"viruses faster~n"
+"than your foes~n"
+"do to win.~w2~z";
+
+static const char mes_3_3[] =
+MSG_COLOR
+"If your bottle~n"
+"fills up all the~n"
+"way to the top,~n"
+"you'll lose.~w2~z";
+
+static const char mes_3_4[] =
+MSG_COLOR
+"Clear combos~n"
+"to send garbage~n"
+"to your foes.~w2~z";
+
+static const char mes_3_5[] =
+MSG_COLOR
+"The color of the~n"
+"combo you clear~n"
+"determines where~n"
+"your garbage goes.~w2~z";
+
+static const char mes_3_6[] =
+MSG_COLOR
+"If the combo is~n"
+"blue, the player~n"
+"on your right gets~n"
+"your garbage.~w2~z";
+
+static const char mes_3_7[] =
+MSG_COLOR
+"If the combo is~n"
+"yellow, it goes to~n"
+"the second player~n"
+"on your right.~w2~z";
+
+static const char mes_3_8[] =
+MSG_COLOR
+"If the combo is~n"
+"red, it goes to~n"
+"the third player~n"
+"on your right.~w2~z";
+
+static const char mes_3_9[] =
+MSG_COLOR
+"Clear two colors~n"
+"at the same time~n"
+"to send garbage~n"
+"to two players.~w2~z";
+
+static const char mes_3_10[] =
+MSG_COLOR
+"If no one is on~n"
+"your right, your~n"
+"garbage goes~n"
+"to the far left.~w2~z";
+
+static const char mes_3_11[] =
+MSG_COLOR
+"When playing~n"
+"Team Battle, the~n"
+"garbage you send~w2~z";
+
+static const char mes_3_12[] =
+MSG_COLOR
+"to your partner~n"
+"goes into~n"
+"your bank.~w2~z";
+
+static const char mes_3_13[] =
+MSG_COLOR
+"The garbage in~n"
+"your bank is~n"
+"automatically~n"
+"added to the next~w2~z";
+
+static const char mes_3_14[] =
+MSG_COLOR
+"time either you~n"
+"or your teammate~n"
+"sends garbage to~n"
+"your opponents.~w2~z";
+
+static const char mes_3_15[] =
+MSG_COLOR
+"That's all~n"
+"for now! I'll~n"
+"see you later!~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_4_1[] =
+MSG_COLOR
+"Now it's time~n"
+"for me to give~n"
+"you some advice.~w2~z";
+
+static const char mes_4_2[] =
+MSG_COLOR
+"At first, it's~n"
+"easier to match~n"
+"colors in a~n"
+"vertical row.~w2~z";
+
+static const char mes_4_3[] =
+MSG_COLOR
+"But when you get~n"
+"better, try to~n"
+"match colors~n"
+"horizontally, too.~w2~z";
+
+static const char mes_4_4[] =
+MSG_COLOR
+"A special melody~n"
+"plays when you've~n"
+"cleared a combo.~w2~z";
+
+static const char mes_4_5[] =
+MSG_COLOR
+"Don't forget!~n"
+"Vitamins begin to~n"
+"fall faster with~n"
+"every tenth one.~w2~z";
+
+static const char mes_4_6[] =
+MSG_COLOR
+"The music speeds~n"
+"up when few~n"
+"viruses remain.~w2~z";
+
+static const char mes_4_7[] =
+MSG_COLOR
+"When your bottle~n"
+"begins to fill~n"
+"up, warning music~n"
+"will begin.~w2~z";
+
+static const char mes_4_8[] =
+MSG_COLOR
+"Danger!~n"
+"You'd better~n"
+"hurry up!~w2~z";
+
+static const char mes_4_9[] =
+MSG_COLOR
+"That's it.~n"
+"Now get going!~w2~z";
+
+static const char mes_4_10[] =
+MSG_COLOR
+"See you later!~n"
+"Bye-bye!~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////

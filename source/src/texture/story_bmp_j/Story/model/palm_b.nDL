@@ -1,0 +1,42 @@
+/********************************************************************
+  palm_b
+	Vert Count = 4
+	Face Count = 2
+	Min X:   -50	Max X:    66
+	Min Y:    -7	Max Y:   113
+	Min Z:     2	Max Z:     2
+	MaxSize = 113
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int palm_b_box[] = { -50, 66, -7, 113, 2, 2, 113, 0 };
+Vtx palm_b_vtx[] = {
+	{ -50, 113, 2, 0, -2149, 5559, 38, 38, 38, 255 },
+	{ -50, -7, 2, 0, -2149, -2736, 38, 38, 38, 255 },
+	{ 66, -7, 2, 0, 5722, -2736, 38, 38, 38, 255 },
+	{ 66, 113, 2, 0, 5722, 5559, 38, 38, 38, 255 },
+};
+
+
+Gfx palm_b_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:palm_b	Color:palm_b	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, palm_b_lut),
+	gsDPLoadMultiBlock_4b(palm_b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 64, 64, 0, G_TX_CLAMP, G_TX_CLAMP, 6, 6, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&palm_b_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

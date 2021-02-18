@@ -1,0 +1,51 @@
+/********************************************************************
+  mayu_15
+	Vert Count = 10
+	Face Count = 8
+	Min X:   -20	Max X:    23
+	Min Y:   -29	Max Y:     4
+	Min Z:     0	Max Z:     0
+	MaxSize = 29
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mayu_15_box[] = { -20, 23, -29, 4, 0, 0, 29, 0 };
+Vtx mayu_15_vtx[] = {
+	{ -20, -8, 0, 0, 3111, 1417, 38, 38, 38, 255 },
+	{ -18, -22, 0, 0, 2984, 442, 38, 38, 38, 255 },
+	{ -6, -26, 0, 0, 2047, 207, 38, 38, 38, 255 },
+	{ 11, -29, 0, 0, 842, 0, 38, 38, 38, 255 },
+	{ 23, -14, 0, 0, -74, 962, 38, 38, 38, 255 },
+	{ 17, 1, 0, 0, 427, 2009, 38, 38, 38, 255 },
+	{ -14, 3, 0, 0, 2683, 2165, 38, 38, 38, 255 },
+	{ 5, 4, 0, 0, 1257, 2203, 38, 38, 38, 255 },
+	{ 3, -24, 0, 0, 1410, 337, 38, 38, 38, 255 },
+	{ 11, -1, 0, 0, 808, 1853, 38, 38, 38, 255 },
+};
+
+
+Gfx mayu_15_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mayu_15	Color:mayu_15	Tri:8	Vtx:10 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(mayu_15_lut),
+	gsDPLoadMultiBlock(mayu_15_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 48, 35, 0, G_TX_WRAP, G_TX_WRAP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mayu_15_vtx[0], 10, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(6, 0, 2, 0, 7, 6, 2, 0),
+	gsSP2Triangles(8, 3, 5, 0, 7, 2, 8, 0),
+	gsSP2Triangles(9, 7, 8, 0, 5, 9, 8, 0),
+	gsSPEndDisplayList(),
+};

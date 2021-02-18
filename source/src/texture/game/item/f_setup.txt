@@ -1,0 +1,9 @@
+gDPSetCombineLERP(gp++, ENVIRONMENT, PRIMITIVE, TEXEL0, PRIMITIVE,
+		ENVIRONMENT, 0, TEXEL0, 0, 
+		ENVIRONMENT, PRIMITIVE, TEXEL0, PRIMITIVE,
+		ENVIRONMENT, 0, TEXEL0, 0),
+gDPSetEnvColor(gp++, 255, 255, 255, 220);
+
+gDPSetPrimColor(gp++, 0, 0, 255, 0, 80, 255);		// Red
+gDPSetPrimColor(gp++, 0, 0, 255, 200, 0, 255);		// Yellow
+gDPSetPrimColor(gp++, 0, 0, 100, 100, 255, 255);	// Blue

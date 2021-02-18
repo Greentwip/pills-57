@@ -1,0 +1,66 @@
+/********************************************************************
+  mario_08board
+	Vert Count = 20
+	Face Count = 18
+	Min X:   -19	Max X:    23
+	Min Y:   -30	Max Y:    25
+	Min Z:     0	Max Z:     0
+	MaxSize = 30
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mario_08board_box[] = { -19, 23, -30, 25, 0, 0, 30, 0 };
+Vtx mario_08board_vtx[] = {
+	{ -12, 12, 0, 0, 2080, 2512, 38, 38, 38, 255 },
+	{ -13, 12, 0, 0, 2129, 2471, 38, 38, 38, 255 },
+	{ -14, 5, 0, 0, 2179, 2079, 38, 38, 38, 255 },
+	{ -14, 4, 0, 0, 2145, 2013, 38, 38, 38, 255 },
+	{ 18, 4, 0, 0, 299, 2018, 38, 38, 38, 255 },
+	{ 18, -14, 0, 0, 305, 995, 38, 38, 38, 255 },
+	{ 23, -1, 0, 0, 44, 1741, 38, 38, 38, 255 },
+	{ -13, -9, 0, 0, 2117, 1258, 38, 38, 38, 255 },
+	{ -19, -12, 0, 0, 2472, 1095, 38, 38, 38, 255 },
+	{ -18, 0, 0, 0, 2386, 1826, 38, 38, 38, 255 },
+	{ -15, -8, 0, 0, 2226, 1348, 38, 38, 38, 255 },
+	{ 22, 7, 0, 0, 92, 2203, 38, 38, 38, 255 },
+	{ 20, 19, 0, 0, 183, 2884, 38, 38, 38, 255 },
+	{ 10, 23, 0, 0, 767, 3155, 38, 38, 38, 255 },
+	{ -13, 13, 0, 0, 2118, 2550, 38, 38, 38, 255 },
+	{ -18, -25, 0, 0, 2423, 361, 38, 38, 38, 255 },
+	{ -3, -30, 0, 0, 1546, 57, 38, 38, 38, 255 },
+	{ 19, -25, 0, 0, 228, 348, 38, 38, 38, 255 },
+	{ -2, 25, 0, 0, 1483, 3252, 38, 38, 38, 255 },
+	{ -10, 23, 0, 0, 1914, 3157, 38, 38, 38, 255 },
+};
+
+
+Gfx mario_08board_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mario_08board	Color:mario08_01	Tri:18	Vtx:20 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(mario08_lut),
+	gsDPLoadMultiBlock(mario08_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 51, 0, G_TX_WRAP, G_TX_WRAP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mario_08board_vtx[0], 20, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 0, 1),
+	gsSP2Triangles(0, 2, 3, 0, 5, 6, 4, 1),
+	gsSP2Triangles(7, 8, 5, 1, 4, 7, 5, 0),
+	gsSP2Triangles(3, 9, 10, 2, 3, 10, 7, 0),
+	gsSP2Triangles(4, 3, 7, 0, 11, 12, 13, 2),
+	gsSP2Triangles(4, 11, 13, 0, 0, 4, 13, 0),
+	gsSP2Triangles(14, 0, 13, 0, 8, 15, 16, 2),
+	gsSP2Triangles(16, 17, 5, 1, 8, 16, 5, 0),
+	gsSP2Triangles(18, 19, 14, 1, 13, 18, 14, 0),
+	gsSPEndDisplayList(),
+};

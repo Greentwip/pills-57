@@ -1,0 +1,499 @@
+	section name     start    end      length 
+	..code           80000450 80000460 00000010
+	..code.bss       80000460 80000470 00000010
+	..anime_a        00000000 00010370 00010370
+	..anime_a.bss    00010370 00010370 00000000
+	..anime_b        00000000 00006100 00006100
+	..anime_b.bss    00006100 00006100 00000000
+	..anime_c        00000000 00010ff0 00010ff0
+	..anime_c.bss    00010ff0 00010ff0 00000000
+	..anime_d        00000000 00008a30 00008a30
+	..anime_d.bss    00008a30 00008a30 00000000
+	..anime_e        00000000 0000a0b0 0000a0b0
+	..anime_e.bss    0000a0b0 0000a0b0 00000000
+	..anime_f        00000000 00006c50 00006c50
+	..anime_f.bss    00006c50 00006c50 00000000
+	..anime_g        00000000 0000d430 0000d430
+	..anime_g.bss    0000d430 0000d430 00000000
+	..anime_h        00000000 00005740 00005740
+	..anime_h.bss    00005740 00005740 00000000
+	..anime_i        00000000 000093a0 000093a0
+	..anime_i.bss    000093a0 000093a0 00000000
+	..anime_j        00000000 0000ac30 0000ac30
+	..anime_j.bss    0000ac30 0000ac30 00000000
+	..anime_k        00000000 000051b0 000051b0
+	..anime_k.bss    000051b0 000051b0 00000000
+	..anime_l        00000000 0000ccd0 0000ccd0
+	..anime_l.bss    0000ccd0 0000ccd0 00000000
+	..anime_m        00000000 00006b60 00006b60
+	..anime_m.bss    00006b60 00006b60 00000000
+	..anime_n        00000000 00008f80 00008f80
+	..anime_n.bss    00008f80 00008f80 00000000
+	..anime_o        00000000 00006b60 00006b60
+	..anime_o.bss    00006b60 00006b60 00000000
+	..anime_mario    00000000 0002d790 0002d790
+	..anime_mario.bss 0002d790 0002d790 00000000
+	..anime_virus_b  00000000 00001bf0 00001bf0
+	..anime_virus_b.bss 00001bf0 00001bf0 00000000
+	..anime_virus_r  00000000 000015a0 000015a0
+	..anime_virus_r.bss 000015a0 000015a0 00000000
+	..anime_virus_y  00000000 000015a0 000015a0
+	..anime_virus_y.bss 000015a0 000015a0 00000000
+	..anime_smog     00000000 00001340 00001340
+	..anime_smog.bss 00001340 00001340 00000000
+warning:address overlap (..anime_a and ..anime_b section)
+warning:address overlap (..anime_a and ..anime_b.bss section)
+warning:address overlap (..anime_a and ..anime_c section)
+warning:address overlap (..anime_a and ..anime_d section)
+warning:address overlap (..anime_a and ..anime_d.bss section)
+warning:address overlap (..anime_a and ..anime_e section)
+warning:address overlap (..anime_a and ..anime_e.bss section)
+warning:address overlap (..anime_a and ..anime_f section)
+warning:address overlap (..anime_a and ..anime_f.bss section)
+warning:address overlap (..anime_a and ..anime_g section)
+warning:address overlap (..anime_a and ..anime_g.bss section)
+warning:address overlap (..anime_a and ..anime_h section)
+warning:address overlap (..anime_a and ..anime_h.bss section)
+warning:address overlap (..anime_a and ..anime_i section)
+warning:address overlap (..anime_a and ..anime_i.bss section)
+warning:address overlap (..anime_a and ..anime_j section)
+warning:address overlap (..anime_a and ..anime_j.bss section)
+warning:address overlap (..anime_a and ..anime_k section)
+warning:address overlap (..anime_a and ..anime_k.bss section)
+warning:address overlap (..anime_a and ..anime_l section)
+warning:address overlap (..anime_a and ..anime_l.bss section)
+warning:address overlap (..anime_a and ..anime_m section)
+warning:address overlap (..anime_a and ..anime_m.bss section)
+warning:address overlap (..anime_a and ..anime_n section)
+warning:address overlap (..anime_a and ..anime_n.bss section)
+warning:address overlap (..anime_a and ..anime_o section)
+warning:address overlap (..anime_a and ..anime_o.bss section)
+warning:address overlap (..anime_a and ..anime_mario section)
+warning:address overlap (..anime_a and ..anime_virus_b section)
+warning:address overlap (..anime_a and ..anime_virus_b.bss section)
+warning:address overlap (..anime_a and ..anime_virus_r section)
+warning:address overlap (..anime_a and ..anime_virus_r.bss section)
+warning:address overlap (..anime_a and ..anime_virus_y section)
+warning:address overlap (..anime_a and ..anime_virus_y.bss section)
+warning:address overlap (..anime_a and ..anime_smog section)
+warning:address overlap (..anime_a and ..anime_smog.bss section)
+warning:address overlap (..anime_a.bss and ..anime_c section)
+warning:address overlap (..anime_a.bss and ..anime_mario section)
+warning:address overlap (..anime_b and ..anime_c section)
+warning:address overlap (..anime_b and ..anime_d section)
+warning:address overlap (..anime_b and ..anime_e section)
+warning:address overlap (..anime_b and ..anime_f section)
+warning:address overlap (..anime_b and ..anime_g section)
+warning:address overlap (..anime_b and ..anime_h section)
+warning:address overlap (..anime_b and ..anime_h.bss section)
+warning:address overlap (..anime_b and ..anime_i section)
+warning:address overlap (..anime_b and ..anime_j section)
+warning:address overlap (..anime_b and ..anime_k section)
+warning:address overlap (..anime_b and ..anime_k.bss section)
+warning:address overlap (..anime_b and ..anime_l section)
+warning:address overlap (..anime_b and ..anime_m section)
+warning:address overlap (..anime_b and ..anime_n section)
+warning:address overlap (..anime_b and ..anime_o section)
+warning:address overlap (..anime_b and ..anime_mario section)
+warning:address overlap (..anime_b and ..anime_virus_b section)
+warning:address overlap (..anime_b and ..anime_virus_b.bss section)
+warning:address overlap (..anime_b and ..anime_virus_r section)
+warning:address overlap (..anime_b and ..anime_virus_r.bss section)
+warning:address overlap (..anime_b and ..anime_virus_y section)
+warning:address overlap (..anime_b and ..anime_virus_y.bss section)
+warning:address overlap (..anime_b and ..anime_smog section)
+warning:address overlap (..anime_b and ..anime_smog.bss section)
+warning:address overlap (..anime_b.bss and ..anime_c section)
+warning:address overlap (..anime_b.bss and ..anime_d section)
+warning:address overlap (..anime_b.bss and ..anime_e section)
+warning:address overlap (..anime_b.bss and ..anime_f section)
+warning:address overlap (..anime_b.bss and ..anime_g section)
+warning:address overlap (..anime_b.bss and ..anime_i section)
+warning:address overlap (..anime_b.bss and ..anime_j section)
+warning:address overlap (..anime_b.bss and ..anime_l section)
+warning:address overlap (..anime_b.bss and ..anime_m section)
+warning:address overlap (..anime_b.bss and ..anime_n section)
+warning:address overlap (..anime_b.bss and ..anime_o section)
+warning:address overlap (..anime_b.bss and ..anime_mario section)
+warning:address overlap (..anime_c and ..anime_d section)
+warning:address overlap (..anime_c and ..anime_d.bss section)
+warning:address overlap (..anime_c and ..anime_e section)
+warning:address overlap (..anime_c and ..anime_e.bss section)
+warning:address overlap (..anime_c and ..anime_f section)
+warning:address overlap (..anime_c and ..anime_f.bss section)
+warning:address overlap (..anime_c and ..anime_g section)
+warning:address overlap (..anime_c and ..anime_g.bss section)
+warning:address overlap (..anime_c and ..anime_h section)
+warning:address overlap (..anime_c and ..anime_h.bss section)
+warning:address overlap (..anime_c and ..anime_i section)
+warning:address overlap (..anime_c and ..anime_i.bss section)
+warning:address overlap (..anime_c and ..anime_j section)
+warning:address overlap (..anime_c and ..anime_j.bss section)
+warning:address overlap (..anime_c and ..anime_k section)
+warning:address overlap (..anime_c and ..anime_k.bss section)
+warning:address overlap (..anime_c and ..anime_l section)
+warning:address overlap (..anime_c and ..anime_l.bss section)
+warning:address overlap (..anime_c and ..anime_m section)
+warning:address overlap (..anime_c and ..anime_m.bss section)
+warning:address overlap (..anime_c and ..anime_n section)
+warning:address overlap (..anime_c and ..anime_n.bss section)
+warning:address overlap (..anime_c and ..anime_o section)
+warning:address overlap (..anime_c and ..anime_o.bss section)
+warning:address overlap (..anime_c and ..anime_mario section)
+warning:address overlap (..anime_c and ..anime_virus_b section)
+warning:address overlap (..anime_c and ..anime_virus_b.bss section)
+warning:address overlap (..anime_c and ..anime_virus_r section)
+warning:address overlap (..anime_c and ..anime_virus_r.bss section)
+warning:address overlap (..anime_c and ..anime_virus_y section)
+warning:address overlap (..anime_c and ..anime_virus_y.bss section)
+warning:address overlap (..anime_c and ..anime_smog section)
+warning:address overlap (..anime_c and ..anime_smog.bss section)
+warning:address overlap (..anime_c.bss and ..anime_mario section)
+warning:address overlap (..anime_d and ..anime_e section)
+warning:address overlap (..anime_d and ..anime_f section)
+warning:address overlap (..anime_d and ..anime_f.bss section)
+warning:address overlap (..anime_d and ..anime_g section)
+warning:address overlap (..anime_d and ..anime_h section)
+warning:address overlap (..anime_d and ..anime_h.bss section)
+warning:address overlap (..anime_d and ..anime_i section)
+warning:address overlap (..anime_d and ..anime_j section)
+warning:address overlap (..anime_d and ..anime_k section)
+warning:address overlap (..anime_d and ..anime_k.bss section)
+warning:address overlap (..anime_d and ..anime_l section)
+warning:address overlap (..anime_d and ..anime_m section)
+warning:address overlap (..anime_d and ..anime_m.bss section)
+warning:address overlap (..anime_d and ..anime_n section)
+warning:address overlap (..anime_d and ..anime_o section)
+warning:address overlap (..anime_d and ..anime_o.bss section)
+warning:address overlap (..anime_d and ..anime_mario section)
+warning:address overlap (..anime_d and ..anime_virus_b section)
+warning:address overlap (..anime_d and ..anime_virus_b.bss section)
+warning:address overlap (..anime_d and ..anime_virus_r section)
+warning:address overlap (..anime_d and ..anime_virus_r.bss section)
+warning:address overlap (..anime_d and ..anime_virus_y section)
+warning:address overlap (..anime_d and ..anime_virus_y.bss section)
+warning:address overlap (..anime_d and ..anime_smog section)
+warning:address overlap (..anime_d and ..anime_smog.bss section)
+warning:address overlap (..anime_d.bss and ..anime_e section)
+warning:address overlap (..anime_d.bss and ..anime_g section)
+warning:address overlap (..anime_d.bss and ..anime_i section)
+warning:address overlap (..anime_d.bss and ..anime_j section)
+warning:address overlap (..anime_d.bss and ..anime_l section)
+warning:address overlap (..anime_d.bss and ..anime_n section)
+warning:address overlap (..anime_d.bss and ..anime_mario section)
+warning:address overlap (..anime_e and ..anime_f section)
+warning:address overlap (..anime_e and ..anime_f.bss section)
+warning:address overlap (..anime_e and ..anime_g section)
+warning:address overlap (..anime_e and ..anime_h section)
+warning:address overlap (..anime_e and ..anime_h.bss section)
+warning:address overlap (..anime_e and ..anime_i section)
+warning:address overlap (..anime_e and ..anime_i.bss section)
+warning:address overlap (..anime_e and ..anime_j section)
+warning:address overlap (..anime_e and ..anime_k section)
+warning:address overlap (..anime_e and ..anime_k.bss section)
+warning:address overlap (..anime_e and ..anime_l section)
+warning:address overlap (..anime_e and ..anime_m section)
+warning:address overlap (..anime_e and ..anime_m.bss section)
+warning:address overlap (..anime_e and ..anime_n section)
+warning:address overlap (..anime_e and ..anime_n.bss section)
+warning:address overlap (..anime_e and ..anime_o section)
+warning:address overlap (..anime_e and ..anime_o.bss section)
+warning:address overlap (..anime_e and ..anime_mario section)
+warning:address overlap (..anime_e and ..anime_virus_b section)
+warning:address overlap (..anime_e and ..anime_virus_b.bss section)
+warning:address overlap (..anime_e and ..anime_virus_r section)
+warning:address overlap (..anime_e and ..anime_virus_r.bss section)
+warning:address overlap (..anime_e and ..anime_virus_y section)
+warning:address overlap (..anime_e and ..anime_virus_y.bss section)
+warning:address overlap (..anime_e and ..anime_smog section)
+warning:address overlap (..anime_e and ..anime_smog.bss section)
+warning:address overlap (..anime_e.bss and ..anime_g section)
+warning:address overlap (..anime_e.bss and ..anime_j section)
+warning:address overlap (..anime_e.bss and ..anime_l section)
+warning:address overlap (..anime_e.bss and ..anime_mario section)
+warning:address overlap (..anime_f and ..anime_g section)
+warning:address overlap (..anime_f and ..anime_h section)
+warning:address overlap (..anime_f and ..anime_h.bss section)
+warning:address overlap (..anime_f and ..anime_i section)
+warning:address overlap (..anime_f and ..anime_j section)
+warning:address overlap (..anime_f and ..anime_k section)
+warning:address overlap (..anime_f and ..anime_k.bss section)
+warning:address overlap (..anime_f and ..anime_l section)
+warning:address overlap (..anime_f and ..anime_m section)
+warning:address overlap (..anime_f and ..anime_m.bss section)
+warning:address overlap (..anime_f and ..anime_n section)
+warning:address overlap (..anime_f and ..anime_o section)
+warning:address overlap (..anime_f and ..anime_o.bss section)
+warning:address overlap (..anime_f and ..anime_mario section)
+warning:address overlap (..anime_f and ..anime_virus_b section)
+warning:address overlap (..anime_f and ..anime_virus_b.bss section)
+warning:address overlap (..anime_f and ..anime_virus_r section)
+warning:address overlap (..anime_f and ..anime_virus_r.bss section)
+warning:address overlap (..anime_f and ..anime_virus_y section)
+warning:address overlap (..anime_f and ..anime_virus_y.bss section)
+warning:address overlap (..anime_f and ..anime_smog section)
+warning:address overlap (..anime_f and ..anime_smog.bss section)
+warning:address overlap (..anime_f.bss and ..anime_g section)
+warning:address overlap (..anime_f.bss and ..anime_i section)
+warning:address overlap (..anime_f.bss and ..anime_j section)
+warning:address overlap (..anime_f.bss and ..anime_l section)
+warning:address overlap (..anime_f.bss and ..anime_n section)
+warning:address overlap (..anime_f.bss and ..anime_mario section)
+warning:address overlap (..anime_g and ..anime_h section)
+warning:address overlap (..anime_g and ..anime_h.bss section)
+warning:address overlap (..anime_g and ..anime_i section)
+warning:address overlap (..anime_g and ..anime_i.bss section)
+warning:address overlap (..anime_g and ..anime_j section)
+warning:address overlap (..anime_g and ..anime_j.bss section)
+warning:address overlap (..anime_g and ..anime_k section)
+warning:address overlap (..anime_g and ..anime_k.bss section)
+warning:address overlap (..anime_g and ..anime_l section)
+warning:address overlap (..anime_g and ..anime_l.bss section)
+warning:address overlap (..anime_g and ..anime_m section)
+warning:address overlap (..anime_g and ..anime_m.bss section)
+warning:address overlap (..anime_g and ..anime_n section)
+warning:address overlap (..anime_g and ..anime_n.bss section)
+warning:address overlap (..anime_g and ..anime_o section)
+warning:address overlap (..anime_g and ..anime_o.bss section)
+warning:address overlap (..anime_g and ..anime_mario section)
+warning:address overlap (..anime_g and ..anime_virus_b section)
+warning:address overlap (..anime_g and ..anime_virus_b.bss section)
+warning:address overlap (..anime_g and ..anime_virus_r section)
+warning:address overlap (..anime_g and ..anime_virus_r.bss section)
+warning:address overlap (..anime_g and ..anime_virus_y section)
+warning:address overlap (..anime_g and ..anime_virus_y.bss section)
+warning:address overlap (..anime_g and ..anime_smog section)
+warning:address overlap (..anime_g and ..anime_smog.bss section)
+warning:address overlap (..anime_g.bss and ..anime_mario section)
+warning:address overlap (..anime_h and ..anime_i section)
+warning:address overlap (..anime_h and ..anime_j section)
+warning:address overlap (..anime_h and ..anime_k section)
+warning:address overlap (..anime_h and ..anime_k.bss section)
+warning:address overlap (..anime_h and ..anime_l section)
+warning:address overlap (..anime_h and ..anime_m section)
+warning:address overlap (..anime_h and ..anime_n section)
+warning:address overlap (..anime_h and ..anime_o section)
+warning:address overlap (..anime_h and ..anime_mario section)
+warning:address overlap (..anime_h and ..anime_virus_b section)
+warning:address overlap (..anime_h and ..anime_virus_b.bss section)
+warning:address overlap (..anime_h and ..anime_virus_r section)
+warning:address overlap (..anime_h and ..anime_virus_r.bss section)
+warning:address overlap (..anime_h and ..anime_virus_y section)
+warning:address overlap (..anime_h and ..anime_virus_y.bss section)
+warning:address overlap (..anime_h and ..anime_smog section)
+warning:address overlap (..anime_h and ..anime_smog.bss section)
+warning:address overlap (..anime_h.bss and ..anime_i section)
+warning:address overlap (..anime_h.bss and ..anime_j section)
+warning:address overlap (..anime_h.bss and ..anime_l section)
+warning:address overlap (..anime_h.bss and ..anime_m section)
+warning:address overlap (..anime_h.bss and ..anime_n section)
+warning:address overlap (..anime_h.bss and ..anime_o section)
+warning:address overlap (..anime_h.bss and ..anime_mario section)
+warning:address overlap (..anime_i and ..anime_j section)
+warning:address overlap (..anime_i and ..anime_k section)
+warning:address overlap (..anime_i and ..anime_k.bss section)
+warning:address overlap (..anime_i and ..anime_l section)
+warning:address overlap (..anime_i and ..anime_m section)
+warning:address overlap (..anime_i and ..anime_m.bss section)
+warning:address overlap (..anime_i and ..anime_n section)
+warning:address overlap (..anime_i and ..anime_n.bss section)
+warning:address overlap (..anime_i and ..anime_o section)
+warning:address overlap (..anime_i and ..anime_o.bss section)
+warning:address overlap (..anime_i and ..anime_mario section)
+warning:address overlap (..anime_i and ..anime_virus_b section)
+warning:address overlap (..anime_i and ..anime_virus_b.bss section)
+warning:address overlap (..anime_i and ..anime_virus_r section)
+warning:address overlap (..anime_i and ..anime_virus_r.bss section)
+warning:address overlap (..anime_i and ..anime_virus_y section)
+warning:address overlap (..anime_i and ..anime_virus_y.bss section)
+warning:address overlap (..anime_i and ..anime_smog section)
+warning:address overlap (..anime_i and ..anime_smog.bss section)
+warning:address overlap (..anime_i.bss and ..anime_j section)
+warning:address overlap (..anime_i.bss and ..anime_l section)
+warning:address overlap (..anime_i.bss and ..anime_mario section)
+warning:address overlap (..anime_j and ..anime_k section)
+warning:address overlap (..anime_j and ..anime_k.bss section)
+warning:address overlap (..anime_j and ..anime_l section)
+warning:address overlap (..anime_j and ..anime_m section)
+warning:address overlap (..anime_j and ..anime_m.bss section)
+warning:address overlap (..anime_j and ..anime_n section)
+warning:address overlap (..anime_j and ..anime_n.bss section)
+warning:address overlap (..anime_j and ..anime_o section)
+warning:address overlap (..anime_j and ..anime_o.bss section)
+warning:address overlap (..anime_j and ..anime_mario section)
+warning:address overlap (..anime_j and ..anime_virus_b section)
+warning:address overlap (..anime_j and ..anime_virus_b.bss section)
+warning:address overlap (..anime_j and ..anime_virus_r section)
+warning:address overlap (..anime_j and ..anime_virus_r.bss section)
+warning:address overlap (..anime_j and ..anime_virus_y section)
+warning:address overlap (..anime_j and ..anime_virus_y.bss section)
+warning:address overlap (..anime_j and ..anime_smog section)
+warning:address overlap (..anime_j and ..anime_smog.bss section)
+warning:address overlap (..anime_j.bss and ..anime_l section)
+warning:address overlap (..anime_j.bss and ..anime_mario section)
+warning:address overlap (..anime_k and ..anime_l section)
+warning:address overlap (..anime_k and ..anime_m section)
+warning:address overlap (..anime_k and ..anime_n section)
+warning:address overlap (..anime_k and ..anime_o section)
+warning:address overlap (..anime_k and ..anime_mario section)
+warning:address overlap (..anime_k and ..anime_virus_b section)
+warning:address overlap (..anime_k and ..anime_virus_b.bss section)
+warning:address overlap (..anime_k and ..anime_virus_r section)
+warning:address overlap (..anime_k and ..anime_virus_r.bss section)
+warning:address overlap (..anime_k and ..anime_virus_y section)
+warning:address overlap (..anime_k and ..anime_virus_y.bss section)
+warning:address overlap (..anime_k and ..anime_smog section)
+warning:address overlap (..anime_k and ..anime_smog.bss section)
+warning:address overlap (..anime_k.bss and ..anime_l section)
+warning:address overlap (..anime_k.bss and ..anime_m section)
+warning:address overlap (..anime_k.bss and ..anime_n section)
+warning:address overlap (..anime_k.bss and ..anime_o section)
+warning:address overlap (..anime_k.bss and ..anime_mario section)
+warning:address overlap (..anime_l and ..anime_m section)
+warning:address overlap (..anime_l and ..anime_m.bss section)
+warning:address overlap (..anime_l and ..anime_n section)
+warning:address overlap (..anime_l and ..anime_n.bss section)
+warning:address overlap (..anime_l and ..anime_o section)
+warning:address overlap (..anime_l and ..anime_o.bss section)
+warning:address overlap (..anime_l and ..anime_mario section)
+warning:address overlap (..anime_l and ..anime_virus_b section)
+warning:address overlap (..anime_l and ..anime_virus_b.bss section)
+warning:address overlap (..anime_l and ..anime_virus_r section)
+warning:address overlap (..anime_l and ..anime_virus_r.bss section)
+warning:address overlap (..anime_l and ..anime_virus_y section)
+warning:address overlap (..anime_l and ..anime_virus_y.bss section)
+warning:address overlap (..anime_l and ..anime_smog section)
+warning:address overlap (..anime_l and ..anime_smog.bss section)
+warning:address overlap (..anime_l.bss and ..anime_mario section)
+warning:address overlap (..anime_m and ..anime_n section)
+warning:address overlap (..anime_m and ..anime_mario section)
+warning:address overlap (..anime_m and ..anime_virus_b section)
+warning:address overlap (..anime_m and ..anime_virus_b.bss section)
+warning:address overlap (..anime_m and ..anime_virus_r section)
+warning:address overlap (..anime_m and ..anime_virus_r.bss section)
+warning:address overlap (..anime_m and ..anime_virus_y section)
+warning:address overlap (..anime_m and ..anime_virus_y.bss section)
+warning:address overlap (..anime_m and ..anime_smog section)
+warning:address overlap (..anime_m and ..anime_smog.bss section)
+warning:address overlap (..anime_m.bss and ..anime_n section)
+warning:address overlap (..anime_m.bss and ..anime_mario section)
+warning:address overlap (..anime_n and ..anime_o section)
+warning:address overlap (..anime_n and ..anime_o.bss section)
+warning:address overlap (..anime_n and ..anime_mario section)
+warning:address overlap (..anime_n and ..anime_virus_b section)
+warning:address overlap (..anime_n and ..anime_virus_b.bss section)
+warning:address overlap (..anime_n and ..anime_virus_r section)
+warning:address overlap (..anime_n and ..anime_virus_r.bss section)
+warning:address overlap (..anime_n and ..anime_virus_y section)
+warning:address overlap (..anime_n and ..anime_virus_y.bss section)
+warning:address overlap (..anime_n and ..anime_smog section)
+warning:address overlap (..anime_n and ..anime_smog.bss section)
+warning:address overlap (..anime_n.bss and ..anime_mario section)
+warning:address overlap (..anime_o and ..anime_mario section)
+warning:address overlap (..anime_o and ..anime_virus_b section)
+warning:address overlap (..anime_o and ..anime_virus_b.bss section)
+warning:address overlap (..anime_o and ..anime_virus_r section)
+warning:address overlap (..anime_o and ..anime_virus_r.bss section)
+warning:address overlap (..anime_o and ..anime_virus_y section)
+warning:address overlap (..anime_o and ..anime_virus_y.bss section)
+warning:address overlap (..anime_o and ..anime_smog section)
+warning:address overlap (..anime_o and ..anime_smog.bss section)
+warning:address overlap (..anime_o.bss and ..anime_mario section)
+warning:address overlap (..anime_mario and ..anime_virus_b section)
+warning:address overlap (..anime_mario and ..anime_virus_b.bss section)
+warning:address overlap (..anime_mario and ..anime_virus_r section)
+warning:address overlap (..anime_mario and ..anime_virus_r.bss section)
+warning:address overlap (..anime_mario and ..anime_virus_y section)
+warning:address overlap (..anime_mario and ..anime_virus_y.bss section)
+warning:address overlap (..anime_mario and ..anime_smog section)
+warning:address overlap (..anime_mario and ..anime_smog.bss section)
+warning:address overlap (..anime_virus_b and ..anime_virus_r section)
+warning:address overlap (..anime_virus_b and ..anime_virus_r.bss section)
+warning:address overlap (..anime_virus_b and ..anime_virus_y section)
+warning:address overlap (..anime_virus_b and ..anime_virus_y.bss section)
+warning:address overlap (..anime_virus_b and ..anime_smog section)
+warning:address overlap (..anime_virus_b and ..anime_smog.bss section)
+warning:address overlap (..anime_virus_r and ..anime_smog section)
+warning:address overlap (..anime_virus_r and ..anime_smog.bss section)
+warning:address overlap (..anime_virus_y and ..anime_smog section)
+warning:address overlap (..anime_virus_y and ..anime_smog.bss section)
+lv   = 9 
+in   = 66416 byte
+out  = 14781 byte
+rate = 22
+lv   = 9 
+in   = 24832 byte
+out  = 7177 byte
+rate = 28
+lv   = 9 
+in   = 69616 byte
+out  = 11437 byte
+rate = 16
+lv   = 9 
+in   = 35376 byte
+out  = 8498 byte
+rate = 24
+lv   = 9 
+in   = 41136 byte
+out  = 7483 byte
+rate = 18
+lv   = 9 
+in   = 27728 byte
+out  = 10031 byte
+rate = 36
+lv   = 9 
+in   = 54320 byte
+out  = 9027 byte
+rate = 16
+lv   = 9 
+in   = 22336 byte
+out  = 7256 byte
+rate = 32
+lv   = 9 
+in   = 37792 byte
+out  = 9499 byte
+rate = 25
+lv   = 9 
+in   = 44080 byte
+out  = 7841 byte
+rate = 17
+lv   = 9 
+in   = 20912 byte
+out  = 7020 byte
+rate = 33
+lv   = 9 
+in   = 52432 byte
+out  = 9479 byte
+rate = 18
+lv   = 9 
+in   = 27488 byte
+out  = 8924 byte
+rate = 32
+lv   = 9 
+in   = 36736 byte
+out  = 8168 byte
+rate = 22
+lv   = 9 
+in   = 27488 byte
+out  = 9638 byte
+rate = 35
+lv   = 9 
+in   = 186256 byte
+out  = 48692 byte
+rate = 26
+lv   = 9 
+in   = 7152 byte
+out  = 4943 byte
+rate = 69
+lv   = 9 
+in   = 5536 byte
+out  = 3735 byte
+rate = 67
+lv   = 9 
+in   = 5536 byte
+out  = 3690 byte
+rate = 66
+lv   = 9 
+in   = 4928 byte
+out  = 1534 byte
+rate = 31

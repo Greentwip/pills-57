@@ -1,0 +1,27 @@
+gcc -c -I. -Ic:\ultra/usr/include/PR -Ic:\ultra/usr/include -D_MIPS_SZLONG=32 -D_MIPS_SZINT=32 -G 0 -DF3DEX_GBI_2 -DNDEBUG -D_FINALROM title.c
+In file included from all_model.h:46,
+                 from title.c:78:
+model\beach.nDL:44: `beachsand_a_lut' undeclared here (not in a function)
+model\beach.nDL:44: initializer element for `beach_dl[9].words.w1' is not constant
+model\beach.nDL:45: `beachsand_a_tex' undeclared here (not in a function)
+model\beach.nDL:45: initializer element for `beach_dl[15].words.w1' is not constant
+model\beach.nDL:55: `beachsand_b_lut' undeclared here (not in a function)
+model\beach.nDL:55: initializer element for `beach_dl[29].words.w1' is not constant
+model\beach.nDL:56: `beachsand_b_tex' undeclared here (not in a function)
+model\beach.nDL:56: initializer element for `beach_dl[35].words.w1' is not constant
+model\beach.nDL:60: `beachsand_c_lut' undeclared here (not in a function)
+model\beach.nDL:60: initializer element for `beach_dl[43].words.w1' is not constant
+model\beach.nDL:61: `beachsand_c_tex' undeclared here (not in a function)
+model\beach.nDL:61: initializer element for `beach_dl[49].words.w1' is not constant
+model\beach.nDL:65: `beachsand_d_lut' undeclared here (not in a function)
+model\beach.nDL:65: initializer element for `beach_dl[57].words.w1' is not constant
+model\beach.nDL:66: `beachsand_d_tex' undeclared here (not in a function)
+model\beach.nDL:66: initializer element for `beach_dl[63].words.w1' is not constant
+In file included from all_model.h:127,
+                 from title.c:78:
+model\chair.nDL:32: `chair_lut' undeclared here (not in a function)
+model\chair.nDL:32: initializer element for `chair_dl[9].words.w1' is not constant
+model\chair.nDL:33: `chair_tex' undeclared here (not in a function)
+model\chair.nDL:33: initializer element for `chair_dl[15].words.w1' is not constant
+MAKE.out: *** [title.o] Error 1
+ë±çsÇ∑ÇÈÇ…ÇÕâΩÇ©ÉLÅ[ÇâüÇµÇƒÇ≠ÇæÇ≥Ç¢ . . . 

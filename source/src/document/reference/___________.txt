@@ -1,0 +1,393 @@
+//ﾋﾙﾀﾙﾋ word search
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ aiset.c.h ＶＳーＣＰＵ頭脳
+
+typedef struct {
+	u8	ca;		// 初期左ｶﾌﾟｾﾙ色
+	u8	cb;		//	〃 右　〃
+} AI_NEXT;
+AI_NEXT	aiNext;			// 次ｶﾌﾟｾﾙ色
+
+typedef struct {
+	u8	co;		// 色情報
+	u8	st;		// ｽﾃｰﾀｽ情報
+} AI_FIELD;
+AI_FIELD aiFieldData[][];	// ﾌｨｰﾙﾄﾞ情報
+AI_FIELD aiRecurData[][];	// ﾌｨｰﾙﾄﾞ情報(再帰検索用)
+
+typedef struct {
+	u8	tory;		// 縦/横ﾌﾗｸﾞ
+	u8	x;		// X座標
+	u8	y;		// Y座標
+} AI_EDGE;			// ｶﾌﾟｾﾙ置き場情報
+
+u8	aiTEdgeCnt;		// 縦置き可能ｴｯｼﾞ数
+u8	aiYEdgeCnt;		// 横置き	 〃
+
+typedef struct {
+	u8	ok;		// 移動可能ﾌﾗｸﾞ
+	u8	tory;		// 縦/横ﾌﾗｸﾞ
+	u8	x;		// X座標
+	u8	y;		// Y座標
+	u8	rev;		// 反転ﾌﾗｸﾞ
+	u8  	ccnt;		// 同色数
+	s16	pri;		// 優先度( ﾎﾟｲﾝﾄ計算 )	→この値が一番高い者が優先される。
+	s16	dead;		// 危険度(    ..     )
+	u8	hei[2][8];	// 縦ﾗｲﾝ計測( ﾏｽﾀｰ､ｽﾚｰﾌﾞ )
+	u8	wid[2][8];	// 横  ..   (     ..     )
+	u8	elin[2];	// 消去ﾗｲﾝ合計数( ﾒｲﾝ,ｻﾌﾞ )
+	u8	only[2];	// ﾏｽﾀｰ､ｽﾚｰﾌﾞ単独ﾌﾗｸﾞ
+	u8	sub;		// ｽﾚｰﾌﾞ側は ﾒｲﾝ? ｻﾌﾞ?
+	u8	nouse;		//( 未使用 )
+} AI_FLAG;
+AI_FLAG	aiFlag[100];		// ｶﾌﾟｾﾙが置ける位置の情報、置き場所決定ﾜｰｸ
+
+u8	aiFlagCnt;		// ﾌﾗｸﾞﾃﾞｰﾀ数
+u8	success;		// 経路okﾌﾗｸﾞ
+u8	decide;			// 最終的決定するﾌﾗｸﾞﾃﾞｰﾀ番号
+
+typedef struct {
+	u8	x;
+	u8	y;
+} AI_ROOT;
+AI_ROOT	aiRoot[ROOTCNT];	// 投下ｶﾌﾟｾﾙのﾙｰﾄ
+
+u8	aiRootCnt;		// ﾙｰﾄのｶｳﾝﾀ
+u8	aiFallSp;		// 落下速度
+u8	aiDownSp;		// 下ｷｰ押下時速度
+
+u8	aiKeyCount;
+u8	aiSpeedCnt;
+u8	aiRollCnt;
+u8	aiSpUpFlag;		// ｽﾋﾟｰﾄﾞｱｯﾌﾟするかﾌﾗｸﾞ
+u8	aiSpUpStart;		// ｽﾋﾟｰﾄﾞｱｯﾌﾟするｽﾀｰﾄ位置
+u8	aiSpUpCnt;		// ｽﾋﾟｰﾄﾞｱｯﾌﾟするｶｳﾝﾄ
+u8	vl;			// virus level
+
+u8	aiLinePri[] = {};	// ｘ軸ﾗｲﾝの優先順位
+
+AI_FIELD aif_field[][];		// 画面疑似情報
+u8	hei_data[8];		// ﾀﾃ列ﾁｪｯｸ
+u8	wid_data[8];		// ﾖｺ列ﾁｪｯｸ
+
+s16	bad_point[] = {};	// 自殺行為減算ﾎﾟｲﾝﾄ
+s16	pri_point[] = { 
+	 NULL,	// Erase: Line            -> EraseLinP[x]
+	 30,	// 		  Virus
+	  9,	//        BombCount
+	 NULL,  // No Erase: InLineCount  -> LinesAllp[x]
+//	 30, 	//           Virus
+//	 10, 	//           Virus
+	 15, 	//           Virus
+	 NULL,	//           LineSpace( < 4:BadLine )
+	 NULL,NULL,
+};
+s16	EraseLinP[] = {};	// [LnEraseLin] 消去ﾗｲﾝﾎﾞｰﾅｽ
+s16	LinesAllp[] = {};	// [LnLinesAll] 並びﾗｲﾝﾎﾞｰﾅｽ
+s16	AloneCapP[] = {};	// af->only[]	単独ｶﾌﾟｾﾙ誕生減算ﾎﾟｲﾝﾄ
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ bground1.c オチゲーＢＧ
+
+#include "h_statics/background/bg_1p.h"		// １Ｐ画面ﾃｸｽﾁｬ,TLUT
+#include "h_statics/background/bg_2p.h"		// ２Ｐ ..
+#include "h_statics/background/Bg_4p.h"		// ４Ｐ ..
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ fontmgr.c.h fontwrk.c デバッグフォント作成
+
+u8  FWStringField[][];	// ﾃﾞﾊﾞｯｸﾞﾌｫﾝﾄ作成領域
+u16 TLUT_fontarc[];	// ﾌｫﾝﾄ基本色
+u8  TEX_fontarc_0_0[];	// ﾌｫﾝﾄﾃｸｽﾁｬ 1/2 圧縮ﾃﾞｰﾀ
+uObjTxtr 	uOT_SPBitmap[];	// ﾋﾞｯﾄﾏｯﾌﾟｾｯﾄ
+uObjSprite	uOS_SPString[];	// ｽﾌﾟﾗｲﾄ登録ﾜｰｸ
+FNTCNT		FNT_Control[];	// ﾌｫﾝﾄｺﾝﾄﾛｰﾙﾜｰｸ
+u8		FNT_Number[][];	// ﾌｫﾝﾄﾅﾝﾊﾞｰﾜｰｸ
+u16		fm_uos_cnt;	// ｽﾌﾟﾗｲﾄ構造体ｶｳﾝﾀｰ ( 1ﾌﾚｰﾑ毎ｾﾞﾛｸﾘｱ? )
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ graphic10.c オチゲー描画タスク作成
+PWORK*	gpw;	// graphic10.c 内　１ｐ～４ｐｱﾄﾞﾚｽﾜｰｸ
+
+typedef struct {	// 実領域ｾｸﾞﾒﾝﾄ,ﾃｸｽﾁｬ､TLUTｱﾄﾞﾚｽ
+	int	seg;
+	u8*	tex;
+	u16*	tlut;
+	u16	xpos;
+} BGRES;
+BGRES BGReserve[];
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ joy.c コントローラ（現在、スレッド化していない）
+
+OSContStatus 	 joystt[MAXCONTROLLERS];	 // ｺﾝﾄﾛｰﾗｽﾃｰﾀｽ				
+OSContPad    	 joypad[MAXCONTROLLERS];	 //       ﾃﾞｰﾀ				
+OSContPad   	*joyptr[MAXCONTROLLERS];	 //       ﾃﾞｰﾀﾎﾟｲﾝﾀ			
+u16		 joynew[MAXCONTROLLERS];	 //       最新		* 		
+u16		 joyold[MAXCONTROLLERS];	 //       前回				
+u16		 joyupd[MAXCONTROLLERS];	 //       ﾄﾘｶﾞ		* joy(new,upd,cur)を主に使用する
+u16		 joycur[MAXCONTROLLERS];	 //       ﾀ...ﾀﾀﾀ	*		
+u16		 joyflg[MAXCONTROLLERS];	 // joycur,joycnt 起動ﾄﾘｶﾞ		
+u16		 joycnt[MAXCONTROLLERS][16]; 	 // sabccccudlrzLR 			
+u16		 joystp;			 // ｽﾀｰﾄﾎﾞﾀﾝ pause on/off		
+u16		 joycur1,joycur2;		 // ｶｰｿﾙﾀｲﾐﾝｸﾞ1,2	→ default 12,6 in dr.mario		
+int          	 joynum;			 //       no.(ｲﾝﾃﾞｸｽ)			
+u8		 joygmf[MAXCONTROLLERS];	 // 下記使用ﾌﾗｸﾞ			
+u16		 joygam[MAXCONTROLLERS];	 // ｹﾞｰﾑ用				
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ main.c.h ジェネラル
+
+enum {	// 各ﾒｲﾝ番号
+	MAIN_03,MAIN_10,MAIN_11,MAIN_12,
+	MAIN_20,MAIN_21,
+	MAIN_30,MAIN_31,MAIN_32,
+};
+NNSched sched;	// NNｽﾚｯﾄﾞ構造体
+int	main_no;// ﾒｲﾝ番号
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ main10.c オチゲーメイン
+
+PWORK	*pw;			// １ｐ～４ｐｱﾄﾞﾚｽﾜｰｸ  {
+CONCAP	*caps,*next;		//                     { 総合ﾜｰｸ.txt参照
+BLKCAP	*block;			//                     {
+u8	keepjoy[4];		// ｺﾝﾄﾛｰﾗ関連
+u8	counjoy[4];
+u16	idexjoy[4];
+
+	　★デモデータ作成手順
+	  ￣￣￣￣￣￣￣￣￣￣
+	１．evsworks.h,289: //#define PAD_SEQ_KEEP		→ ｺﾒﾝﾄ"//"をはずす
+	２．evsworks.h 421: //#define DEBUG_ButtonAct_on	→ ｺﾒﾝﾄ"//"をはずす
+	　　（これは、( 1 )１ｐ、２ｐ、４ｐすべてにおいて、次のゲームに進む前のキー受け時に
+	    　U_CBUTTONS を押すとｾﾚｸﾄ画面に戻れるというおいしいﾃﾞﾊﾞｯｸﾞ機能、( 2 )ポーズ時の
+	      キーリピート操作、( 3 ) R_TRIG でゲーム中にＬＥＶＥＬｱｯﾌﾟを行えるようになる。）
+	３．main10.c, aimain31.c evsworks.c main1x.c をコンパイル
+	　（この時点で、リセット後、最後にプレーした内容１ｐ、２ｐ、４ｐがデモになる）
+	４．Partner64 にてオチゲー（１ｐ、２ｐ、４ｐ）をプレイをする。
+	５．気に入ったプレイが終了し、キー受け待ち時に U_CBUTTONS を押す。
+	　　ゲームオーバー時は A_BUTTON。
+	６．タイトル画面まで戻り、L_TRIG を押すと速攻でデモ確認できる。
+	７．オールｏ．ｋ．ならば、まずプログラム停止。
+	８．下記ｺﾏﾝﾄﾞを入力
+		>n10
+		>wr zzCapmag.bin,magkeep,magkeep+3*256
+		>wr zzJoyKeep.bin,joykeep,joykeep+7*2*3600
+		>wr zzViset.bin,viskeep,viskeep+7*2*12*21
+		>wr zzLev.bin,levkeep,levkeep+8*2
+	　　又は、
+	    	><m
+		>dr
+	９．Ｗｉｎｄｏｗｓ上で demoseq.exe 起動
+	０．main10.c コンパイルで、新しいデモの出来上がり
+	１．このままにしておくと、「常時データ更新型」にもなる。
+
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ nnsched.c.h ｎｎスケジューラ
+
+	　★タスクバー起動法
+	  ￣￣￣￣￣￣￣￣￣
+	１．nnsched.h 106: //#define NN_SC_PERF			→ ｺﾒﾝﾄ"//"をはずす
+	２．evsworks.h 421: //#define DEBUG_ButtonAct_on	→ ｺﾒﾝﾄ"//"をはずす
+	３．支障がなければ全コンパイル。あれば #ifdef NN_SC_PERF の行があるすべてのソースを
+	　　コンパイル。
+	４．ゲーム中 R_CBUTTONS でタスクバーの ｏｎ／ｏｆｆが出来る。
+
+
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ spmgr.c.h スプライトマネージャ
+
+#define SPRITE_FREE	640	// sp_freebuf[x]登録総数
+#define	AUTO_PILOT	3	// 一度設定しておけばｵｰﾙｸﾘｱをのぞき勝手に描画する
+#define EndOfData	255
+
+#define SPRITE_PAGE	0
+#define	GROUND_PAGE	3
+#define	AI_SPRITE_PAGE	3
+
+// ANIDAT.procﾌﾗｸﾞ
+enum {
+	ASQ_NORMAL,	// 通常制御
+	ASQ_GOTO,	// ANIDAT.cnt => SEQANI.idx
+	ASQ_END,	// ｼｰｹﾝｽ終了
+};
+// SEQANI.sqeﾌﾗｸﾞ
+enum {
+	SQE_ENDALL,	// すべて終了( SPFREE使用終了 )
+	SQE_ErOBJ,	// ｵﾌﾞｼﾞｪｸﾄを非表示, ｼｰｹﾝｽ終了
+	SQE_StopOBJ,	// ｵﾌﾞｼﾞｪｸﾄを表示したままｼｰｹﾝｽ終了
+};
+// SEQANI.movﾌﾗｸﾞ
+enum {
+	SMV_PIVOT,	// 基準位置
+	SMV_TRANS,	// 現在位置
+	SMV_NOMOVE,	// 動かない
+};
+// ｱﾆﾒｼｰｹﾝｽﾃﾞｰﾀ
+typedef struct {
+	u8	proc;	// 制御番号
+	u8	cnt;	// ﾌﾚｰﾑ数
+	u16*	tlut;	// ﾊﾟﾚｯﾄｱﾄﾞﾚｽ
+	u8*	tex[2];	// ﾃｸｽﾁｬｲﾒｰｼﾞｱﾄﾞﾚｽ
+	u16	tadr[2];// ﾃｸｽﾁｬｱﾄﾞﾚｽ( ﾋﾟｸｾﾙ数 )
+	float	x,y;	// 移動値x,y
+} ANIDAT;
+// ｱﾆﾒｼｰｹﾝｽ処理
+typedef struct {
+	ANIDAT*	ani;	// ｱﾆﾒﾃﾞｰﾀ先頭ｱﾄﾞﾚｽ
+	u8	mov;	// 下記x,yの使用法
+	float	x,y;	// ﾎﾟｼﾞｼｮﾝx,y
+	u8	idx;	// ｱﾆﾒﾃﾞｰﾀｲﾝﾃﾞｸｽ
+	u8	cnt;	// 固定ﾌﾚｰﾑ数
+	u8	spn;	// 使用ｽﾌﾟﾗｲﾄ数( 使用SPFREE数 )
+	u8	sqe;	// 終了時動作
+	u8	pau;	// ﾎﾟｰｽﾞ( ｼｰｹﾝｽｶｳﾝﾄ停止 )
+} SEQANI;
+
+typedef	struct {
+	char	c[16];
+} WRKSPMs08;
+typedef	struct {
+	u8	uc[16];
+} WRKSPMu08;
+typedef	struct {
+	short	s[8];
+} WRKSPMs16;
+typedef	struct {
+	u16	us[8];
+} WRKSPMu16;
+typedef	struct {
+	int	i[4];
+} WRKSPMs32;
+typedef	struct {
+	u32	ui[4];
+} WRKSPMu32;
+typedef	struct {
+	float	f[4];
+} WRKSPMf32;
+typedef union {
+	WRKSPMs08	c;
+	WRKSPMu08	uc;
+	WRKSPMs16	s;
+	WRKSPMu16	us;
+	WRKSPMs32	i;
+	WRKSPMu32	ui;
+	WRKSPMf32	f;
+} WRKSPM;
+
+typedef struct {	// ｽﾌﾟﾗｲﾄ登録ﾜｰｸ
+	u8		flag;		// 使用有無( TRUEorFALSE )
+	u8		wspf;		// ｽﾌﾟﾗｲﾄ描画有無( TRUE,FALSE )
+	SEQANI		sqa;		// ｱﾆﾒｰｼｮﾝｼｰｹﾝｻ(SEQANI.ani == NULLなら起動しない)
+	int		(*func)();	// 起動ﾌﾟﾛｸﾞﾗﾑ
+	void*		fptr0;		//
+	void*		fptr1;		//
+	WRKSPM		work;		// unionﾜｰｸ
+	Gfx*		predl;		// 初期 DL
+	u8		bflg;		// TRUE = 非常駐ｴﾘｱのｶﾗｰﾊﾟﾚｯﾄ
+	u8		page;		// gfx_freebuf[x]
+	uObjTxtr*	tex;		// ﾃｸｽﾁｬﾘｰﾄﾞ
+	u16*		tlut;		// TLUTﾘｰﾄﾞ
+	u16		tsiz;		// TLUTｻｲｽﾞ( 16,256 )
+	u16		tnum;		//  .. ﾊﾟﾚｯﾄ番号
+	uObjSprite	sp;		// ｽﾌﾟﾗｲﾄ設定構造体
+} SPFREE;
+
+SPFREE	sp_freebuf[];	// ｽﾌﾟﾗｲﾄ登録
+int	spm_count;	// 制御ｶｳﾝﾀ
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ sprite.c オチゲースプライトデータ
+
+#include "h_statics/character/items/mitem08r.h"	// 8x8”赤”ｶﾌﾟｾﾙ
+#include "h_statics/character/items/mitem08y.h"	//    ”黄”
+#include "h_statics/character/items/mitem08b.h"	//    ”青”
+#include "h_statics/character/items/mitem10.h"	// 10x10”赤”ｶﾌﾟｾﾙ
+#include "h_statics/character/items/mitem15.h"	//      ”黄”ﾊﾟﾚｯﾄﾃﾞｰﾀのみ
+#include "h_statics/character/items/mitem20.h"	//      ”青”ﾊﾟﾚｯﾄﾃﾞｰﾀのみ
+
+#include "h_statics/character/mario/make1_ha.h"		// ”ゲームオーバー”１上部
+#include "h_statics/character/mario/make1_hb.h"		//         ..        １下部
+#include "h_statics/character/mario/make2_ha.h"		// ”ゲームオーバー”２上部
+#include "h_statics/character/mario/make2_hb.h"		//         ..        ２下部
+#include "h_statics/character/mario/make3_ha.h"		// ”ゲームオーバー”３上部
+#include "h_statics/character/mario/make3_hb.h"		//         ..        ３下部
+#include "h_statics/character/mario/make4_ha.h"		// ”ゲームオーバー”４上部
+#include "h_statics/character/mario/make4_hb.h"		//         ..        ４下部
+#include "h_statics/character/mario/nage_1_ha.h"	// ”ｶﾌﾟｾﾙ投げ”１上部
+#include "h_statics/character/mario/nage_1_hb.h"	//      ..      １下部
+#include "h_statics/character/mario/nage_2_ha.h"	// ”ｶﾌﾟｾﾙ投げ”２上部
+#include "h_statics/character/mario/nage_2_hb.h"	//      ..      ２下部
+#include "h_statics/character/mario/nage_3_ha.h"	// ”ｶﾌﾟｾﾙ投げ”３上部
+#include "h_statics/character/mario/nage_3_hb.h"	//      ..      ３下部
+#include "h_statics/character/mario/back0.h"		// ”マリオ背景”上部
+#include "h_statics/character/mario/back1.h"		//       ..      下部
+#include "h_statics/character/mario/win_1_ha.h"		// ”ｽﾃｰｼﾞｸﾘｱ”１上部
+#include "h_statics/character/mario/win_1_hb.h"		//      ..     １下部
+#include "h_statics/character/mario/win_2_ha.h"		// ”ｽﾃｰｼﾞｸﾘｱ”２上部
+#include "h_statics/character/mario/win_2_hb.h"		//      ..     ２下部
+#include "h_statics/character/mario/win_3_ha.h"		// ”ｽﾃｰｼﾞｸﾘｱ”３上部
+#include "h_statics/character/mario/win_3_hb.h"		//      ..     ３下部
+#include "h_statics/character/mario/win_4_ha.h"		// ”ｽﾃｰｼﾞｸﾘｱ”４上部
+#include "h_statics/character/mario/win_4_hb.h"		//      ..     ４下部
+#include "h_statics/character/mario/win_5_ha.h"		// ”ｽﾃｰｼﾞｸﾘｱ”５上部
+#include "h_statics/character/mario/win_5_hb.h"		//      ..     ５下部
+#include "h_statics/character/mario/wait_1_ha.h"	// ”ポーズ中”１上部
+#include "h_statics/character/mario/wait_1_hb.h"	//     ..      １下部
+#include "h_statics/character/mario/wait_2t_ha.h"	// ”ポーズ中”２上部
+#include "h_statics/character/mario/wait_2t_hb.h"	//     ..      ２下部
+
+#include "h_statics/character/virus/R_1.h"	// 虫眼鏡の赤ｳｲﾙｽ　歩き１
+#include "h_statics/character/virus/R_2.h"	// 　　　　　　　　　　２
+#include "h_statics/character/virus/R_3.h"	// 　　　　　　　　　　３
+#include "h_statics/character/virus/R_D_1.h"	// 　　　　　　　　ジタバタ１
+#include "h_statics/character/virus/R_D_2.h"	// 　　　　　　　　　　　　２
+#include "h_statics/character/virus/R_D_3.h"	// 　　　　　　　　　　　　３
+#include "h_statics/character/virus/R_L_1.h"	// 　　　　　　　　嘲笑１
+#include "h_statics/character/virus/R_L_2.h"	// 　　　　　　　　　　２
+#include "h_statics/character/virus/kie_r.h"	// 　　　　　　　　煙
+#include "h_statics/character/virus/Y_1.h"	// 虫眼鏡の黄ｳｲﾙｽ　歩き１
+#include "h_statics/character/virus/Y_2.h"	// 　　　　　　　　　　２
+#include "h_statics/character/virus/Y_3.h"	// 　　　　　　　　　　３
+#include "h_statics/character/virus/Y_D_1.h"	// 　　　　　　　　ジタバタ１
+#include "h_statics/character/virus/Y_D_2.h"	// 　　　　　　　　　　　　２
+#include "h_statics/character/virus/Y_D_3.h"	// 　　　　　　　　　　　　３
+#include "h_statics/character/virus/Y_L_1.h"	// 　　　　　　　　嘲笑１
+#include "h_statics/character/virus/Y_L_2.h"	// 　　　　　　　　　　２
+#include "h_statics/character/virus/kie_y.h"	// 　　　　　　　　煙
+#include "h_statics/character/virus/B_1.h"	// 虫眼鏡の青ｳｲﾙｽ　歩き１
+#include "h_statics/character/virus/B_2.h"	// 　　　　　　　　　　２
+#include "h_statics/character/virus/B_3.h"	// 　　　　　　　　　　３
+#include "h_statics/character/virus/B_D_1.h"	// 　　　　　　　　ジタバタ１
+#include "h_statics/character/virus/B_D_2.h"	// 　　　　　　　　　　　　２
+#include "h_statics/character/virus/B_D_3.h"	// 　　　　　　　　　　　　３
+#include "h_statics/character/virus/B_L_1.h"	// 　　　　　　　　嘲笑１
+#include "h_statics/character/virus/B_L_2.h"	// 　　　　　　　　　　２
+#include "h_statics/character/virus/kie_b.h"	// 　　　　　　　　煙
+#include "h_statics/character/virus/spot32w.h"	// ｽﾎﾟｯﾄﾗｲﾄ
+
+#include "h_statics/character/items/clown.h"	// 王冠
+
+#include "h_statics/character/items/pause.h"		// ＰＡＵＳＥ
+#include "h_statics/character/items/mes00.h"		// ＳＴＡＧＥ　ＣＬＥＡＲ
+#include "h_statics/character/items/mes01.h"		// ＴＲＹ　ＮＥＸＴ
+#include "h_statics/character/items/mes02.h"		// ＧＡＭＥ　ＯＶＥＲ
+#include "h_statics/character/items/sample2.h"		// ＳＡＭＰＬＥ
+#include "h_statics/character/items/arithmetic.h"	// ０～９
+#include "h_statics/character/items/font_lmh.h"		// ＬＯＷ，ＭＥＤ，ＨＩ
+#include "h_statics/character/items/back_col.h"		// 
+#include "h_statics/character/items/lamp.h"		// ４ｐ対戦用１～４ﾗﾝﾌﾟ
+
+//ﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾋﾙﾀﾙﾋ vr_init.c	オチゲー、ゲーム前初期配置
+static unsigned long mt[N]; 		/* the array for the state vector  */
+static int mti=N+1; 			/* mti==N+1 means mt[N] is not initialized */
+VIBLOCK	viset[PLAYER_MAX][MFy][MFx];	// ﾏﾄﾘｸｽﾌﾞﾛｯｸﾜｰｸ
+
+PWORK	*ipw;
+
+u8	upper_limit_table[] =		// ﾚﾍﾞﾙによるvirus積み込み上限ﾃｰﾌﾞﾙ, max = LEVLIMIT
+	{ 6,6,6,6,6, 6,6,6,6,6, 6,6,6,6,6, 5,5,4,4,3, 3,3,3,3 };
+
+#define		UP_WEIGHT		1		// 上1/3の重み
+#define		MIDDLE_WEIGHT		2		// 中  ..
+#define		LOW_WEIGHT		3		// 下  ..
+
+#define		VIRUS_GETA		1
+
+
+
+
+

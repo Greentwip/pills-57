@@ -1,0 +1,369 @@
+LWSC
+1
+
+FirstFrame 0
+LastFrame 172
+FrameStep 1
+PreviewFirstFrame 0
+PreviewLastFrame 172
+PreviewFrameStep 1
+FramesPerSecond 60.000000
+
+LoadObject C:\dr_mario\eventmotion\model\back.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  3
+  0 120 0 0 0 0 1 1 1
+  0 0 0 0 0
+  0 120 0 0 0 0 1 1 1
+  50 1 0 0 0
+  0 120 0 0 0 0 1 1 1
+  172 0 0 0 0
+EndBehavior 1
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\cloud_a.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  8
+  -100 -100 -10 0 0 0 0.58 0.58 1
+  0 0 0 0 0
+  -100 160 -10 0 0 -3 0.58 0.58 1
+  50 1 0 0 0
+  -100 161.6667 -10 0 0 1 0.58 0.58 1
+  62 1 0 0 0
+  -100 168.3333 -10 0 0 -1 0.58 0.58 1
+  102 1 0 0 0
+  -100 170 -10 0 0 3 0.58 0.58 1
+  112 1 0 0 0
+  -100 169.9074 -10 0 0 -1 0.58 0.58 1
+  122 1 0 0 0
+  -100 161.6667 -10 0 0 1 0.58 0.58 1
+  162 1 0 0 0
+  -100 160 -10 0 0 -3 0.58 0.58 1
+  172 1 0 0 0
+EndBehavior 1
+LockedChannels 54
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\cloud_c.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  9
+  100 -100 -10 0 0 0 0.58 0.58 1
+  0 0 0 0 0
+  100 167.6296 -10 0 0 0 0.58 0.58 1
+  50 1 0 0 0
+  100 164.3334 -10 0 0 1 0.58 0.58 1
+  72 1 0 0 0
+  100 163 -10 0 0 -3 0.58 0.58 1
+  82 1 0 0 0
+  100 164.3334 -10 0 0 1 0.58 0.58 1
+  92 1 0 0 0
+  100 169.6666 -10 0 0 -1 0.58 0.58 1
+  132 1 0 0 0
+  100 171 -10 0 0 3 0.58 0.58 1
+  142 1 0 0 0
+  100 170.9259 -10 0 0 -1 0.58 0.58 1
+  152 1 0 0 0
+  100 167.6297 -10 0 0 0 0.58 0.58 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 6
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\mt_a.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  7
+  0 -100 -20 0 0 0 0.8 0.8 1
+  0 0 0 0 0
+  0 70 -20 0 0 0 0.8 0.8 1
+  40 0 0 0 0
+  0 70 -20 0 0 0 0.8 0.8 1
+  50 1 0 0 0
+  0 65 -20 0 0 0 0.8 0.8 1
+  82 1 0 0 0
+  0 70 -20 0 0 0 0.8 0.8 1
+  112 1 0 0 0
+  0 65 -20 0 0 0 0.8 0.8 1
+  142 1 0 0 0
+  0 70 -20 0 0 0 0.8 0.8 1
+  172 1 0 0 0
+EndBehavior 1
+LockedChannels 325
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\mt_b.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  7
+  65 -100 -20 0 0 0 0.87 0.87 1
+  0 0 0 0 0
+  65 65 -20 0 0 0 0.87 0.87 1
+  40 0 0 0 0
+  65 65 -20 0 0 0 0.87 0.87 1
+  50 1 0 0 0
+  65 68 -20 0 0 0 0.87 0.87 1
+  82 1 0 0 0
+  65 65 -20 0 0 0 0.87 0.87 1
+  112 1 0 0 0
+  65 68 -20 0 0 0 0.87 0.87 1
+  142 1 0 0 0
+  65 65 -20 0 0 0 0.87 0.87 1
+  172 1 0 0 0
+EndBehavior 1
+LockedChannels 4
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\mt_c.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  7
+  -75 -100 -20 0 0 0 1.23 1.23 1
+  0 0 0 0 0
+  -75 68 -20 0 0 0 1.23 1.23 1
+  40 0 0 0 0
+  -75 68 -20 0 0 0 1.23 1.23 1
+  50 1 0 0 0
+  -75 70 -20 0 0 0 1.23 1.23 1
+  82 1 0 0 0
+  -75 68 -20 0 0 0 1.23 1.23 1
+  112 1 0 0 0
+  -75 70 -20 0 0 0 1.23 1.23 1
+  142 1 0 0 0
+  -75 68 -20 0 0 0 1.23 1.23 1
+  172 1 0 0 0
+EndBehavior 1
+LockedChannels 5
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\tree_a.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  -120 -100 -30 0 0 0 0.8 0.66 1
+  0 0 0 0 0
+  -120 72 -30 0 0 0 0.8 0.66 1
+  30 0 0 0 0
+  -120 72 -30 0 0 0 0.8 0.66 1
+  50 1 0 0 0
+  -120 72 -30 0 0 0 0.8 0.66 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 6
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\tree_a.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  130 -100 -30 0 0 0 0.8 0.66 1
+  0 0 0 0 0
+  130 72 -30 0 0 0 0.8 0.66 1
+  30 0 0 0 0
+  130 72 -30 0 0 0 0.8 0.66 1
+  50 1 0 0 0
+  130 72 -30 0 0 0 0.8 0.66 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 6
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\tree_b.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  30 -100 -30 0 0 0 0.6 0.66 1
+  0 0 0 0 0
+  30 70 -30 0 0 0 0.6 0.66 1
+  30 0 0 0 0
+  30 70 -30 0 0 0 0.6 0.66 1
+  50 1 0 0 0
+  30 70 -30 0 0 0 0.6 0.66 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 5
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\grass_a.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  -155 -100 -40 0 0 0 0.94 0.94 1
+  0 0 0 0 0
+  -155 71 -40 0 0 0 0.94 0.94 1
+  20 0 0 0 0
+  -155 71 -40 0 0 0 0.94 0.94 1
+  50 1 0 0 0
+  -155 71 -40 0 0 0 0.94 0.94 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 6
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\grass_a.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  22 -100 -40 0 0 0 0.94 0.94 1
+  0 0 0 0 0
+  22 71 -40 0 0 0 0.94 0.94 1
+  20 0 0 0 0
+  22 71 -40 0 0 0 0.94 0.94 1
+  50 1 0 0 0
+  22 71 -40 0 0 0 0.94 0.94 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 6
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\grass_a.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  145 -100 -40 0 0 0 0.94 0.94 1
+  0 0 0 0 0
+  145 71 -40 0 0 0 0.94 0.94 1
+  20 0 0 0 0
+  145 71 -40 0 0 0 0.94 0.94 1
+  50 1 0 0 0
+  145 71 -40 0 0 0 0.94 0.94 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 6
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\grass_b.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  -91 -100 -40 0 0 0 0.94 0.915 1
+  0 0 0 0 0
+  -91 71 -40 0 0 0 0.94 0.915 1
+  20 0 0 0 0
+  -91 71 -40 0 0 0 0.94 0.915 1
+  50 1 0 0 0
+  -91 71 -40 0 0 0 0.94 0.915 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 4
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\grass_b.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  75 -100 -40 0 0 0 0.94 0.915 1
+  0 0 0 0 0
+  75 71 -40 0 0 0 0.94 0.915 1
+  20 0 0 0 0
+  75 71 -40 0 0 0 0.94 0.915 1
+  50 1 0 0 0
+  75 71 -40 0 0 0 0.94 0.915 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 6
+ShadowOptions 7
+
+LoadObject C:\dr_mario\eventmotion\model\ground.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  4
+  0 -100 -60 0 0 0 1 1 1
+  0 0 0 0 0
+  0 53 -60 0 0 0 1 1 1
+  10 0 0 0 0
+  0 53 -60 0 0 0 1 1 1
+  50 1 0 0 0
+  0 53 -60 0 0 0 1 1 1
+  172 0 0 0 0
+EndBehavior 1
+LockedChannels 5
+ShadowOptions 7
+
+AmbientColor 255 255 255
+AmbIntensity 0.250000
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  3
+  -2 2 -2 45 35 0 1 1 1
+  0 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  50 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  172 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 1
+
+ShowCamera 1 7
+CameraMotion (unnamed)
+  9
+  3
+  0 8.5 -1920 0 0 0 1 1 1
+  0 0 0 0 0
+  0 8.5 -1920 0 0 0 1 1 1
+  50 0 0 0 0
+  0 8.5 -1920 0 0 0 1 1 1
+  172 0 0 0 0
+EndBehavior 1
+ZoomFactor 3.200000
+Resolution 1
+PixelAspectRatio 2
+SegmentMemory 2200000
+Antialiasing 0
+AdaptiveSampling 1
+AdaptiveThreshold 16
+FilmSize 2
+FieldRendering 0
+MotionBlur 0
+DepthOfField 0
+
+SolidBackdrop 1
+BackdropColor 0 0 0
+ZenithColor 0 40 80
+SkyColor 120 180 240
+GroundColor 50 40 30
+NadirColor 100 80 60
+FogType 0
+DitherIntensity 1
+AnimatedDither 0
+
+RenderMode 2
+RayTraceEffects 0
+DataOverlayLabel  
+
+ViewMode 0
+ViewAimpoint -17.500000 120.000000 -100.000000
+ViewDirection -0.113446 -0.134394 0.000000
+ViewZoomFactor 34.786472
+GridNumber 100
+GridSize 500.000000
+ShowMotionPath 1
+ShowBGImage 0
+ShowFogRadius 0
+ShowRedraw 0
+ShowSafeAreas 0
+ShowFieldChart 0

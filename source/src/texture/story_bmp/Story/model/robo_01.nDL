@@ -1,0 +1,51 @@
+/********************************************************************
+  robo_01
+	Vert Count = 10
+	Face Count = 8
+	Min X:   -34	Max X:    35
+	Min Y:   -39	Max Y:    11
+	Min Z:     0	Max Z:     0
+	MaxSize = 39
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int robo_01_box[] = { -34, 35, -39, 11, 0, 0, 39, 0 };
+Vtx robo_01_vtx[] = {
+	{ -20, -2, 0, 0, 3066, 1829, 38, 38, 38, 255 },
+	{ -34, -19, 0, 0, 3927, 888, 38, 38, 38, 255 },
+	{ -23, -32, 0, 0, 3253, 126, 38, 38, 38, 255 },
+	{ 20, -28, 0, 0, 624, 396, 38, 38, 38, 255 },
+	{ 35, -6, 0, 0, -325, 1650, 38, 38, 38, 255 },
+	{ 20, 11, 0, 0, 599, 2590, 38, 38, 38, 255 },
+	{ 11, 7, 0, 0, 1204, 2380, 38, 38, 38, 255 },
+	{ -4, 10, 0, 0, 2128, 2563, 38, 38, 38, 255 },
+	{ -21, -39, 0, 0, 3147, -263, 38, 38, 38, 255 },
+	{ 20, -38, 0, 0, 624, -191, 38, 38, 38, 255 },
+};
+
+
+Gfx robo_01_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:robo_01	Color:robo_1	Tri:8	Vtx:10 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(robo_01_lut),
+	gsDPLoadMultiBlock(robo_01_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 56, 36, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&robo_01_vtx[0], 10, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(6, 7, 0, 1, 6, 0, 2, 0),
+	gsSP2Triangles(3, 5, 6, 0, 8, 9, 3, 1),
+	gsSP2Triangles(2, 8, 3, 0, 6, 2, 3, 0),
+	gsSPEndDisplayList(),
+};

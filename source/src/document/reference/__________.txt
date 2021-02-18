@@ -1,0 +1,331 @@
+
+	スプライトマネージャマスター読本　ひるた(改小倉)
+-------------------------------------------------
+
+  ※ SPFRE* spf; と定義し下記の注釈などで使用されている。
+
+　概念
+　　　スプライト描画、アニメーションを目的とし、各自プログラムを保有することにより
+　　初期設定以降はスプライトマネージャメインにてそれぞれが動き回る、自己消去する、
+　　場合によっては新たなスプライトを登録するといった、オブジェクト指向を考えている。
+
+  スプライトの描画順位
+  　　３ＤのようにＺは存在しない。スプライトの概念どうり、後から書く方が描画プライオリティー
+　　が高く、途中低いプライオリティを高くしたいときは、専用関数にて描画が後になる場所に
+　　データを移す必要が出てくる。
+
+
+
+
+
+	@@@@@@@@@@@@@@@@@@@@@@@@@
+	　Section/1 データ説明
+	@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+   １．ロードテクスチャ登録 ( graphic4p.c 255: uObjTxtr uOT_MBlock4p[] = )
+  ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+typedef struct	{
+	u32		type;	// Type 種別 G_OBJLT_TXTRBLOCK
+	u64		*image; // DRAM 上のテクスチャソースアドレス
+	u16		tmem;	// ロード先の TMEM ワードアドレス (8byteWORD)
+	u16		tsize;	// Texture サイズ		マクロ GS_TB_TSIZE() で指定
+	u16		tline;	// Texture 1 ライン幅	マクロ GS_TB_TLINE() で指定
+	u16		sid;	// Status ID  { 0, 4, 8, 12 } のどれか
+	u32		flag;	// Status flag
+	u32		mask;	// Status mask
+} uObjTxtrBlock_t;	// 24 bytes
+typedef union {
+	uObjTxtrBlock_t block;	// LoadBlock によるテクスチャロードパラメータ
+	uObjTxtrTile_t	tile;	// LoadTile	 によるテクスチャロードパラメータ
+	uObjTxtrTLUT_t	tlut;	// TLUT ロードパラメータ
+	long long int	force_structure_alignment;
+} uObjTxtr;
+
+	※Ｓ２ＤＥＸマイクロコードではおなじみのロードテクスチャ登録データ
+　	  読み込む物は全てあらかじめ登録しておかなければならない。
+	※注意しなくてはならないのは、その登録された状況は、グラフィックタスクが
+	　起動されるまで保持されなくてはならない物だということ。一見同一フレーム内で
+	  使い回しが効きそうなエリアだが、最後に u64* image を指定したアドレスしか
+	  読み込む気がプログラムにはないので、似かよったそれ全て領域取りと設定を
+	  しなくてはならないって事。わかる？
+
+
+   ２．テクスチャ描画 ( spmgr.h 97:	 uObjSprite	sp; )
+  ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~~
+typedef struct {
+	s16 objX;		// s10.2	OBJ 左上端 X 座標
+	u16 scaleW;		// u5.10	幅方向スケーリング
+	u16 imageW;		// u10.5	テクスチャの幅 (S 方向の長さ)
+	u16 paddingX;	// 未使用	常に 0
+	s16 objY;		// s10.2	OBJ 左上端 Y 座標
+	u16 scaleH;		// u5.10	高さ方向スケーリング
+	u16 imageH;		// u10.5	テクスチャの高さ (T 方向の長さ)
+	u16 paddingY;	// 未使用	常に 0
+	u16 imageStride;// テクセルの折り返し幅 (64bit word 単位)
+	u16 imageAdrs;	// TMEM 内のテクスチャ先頭位置 (64bit word 単位)
+	u8	imageFmt;	// テクセルのフォーマット	 G_IM_FMT_*
+	u8	imageSiz;	// テクセルのサイズ			 G_IM_SIZ_*
+	u8	imagePal;	// パレット番号
+	u8	imageFlags; // 表示フラグ
+} uObjSprite_t;		// 24 bytes
+typedef union {
+	uObjSprite_t	s;
+	long long int	force_structure_alignment;
+} uObjSprite;
+
+   ※Ｓ２ＤＥＸマイクロコードではおなじみのテクスチャ登録データ
+   　データに癖があり、とくに .objX,.objYをさわってキャラを移動するとき
+	 めんどくさい。
+
+
+   ３．アニメーションシーケンスデータ
+  ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~
+typedef struct {
+	u8		proc;	// 制御番号
+	u8		cnt;	// そのセルのフレーム数
+	u16*	tlut;	// パレットアドレス
+	u8*		tex[2];	// テクスチャイメージアドレス
+	u16		tadr[2];// テクスチャアドレス( ピクセル数 )
+	float	x,y;	// 移動値ｘ、ｙ
+} ANIDAT;
+
+	※graphic10.c graphic4p.c などで数多く使用されている
+　　　歩くだけとかこまかいデータの集まり
+	※アニメーション全般での決め事に、テクスチャ２枚で１キャラを使ったアニメーション
+	　をサポートできるように開発した。たとえば、６４ｘ６４ｘ２５６は１度に読み込めないから
+	  ２度に分けて読み、アニメ連動させるといったような。但しこの際のスプライトマネージャデータ
+	  は当然２キャラ分使用する。いい例としては graphic10.c 1974: ここでは応援するマリオを描画する
+	  のだが、スプライトマネージャ領域を２つ登録している。
+
+
+   ４．アニメーションシーケンス処理データ( spmgr.h 85:SEQANI sqa; )
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~
+typedef struct {
+	ANIDAT*	ani;	// アニメデータ先頭アドレス
+	u8		mov;	// 下記ｘ，ｙの使用法
+	float	x,y;	// ポジションｘ，ｙ
+	u8		idx;	// アニメデータインデクス
+	u8		cnt;	// 固定フレーム数
+	u8		spn;	// 使用スプライト数（　使用ＳＰＦＲＥＥ数　）
+	u8		sqe;	// 終了時動作
+	u8		pau;	// ポーズ（　シーケンスカウント停止　）
+} SEQANI;
+
+　　※ここで使われているｘ、ｙは、アニメシーケンスを使っていなくても使用するケースがある。
+	　但し変換は spf->sp.s.obj[X,Y] = (u16)spf->sqa.x << 2; などとしている。
+
+
+   ５．スプライトマネージャ構造体( SPFREE  sp_freebuf[] )
+  ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~~~~~
+typedef struct {
+	u8			flag;		// 使用有無( FALSE/TRUE//AUTO_PILOT )
+	u8			wspf;		// スプライト描画有無( TRUE,FALSE )
+	SEQANI		sqa;		// アニメーションシーケンサ(SEQANI.ani == NULLなら起動しない)
+	int			(*func)();	// 起動プログラム
+	void*		fptr0;		//		 ..		 引数１
+	void*		fptr1;		//		 ..		 引数２
+	WRKSPM		work;		// unionワーク
+	Gfx*		predl;		// 初期 DL
+	u8			bflg;		// TRUE = 非常駐エリアのカラーパレット
+	u8			page;		// gfx_freebuf[x]
+	uObjTxtr*	tex;		// テクスチャリード
+	u16*		tlut;		// TLUTリード
+	u16			tsiz;		// TLUTサイズ( 16,256 )
+	u16			tnum;		//	.. パレット番号
+	s8			spmode;		// ｽﾌﾟﾗｲﾄﾓｰﾄﾞ番号(0:gSPObjRectangle､1:gSPObjRectangleR､2:gSPObjSprite)(ogura追加)
+	uObjSprite	sp;			// スプライト設定構造体
+	uObjMtx		spmtx;		// ｽﾌﾟﾗｲﾄﾏﾄﾘｯｸｽ設定構造体(ogura追加)
+} SPFREE;
+
+	※スプライトマネージャ心臓部。汎用的に使われるパターンとしては、
+	　１．描画しっぱなし
+	  ２．描画される物が独自のプログラムを保有し毎フレーム起動する。
+	  ３．アニメーションさせておく。
+	  ４．上記２＋３、独自プログラムがアニメーションを切り替え動き回ったりする。
+	 などがあり、もっとも多いのが４．である。
+
+
+
+
+
+	@@@@@@@@@@@@@@@@@@@@@@
+	  Section/2 関数説明
+	@@@@@@@@@@@@@@@@@@@@@@
+
+   ０． 初期化
+  ~~~~~~~~~~~~~
+void SpmCleaningSPFree()			  / SPFREE* sp_freebuf[SPRITE_FREE] のクリーニング
+
+
+   １． ロードされるテクスチャ、カラーパレットを含めた基本登録関数
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SPFREE*	SpmReserveChara()			  / SpmDownFlagMyFrame()関数を起動すると登録抹消される
+SPFREE*	SpmReserveCharaAP()			  / SpmDownFlagMyFrame()関数を起動しても登録抹消されない
+SPFREE*	SpmReserveCharaAPSetNum()	  / 上記かつ登録する sp_freebuf[x]を指定できる
+
+
+   ２． 描画のみの登録関数
+  ~~~~~~~~~~~~~~~~~~~~~~~~~
+SPFREE*	SpmReserveCharaOnly()		  / SpmDownFlagMyFrame()関数を起動すると登録抹消される
+SPFREE*	SpmReserveCharaOnlyAP()		  / SpmDownFlagMyFrame()関数を起動しても登録抹消されない
+SPFREE*	SpmReserveCharaOnlyAPSetNum() / 上記かつ登録する sp_freebuf[x]を指定できる
+
+　　※この１，２．の関数群では
+	  「毎フレーム呼び出す埋め込み関数とその引数アドレス」
+	  「アニメーションデータポインタ」
+	  が、設定できないので、上記関数で登録後に spf->func = &*** 等という形で登録する。
+	  もちろん何もしなくても描画はする。
+
+
+   ３．アニメーション関数
+  ~~~~~~~~~~~~~~~~~~~~~~~~
+void　　SpmReserveSeqAni()			  / アニメーションシーケンス登録( 初期登録は必ずコレ )
+void　　SpmReserveSeqAniGoGo()		  / 登録して初回データを即実行する
+void　　SpmReserveSeqAniRecycle()	  / シーケンスのみ変更、座標値などは引き継ぐ、実行はしない
+int 　　SpmReserveSeqAniRecycleSafe() / 再登録しようとしているシーケンスアドレスと今登録されているソレが
+									   違うものなら変更する
+int		SpmResSeqAniRecycleSafeGoGo() / 座標値を変えずに、シーケンスが違うなら変更し、初回起動を即実行
+SPFREE*	SpmCleaningSeqAni()			  / アニメーション強制終了
+void　　SpmPauseSeqAniNoWrite()		  / アニメーションポーズかつ描画をｏｆｆ
+void　　SpmEndPauseSeqAni()			  / アニメーションポーズ終了、再度起動
+
+　　※ポーズをかけるだけで描画しておきたい場合は spf->sqa.pau = TRUE するだけ
+
+
+   ４．特殊処理かな
+  ~~~~~~~~~~~~~~~~~~
+SPFREE*	SpmReserveChrLoadChange()	  / テクスチャ，カラーパレットのロードを変更する
+									   ( パラメータ如何では削除にも使える )
+SPFREE*	SpmChangePriority()			  / 現在の sp_freebuf領域からほかの領域へデータ移動
+SPFREE*	SpmUpToPriority()			  / 現在の sp_ferrbuf領域よりも描画順序の遅いほうにデータ移動
+int		SpmSearchFree()				  / 空き sp_freebuf 領域番号をサーチ
+int		SpmBackSearchFree()			  / 上記を逆順から行う
+
+
+   ５．毎フレームメインループなどで呼び出す関数
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void	SpmDownFlagMyFrame()		  / １回描画を登録抹消する
+void	SpmWriteSprite()			  / スプライトマネージャ
+void	SpmWriteSpriteFade()		  / 上記フェードインアウト
+void	SpmGoGoSeqAnima()			  / スプライトマネージャ内にて起動するアニメーションマネージャ
+
+
+   ６．スプライトマトリックス変更関数(ogura追加)
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void	SpmChangeSPMode0()			  / スプライト描画関数にgSPObjRectangle()を使う。（default）
+void	SpmChangeSPMode1()			  / スプライト描画関数にgSPObjRectangleR()を使う。スプライトの中心点をずらしてスケーリング。
+void	SpmChangeSPMode2()			  / スプライト描画関数にgSPObjSprite()を使う。スプライトの中心点をずらして回転拡縮。
+
+
+
+
+
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	  Section/3 登録の仕方サンプル
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+　１．サンプル目的と必要な物
+
+　　　何をするか：　ＵＦＯを３０秒に一回画面上部左側から右側へ飛来させる。( ２パターンアニメーション )
+　　　ヘッダ：　 　 drm5d/h_statics/character/items/ufo0.h ( ufo0.bmp をへんかんさせたもの 32x32x256 )
+　　　		  　 　				   ..				ufo1.h ( ufo1.bmp をへんかんさせたもの 32x32x256 )
+　　　テクスチャ：　u8* TEX_ufo0_0_0[],TEX_ufo1_0_0[];
+　　　パレット：　　u16* TLUT_ufo0[],TLUT_ufo1[];
+
+
+　２．スプライト登録
+
+　　　２．１．sprite.h に下記の４行を加える
+
+　　　　　extern u8* TEX_ufo0_0_0[];
+　　　　　extern u16* TLUT_ufo0[];
+　　　　　extern u8* TEX_ufo1_0_0[];
+　　　　　extern u16* TLUT_ufo1[];
+
+　　　２．２．sprite.c に下記の２行を加える
+
+　　　　　#include h_statics\character\items\ufo0.h
+　　　　　#include h_statics\character\items\ufo1.h
+
+　　　２．３．ＵＦＯを描画するプログラムに下記を加える
+
+　　　　　uObjTxtr uOT_ufo =
+　　　　　{
+　　　　　　　G_OBJLT_TXTRBLOCK, (u64*)&TEX_ufo0_0_0,
+　　　　　　　GS_PIX2TMEM(	0,		G_IM_SIZ_8b),
+　　　　　　　GS_TB_TSIZE( 32*32,	G_IM_SIZ_8b),
+　　　　　　　GS_TB_TLINE( 32,		G_IM_SIZ_8b),
+　　　　　　　0, (u32)&TEX_ufo0_0_0, -1,
+　　　　　};
+
+
+　　３．アニメーションデータを作ろう！
+
+　　　３．１．ＵＦＯを描画するプログラムに下記を加える
+
+		  ANIDAT　dai3syu_sekkinso_gu_[] = {
+　　　　　　　{ ASQ_NORMAL, 8, TLUT_ufo0, TEX_ufo0_0_0, NULL, 0,0, 0,0, },// 上下にふらつく
+　　　　　　　{ ASQ_NORMAL, 8, TLUT_ufo1, TEX_ufo1_0_0, NULL, 0,0, 0,2, },
+　　　　　　　{ ASQ_NORMAL, 8, TLUT_ufo0, TEX_ufo0_0_0, NULL, 0,0, 0,4, },
+　　　　　　　{ ASQ_NORMAL, 8, TLUT_ufo1, TEX_ufo1_0_0, NULL, 0,0, 0,6, },
+			　{ ASQ_GOTO,	0, NULL,NULL,NULL,0,0,0,0, },
+　　　　　};
+
+
+　　４．ＵＦＯを飛ばそう！
+
+　　　４．１．ＵＦＯを描画するプログラムに下記を加える
+
+　　　　　void RunUFO( SPFREE* spf )
+　　　　　{
+　　　　　　　if( !spf->wspf ) {
+　　　　　　　　　spf->work.uc.uc[0] ++;
+　　　　　　　　　if( spf->work.uc.uc[0] >= 30*60 ) {	// ３０秒経ったら飛来開始
+　　　　　　　　　　　SpmReserveSeqAni( spf, dai3syu_sekkinso_gu_, SMV_PIVOT, 0,20, 1, SQE_ErOBJ );	// 高さ20の位置
+　　　　　　　　　　　spf->sqa.x = -32.0;	// スタート位置設定
+　　　　　　　　　　　spf->wspf = TRUE;		// 描画開始
+　　　　　　　　　}
+　　　　　　　}
+　　　　　　　if( spf->wspf ) {
+　　　　　　　　　spf->sqa.x = spf->sqa.x + 3.5;// 1/60毎 3.5ピクセル右に移動
+　　　　　　　　　if( spf->sqa.x >= 320.0 ) {	// 画面外に消えたら終了
+　　　　　　　　　　　SpmCleaningSeqAni(spf);	// この中で spf->wspf = FALSEしている
+　　　　　　　　　　　spf->work.uc.uc[0] = 0;	// ウエイトタイマーリセット
+　　　　　　　　　}
+　　　　　　　}
+　　　　　}
+　　　　　void SetUFO( void )
+　　　　　{
+　　　　　　　SPFREE* spf;
+　　　　　　　spf = SpmReserveCharaAP( &uOT_ufo, NULL, 256, 0, 0,20,
+　　　　　　　　　32,32, 0, G_IM_FMT_CI, G_IM_SIZ_8b, 32, TRUE, SPRITE_PAGE );
+　　　　　　　spf->func = (int(*)())RunUFO;
+　　　　　　　spf->predl = prev_normal_ab_dl;
+　　　　　　　spf->wspf = FALSE;
+　　　　　}
+
+
+　　５．ＵＦＯを登録しよう
+
+　　　５．１．スプライトの初期設定関数内に下記を加える( SetFirstForDraw_Graph4p() など )
+
+　　　　　SetUFO();
+
+
+　　　※関数のキャストも忘れずに。
+
+
+
+
+
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	  Section/E なにかあるか？
+	@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+　　一応こんな感じで作ってみたがいかがでしょうか？　おいおいコレじゃだめだよって言うなら
+  リクエストに応じます。ので、よろしく。
+
+
+
+

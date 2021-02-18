@@ -1,0 +1,17 @@
+
+修正データをお送りいたします。
+お手数ですが更新お願いいたします。
+詳細は以下の通りです。
+
+○データの内容
+
+se.bfx		SoundEffectバイナリデータ
+se.h		SoundEffectヘッダファイル
+drmario.wbk	Sound波形ファイル
+
+
+何か問題などがございましたらご連絡下さい。
+
+Creative section
+
+T's music Co.,ltd.

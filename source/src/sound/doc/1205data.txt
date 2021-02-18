@@ -1,0 +1,19 @@
+
+修正したBGMデータとSEデータをお送りいたします。
+お手数ですが更新お願いいたします。
+詳細は以下の通りです。
+
+○データの内容
+
+Chill.bin	修正
+ChillFF.bin	修正
+
+se.bfx		修正
+se.h		修正
+
+
+何か問題などがございましたらご連絡下さい。
+
+Creative section
+
+T's music Co.,ltd.

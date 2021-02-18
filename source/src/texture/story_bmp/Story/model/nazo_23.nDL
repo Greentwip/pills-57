@@ -1,0 +1,49 @@
+/********************************************************************
+  nazo_23
+	Vert Count = 10
+	Face Count = 8
+	Min X:   -24	Max X:    23
+	Min Y:   -25	Max Y:    25
+	Min Z:     0	Max Z:     0
+	MaxSize = 25
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int nazo_23_box[] = { -24, 23, -25, 25, 0, 0, 25, 0 };
+Vtx nazo_23_vtx[] = {
+	{ -17, -2, 0, 0, 1432, 2510, 38, 38, 38, 255 },
+	{ -24, -22, 0, 0, 99, 2950, 38, 38, 38, 255 },
+	{ 6, -25, 0, 0, -123, 948, 38, 38, 38, 255 },
+	{ 17, 10, 0, 0, 2196, 176, 38, 38, 38, 255 },
+	{ 20, 24, 0, 0, 3096, -17, 38, 38, 38, 255 },
+	{ -8, 25, 0, 0, 3205, 1899, 38, 38, 38, 255 },
+	{ -21, 9, 0, 0, 2153, 2725, 38, 38, 38, 255 },
+	{ 7, -19, 0, 0, 330, 866, 38, 38, 38, 255 },
+	{ 16, -18, 0, 0, 386, 303, 38, 38, 38, 255 },
+	{ 23, 2, 0, 0, 1643, -171, 38, 38, 38, 255 },
+};
+
+
+Gfx nazo_23_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:nazo_23	Color:nazo_23	Tri:8	Vtx:10 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(nazo_23_lut),
+	gsDPLoadMultiBlock(nazo_23_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 48, 42, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&nazo_23_vtx[0], 10, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(3, 5, 6, 2, 3, 6, 0, 0),
+	gsSP2Triangles(7, 8, 9, 2, 7, 9, 3, 0),
+	gsSP2Triangles(0, 2, 7, 0, 7, 3, 0, 0),
+	gsSPEndDisplayList(),
+};

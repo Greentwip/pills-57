@@ -1,0 +1,80 @@
+/********************************************************************
+  title_sdw
+	Vert Count = 24
+	Face Count = 12
+	Min X:  -132	Max X:   132
+	Min Y:   -37	Max Y:    43
+	Min Z:     0	Max Z:     0
+	MaxSize = 132
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int title_sdw_box[] = { -132, 132, -37, 43, 0, 0, 132, 0 };
+Vtx title_sdw_vtx[] = {
+	{ -84, -37, 0, 0, 3072, 0, 0, 0, 0, 255 },
+	{ -84, 43, 0, 0, 3072, 5120, 0, 0, 0, 255 },
+	{ -132, 43, 0, 0, 0, 5120, 0, 0, 0, 255 },
+	{ -132, -37, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ -36, -37, 0, 0, 3072, 0, 0, 0, 0, 255 },
+	{ -36, 43, 0, 0, 3072, 5120, 0, 0, 0, 255 },
+	{ -84, 43, 0, 0, 0, 5120, 0, 0, 0, 255 },
+	{ -84, -37, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ 12, -37, 0, 0, 3072, 0, 0, 0, 0, 255 },
+	{ 12, 43, 0, 0, 3072, 5120, 0, 0, 0, 255 },
+	{ -36, 43, 0, 0, 0, 5120, 0, 0, 0, 255 },
+	{ -36, -37, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ 60, -37, 0, 0, 3072, 0, 0, 0, 0, 255 },
+	{ 60, 43, 0, 0, 3072, 5120, 0, 0, 0, 255 },
+	{ 12, 43, 0, 0, 0, 5120, 0, 0, 0, 255 },
+	{ 12, -37, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ 108, -37, 0, 0, 3072, 0, 0, 0, 0, 255 },
+	{ 108, 43, 0, 0, 3072, 5120, 0, 0, 0, 255 },
+	{ 60, 43, 0, 0, 0, 5120, 0, 0, 0, 255 },
+	{ 60, -37, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ 108, 43, 0, 0, 0, 5120, 0, 0, 0, 255 },
+	{ 108, -37, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ 132, -37, 0, 0, 1536, 0, 0, 0, 0, 255 },
+	{ 132, 43, 0, 0, 1536, 5120, 0, 0, 0, 255 },
+};
+
+Gfx title_sdw_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:title_sdw	Color:title_a	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, TEXEL0, 0, 0, 0, SHADE, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadMultiBlock_4b(title_a_sdw_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 80, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_NONE),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&title_sdw_vtx[0], 24, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+
+/* Group:title_sdw	Color:title_b	Tri:2	Vtx:4 */
+	gsDPLoadMultiBlock_4b(title_b_sdw_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 80, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(4, 5, 6, 2, 6, 7, 4, 1),
+
+/* Group:title_sdw	Color:title_c	Tri:2	Vtx:4 */
+	gsDPLoadMultiBlock_4b(title_c_sdw_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 80, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(8, 9, 10, 2, 10, 11, 8, 1),
+
+/* Group:title_sdw	Color:title_d	Tri:2	Vtx:4 */
+	gsDPLoadMultiBlock_4b(title_d_sdw_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 80, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(12, 13, 14, 2, 14, 15, 12, 1),
+
+/* Group:title_sdw	Color:title_e	Tri:2	Vtx:4 */
+	gsDPLoadMultiBlock_4b(title_e_sdw_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 80, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(16, 17, 18, 2, 18, 19, 16, 1),
+
+/* Group:title_sdw	Color:title_f	Tri:2	Vtx:4 */
+	gsDPLoadMultiBlock_4b(title_f_sdw_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 80, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(20, 21, 22, 2, 22, 23, 20, 1),
+	gsSPEndDisplayList(),
+};

@@ -1,0 +1,57 @@
+/********************************************************************
+  wario_15
+	Vert Count = 14
+	Face Count = 12
+	Min X:   -31	Max X:    22
+	Min Y:   -31	Max Y:    22
+	Min Z:     0	Max Z:     0
+	MaxSize = 31
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int wario_15_box[] = { -31, 22, -31, 22, 0, 0, 31, 0 };
+Vtx wario_15_vtx[] = {
+	{ 22, -5, 0, 0, 1509, 2915, 38, 38, 38, 255 },
+	{ 21, 12, 0, 0, 2566, 2825, 38, 38, 38, 255 },
+	{ 13, 14, 0, 0, 2642, 2365, 38, 38, 38, 255 },
+	{ -24, 6, 0, 0, 2195, 127, 38, 38, 38, 255 },
+	{ -31, -1, 0, 0, 1748, -325, 38, 38, 38, 255 },
+	{ -28, -16, 0, 0, 885, -131, 38, 38, 38, 255 },
+	{ -22, -18, 0, 0, 760, 250, 38, 38, 38, 255 },
+	{ -18, -31, 0, 0, -20, 513, 38, 38, 38, 255 },
+	{ 13, -31, 0, 0, -20, 2352, 38, 38, 38, 255 },
+	{ 22, -16, 0, 0, 901, 2911, 38, 38, 38, 255 },
+	{ 8, 22, 0, 0, 3154, 2041, 38, 38, 38, 255 },
+	{ -18, 21, 0, 0, 3077, 479, 38, 38, 38, 255 },
+	{ -24, 9, 0, 0, 2380, 127, 38, 38, 38, 255 },
+	{ 18, -11, 0, 0, 1185, 2681, 38, 38, 38, 255 },
+};
+
+
+Gfx wario_15_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:wario_15	Color:wario_15	Tri:12	Vtx:14 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(wario_15_lut),
+	gsDPLoadMultiBlock(wario_15_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 48, 42, 0, G_TX_WRAP, G_TX_WRAP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&wario_15_vtx[0], 14, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(6, 7, 8, 2, 6, 8, 9, 2),
+	gsSP2Triangles(10, 11, 12, 2, 3, 5, 6, 0),
+	gsSP2Triangles(3, 6, 9, 0, 2, 10, 12, 0),
+	gsSP2Triangles(13, 0, 2, 0, 2, 12, 3, 0),
+	gsSP2Triangles(13, 2, 3, 0, 9, 13, 3, 0),
+	gsSPEndDisplayList(),
+};

@@ -1,0 +1,1184 @@
+char st_staffroll_txt[] =
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~1"
+//"１２３４５６７８９８７６５４３２１"
+"Dr. Mario Creative Staff~n"
+"~n~2"
+"Original Concept~6~n"
+"Gunpei Yokoi~n"
+"Takahiro Harada~n"
+"~n~3"
+"Game Design~6~n"
+"Hitoshi Yamagami~n"
+"Kazushi Maeda~n"
+"Yohei Fujigawa~n"
+"~n~4"
+"Programmers~6~n"
+"Yasunori Kobayashi~n"
+"Kazunori Hasegawa~n"
+"~n~2"
+"CG Designers~6~n"
+"Yohei Fujigawa~n"
+"Akio Saito~n"
+"Shinichi Takehiro~n"
+"Takehiro Ishikawa~n"
+"Nozomi Kawai~n"
+"Tomoki Oda~n"
+"Toshiyuki Matsuda~n"
+"Yukio Tanaka~n"
+"Toyohide Ando~n"
+"Taichi Sasaki~n"
+"Takatoshi Anbe~n"
+"Tomoaki Yamaguchi~n"
+"~n~3"
+"Art Director~6~n"
+"Toyo Ashida~n"
+"~n~4"
+"Original Character Art~6~n"
+"Yukio Ebisawa~n"
+"Toyo Ashida~n"
+"Hiroshi Takeuchi~n"
+"Ayako Kurada~n"
+"Hatsue Koizumi~n"
+"Mariko Oka~n"
+"~n~2"
+"Character Animation~6~n"
+"Kiyomi Ishiwata~n"
+"Mami Yamaguchi~n"
+"Hatsue Koizumi~n"
+"Hideki Nagamachi~n"
+"Shingo Kuragari~n"
+"Masahito Onoda~n"
+"~n~3"
+"Original Background Art~6~n"
+"Toyo Ashida~n"
+"~n~4"
+"Background Colorist~6~n"
+"Yuki Enatsu~n"
+"~n~2"
+"Package Art~6~n"
+"Sachiko Nakamichi~n"
+"~n~3"
+"Original Sound Composer~6~n"
+"Hirokazu Tanaka~n"
+"~n~4"
+"Sound Composer~6~n"
+"Manabu Fujiki~n"
+"~n~2"
+"Music Composer~6~n"
+"Seiichi Tokunaga~n"
+"~n~3"
+"Debug Staff~6~n"
+"Super Mario Club~n"
+"Hifumi Miyazaki~n"
+"Kayo Komaki~n"
+"Fumiaki Shimada~n"
+"Satomi Hasuike~n"
+"Tomoharu Hizakae~n"
+"Kanako Fujisawa~n"
+"Toshiaki Suzuki~n"
+"Satoru Uno~n"
+"Koichi Torii~n"
+"Tomoko Yuasa~n"
+"Yasunori Shibayama~n"
+"Takahiro Nakamura~n"
+"Kotaro Haneda~n"
+"Shohei Zenjo~n"
+"Yoshihito Tsuji~n"
+"Takahiro Onishi~n"
+"Tatsuro Sawada~n"
+"Takehiko Asaka~n"
+"Tomokazu Suganuma~n"
+"Takuya Inoue~n"
+"~n~4"
+"Special Thanks~6~n"
+"Takehiro Izushi~n"
+"Masao Yamamoto~n"
+"Minoru Arakawa~n"
+"Manabu ''Mike'' Fukuda~n"
+"Sakae Yamazaki~n"
+"Fontworks Japan~n"
+"Nintendo R&D 1~n"
+"Newcom Co., Ltd.~n"
+
+"~n~2"
+"Voice Acting~6~n"
+"Charles Martinet~n"
+"~n~3"
+"Localization~6~n"
+"Tim O'Leary~n"
+"Bill Trinen~n"
+"~n~4"
+"Localization Management~6~n"
+"Jeff Miller~n"
+"Leslie Swan~n"
+"~n~2"
+"Testing and Debug~6~n"
+"Michael Kelbaugh~n"
+"NOA Debug Staff~n"
+
+"~n~3"
+"Assistant~6~n"
+"Azusa Tajima~n"
+"~n~4"
+"Directors~6~n"
+"Hitoshi Yamagami~n"
+"Yoshiyuki Kato~n"
+"~n~2"
+"Producers~6~n"
+"Genyo Takeda~n"
+"Junichi Yakahi~n"
+"~n~4"
+"Created By~n"
+"Nintendo Co., Ltd.~n"
+//"Ｃｒｅａｔｅｄ Ｂｙ~n"
+//"ＮＩＮＴＥＮＤＯ Ｃｏ．，Ｌｔｄ．~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~n"
+"~z";
+
+
+// 0:黒 1:青 2:緑 3:水色 4:赤 5:紫 6:黄 7:白
+
+
+
+//■オープニング－１	マリオ
+//141	(132)
+static	char mes_mo1_1[] =
+"~h~0"
+"Aa...aa..aachoo!~n"
+"Suddenly, flu~n"
+"season has struck!~z";
+
+//415	(132)
+static	char mes_mo1_2[] =
+"~h~0"
+"And so Dr. Mario~n"
+"rushes about, curing~n"
+"patients all day long.~z";
+
+static	ST_MESSAGE mes_mo1_data[] = {
+	{ 2, NULL },
+	{ 100, mes_mo1_1 },
+	{ 415, mes_mo1_2 },
+};
+
+
+
+//■オープニング－１	ワリオ
+//141	(132)
+static	char mes_wo1_1[] =
+"~h~0"
+"Aa...aa..aachoo!~n"
+"Suddenly, flu~n"
+"season has struck!~z";
+
+//414	(132)
+static	char mes_wo1_2[] =
+"~h~0"
+"And so Dr. Mario~n"
+"rushes about, curing~n"
+"patients all day long.~z";
+
+//1092	(150)
+static	char mes_wo1_3[] =
+"~h~0"
+"~6Wario~0: ~6It's-a me,~n"
+"Wario! I'm so bored.~z";
+
+
+static	ST_MESSAGE mes_wo1_data[] = {
+	{ 3, NULL },
+	{  100, mes_wo1_1 },
+	{  414, mes_wo1_2 },
+	{ 1092, mes_wo1_3 },
+};
+
+
+//■オープニング－２	共通
+//0	(150)
+static	char mes_o2_1[] =
+"~h~0"
+"~2Octo~0: ~2Ohhh...~n"
+"My achin' head.~n"
+"Help me out, Doc.~z";
+
+
+//246	(102)
+static	char mes_o2_2[] =
+"~h~0"
+"Can Dr. Mario~n"
+"help poor Octo?~z";
+
+//470	(270)
+static	char mes_o2_3[] =
+"~h~0"
+"He's getting out~n"
+"his Megavitamins.~z";
+
+//680	(270)
+static	char mes_o2_3a[] =
+"~h~0"
+"As long as he's got~n"
+"Megavitamins, he~n"
+"can cure anything.~z";
+
+//1020	(216)
+static	char mes_o2_4[] =
+"~h~0"
+"~6Wario~0: ~6Megavitamins!~n"
+"I'll be rich if I can~n"
+"get my hands on those.~z";
+
+//1400	(84)
+static	char mes_o2_5[] =
+"~h~0"
+"~2Mad Scienstein~0: ~2At~n"
+"last! I know where~n"
+"to get Megavitamins.~z";
+
+static	ST_MESSAGE mes_o2_data[] = {
+	{ 6, NULL },
+	{    1, mes_o2_1 },
+	{  246, mes_o2_2 },
+	{  470, mes_o2_3 },
+	{  680, mes_o2_3a },
+	{ 1020, mes_o2_4 },
+	{ 1400, mes_o2_5 },
+};
+
+
+//■オープニング－３	共通
+//128	(198)
+static	char mes_o3_1[] =
+"~h~0"
+"~5???~0: ~5Just what I've~n"
+"been looking for...~n"
+"Megavitamins.~z";
+
+
+//380	(180)
+static	char mes_o3_2[] =
+"~h~0"
+"~5What are you~n"
+"waiting for? Go~n"
+"and steal them!~z";
+
+static	ST_MESSAGE mes_o3_data[] = {
+	{ 2, NULL },
+	{  128, mes_o3_1 },
+	{  380, mes_o3_2 },
+};
+
+
+
+//■ステージ１	共通
+//101
+static	char mes_01_1[] =
+"~h~0"
+"Dr. Mario returns~n"
+"home to take a~n"
+"well-deserved rest.~z";
+
+//400
+static	char mes_01_2[] =
+"~h~0"
+"But wait, he's leaving~n"
+"again so soon?~z";
+
+//622
+static	char mes_01_3[] =
+"~h~0"
+"Look! Going into~n"
+"Dr. Mario's house...~n"
+"it's Mad Scienstein!~z";
+
+//916
+static	char mes_01_4[] =
+"~h~0"
+"This is terrible!~n"
+"He's stolen the~n"
+"Megavitamins!~z";
+
+//1180
+static	char mes_01_5[] =
+"~h~0"
+"Wario sees him and~n"
+"says: ~6Hold it, you!~n"
+"Those belong to me.~z";
+
+//1877
+static	char mes_01_6[] =
+"~h~0"
+"Dr. Mario is back.~n"
+"What a shock! The~n"
+"Megavitamins are gone.~z";
+
+//2230
+static	char mes_01_7[] =
+"~h~0"
+"Dr. Mario spots Wario~n"
+"and says: ~4Thief! You~n"
+"won't get away!~z";
+
+static	ST_MESSAGE mes_01_data[] = {
+	{ 7, NULL },
+	{  101, mes_01_1 },
+	{  400, mes_01_2 },
+	{  622, mes_01_3 },
+	{  916, mes_01_4 },
+	{ 1180, mes_01_5 },
+	{ 1877, mes_01_6 },
+	{ 2200, mes_01_7 },
+};
+
+
+
+//■ステージ２－１	マリオ
+//0	(78)
+static	char mes_m02a_1[] =
+"~h~0"
+"Dr. Mario stops Wario~n"
+"but finds he doesn't~n"
+"have the Megavitamins.~z";
+
+//204	(168)
+static	char mes_m02a_2[] =
+"~h~0"
+"Hey! There's the~n"
+"thief! He's getting~n"
+"away! After him!~z";
+
+static	ST_MESSAGE mes_m02a_data[] = {
+	{ 2, NULL },
+	{    1, mes_m02a_1 },
+	{  270, mes_m02a_2 },
+};
+
+
+
+//■ステージ２－１	ワリオ
+//0	(84)
+static	char mes_w02a_1[] =
+"~h~0"
+"~6Wario~0: ~6It's not me.~n"
+"I didn't steal the~n"
+"Megavitamins.~z";
+
+//204	(180)
+static	char mes_w02a_2[] =
+"~h~0"
+"~6There! That's him!~n"
+"He's the one. Stop!~n"
+"Those are Wario's!~z";
+
+static	ST_MESSAGE mes_w02a_data[] = {
+	{ 2, NULL },
+	{    1, mes_w02a_1 },
+	{  204, mes_w02a_2 },
+};
+
+
+
+//■ステージ２－２	マリオ
+//60	(54)
+static	char mes_m02b_1[] =
+"~h~0"
+"~2Mad Scienstein~0:~n"
+"~2Here's the plan,~n"
+"pss...pss...pss....~z";
+
+//269	(180)
+static	char mes_m02b_2[] =
+"~h~0"
+"Dr. Mario and Wario~n"
+"chase after the~n"
+"Megavitamins.~z";
+
+//518	(42)
+static	char mes_m02b_3[] =
+"~h~0"
+"~2Mad Scienstein~0:~n"
+"~2So, the rest is~n"
+"up to you!~z";
+
+//692	(210)
+static	char mes_m02b_4[] =
+"~h~0"
+"~2Spearhead~0:~n"
+"~2I won't let you...~z";
+
+//872	(210)
+static	char mes_m02b_5[] =
+"~h~0"
+"POW! Wario runs~n"
+"over him and~n"
+"keeps on going.~z";
+
+//1130	(114)
+static	char mes_m02b_6[] =
+"~h~0"
+"~2Spearhead~0: ~2I...~n"
+"I won't let you~n"
+"take one more step!~z";
+
+static	ST_MESSAGE mes_m02b_data[] = {
+	{ 6, NULL },
+	{   60, mes_m02b_1 },
+	{  250, mes_m02b_2 },
+	{  518, mes_m02b_3 },
+	{  692, mes_m02b_4 },
+	{  872, mes_m02b_5 },
+	{ 1130, mes_m02b_6 },
+};
+
+
+
+//■ステージ２－２	ワリオ
+//0	(270)
+static	char mes_w02b_1[] =
+"~h~0"
+"Mad Scienstein~n"
+"scurries away.~z";
+
+//222	(270)
+static	char mes_w02b_1a[] =
+"~h~0"
+"Wario and Dr. Mario~n"
+"chase after the~n"
+"Megavitamins.~z";
+
+//414	(162)
+static	char mes_w02b_2[] =
+"~h~0"
+"There's a tree and~n"
+"Wario can't stop~n"
+"in time! BAM!~z";
+
+//450	(42)
+static	char mes_w02b_3[] =
+"~h~0"
+"~2Spearhead~0: ~2Get ready.~n"
+"You're going to pay~n"
+"for that mistake!~z";
+
+static	ST_MESSAGE mes_w02b_data[] = {
+	{ 4, NULL },
+	{    1, mes_w02b_1 },
+	{  200, mes_w02b_1a },
+	{  414, mes_w02b_2 },
+	{  684, mes_w02b_3 },
+};
+
+
+
+//■ステージ３	マリオ
+//0	(168)
+static	char mes_m03_1[] =
+"~h~0"
+"The chase continues~n"
+"into the deep, dark~n"
+"forest.~z";
+
+//294	(174)
+static	char mes_m03_2[] =
+"~h~0"
+"This is so creepy.~n"
+"I've got a bad~n"
+"feeling about this.~z";
+
+//594	(42)
+static	char mes_m03_3[] =
+"~h~0"
+"~6Wario~0:~n"
+"~6Yikes!~z";
+
+//750	(222)
+static	char mes_m03_4[] =
+"~h~0"
+"Something slips~n"
+"down from up above.~z";
+
+//732	(108)
+static	char mes_m03_5[] =
+"~h~0"
+"~2Webber~0: ~2Simmer down.~n"
+"You're about to become~n"
+"a nice snack for me!~z";
+
+static	ST_MESSAGE mes_m03_data[] = {
+	{ 5, NULL },
+	{    5, mes_m03_1 },
+	{  294, mes_m03_2 },
+	{  594, mes_m03_3 },
+	{  750, mes_m03_4 },
+	{ 1008-60, mes_m03_5 },
+};
+
+
+
+//■ステージ３	ワリオ
+//0	(204)
+static	char mes_w03_1[] =
+"~h~0"
+"Wario won't stop~n"
+"until he gets those ~n"
+"Megavitamins.~z";
+
+//330	(204)
+static	char mes_w03_2[] =
+"~h~0"
+"Mad Scienstein stops~n"
+"suddenly! Wario slides~n"
+"right by and...~z";
+
+//730	(102)
+static	char mes_w03_3[] =
+"~h~0"
+"~2Webber~0:~n"
+"~2Oh my - you don't~n"
+"look very tasty.~z";
+
+static	ST_MESSAGE mes_w03_data[] = {
+	{ 3, NULL },
+	{    5, mes_w03_1 },
+	{  330, mes_w03_2 },
+	{  730, mes_w03_3 },
+};
+
+
+
+//■ステージ４	マリオ
+//0	(174)
+static	char mes_m04_1[] =
+"~h~0"
+"Silky's out for a nice~n"
+"leisurely crawl...~n"
+"Look out behind you!~z";
+
+//312	(162)
+static	char mes_m04_2[] =
+"~h~0"
+"Go, Silky, go!~n"
+"You'd better get~n"
+"out of the way.~z";
+
+//822	(126)
+static	char mes_m04_3[] =
+"~h~0"
+"Whew, what a shock.~n"
+"Glad to see that~n"
+"you're safe.~z";
+
+//994	(36)
+static	char mes_m04_4[] =
+"~h~0"
+"~2Silky~0: ~2Yikes!~z";
+
+static	ST_MESSAGE mes_m04_data[] = {
+	{ 4, NULL },
+	{    5, mes_m04_1 },
+	{  312, mes_m04_2 },
+	{  800, mes_m04_3 },
+	{ 1000, mes_m04_4 },
+};
+
+
+
+//■ステージ４	ワリオ
+//0	(168)
+static	char mes_w04_1[] =
+"~h~0"
+"Look! It's Appleby.~n"
+"He looks so happy with ~n"
+"his big, shiny apple.~z";
+
+//300	(162)
+static	char mes_w04_2[] =
+"~h~0"
+"Look out! Here~n"
+"they come! What~n"
+"a racket!~z";
+
+//680	(78)
+static	char mes_w04_3[] =
+"~h~0"
+"~2Appleby~0: ~2Hey! ~n"
+"Give me back ~n"
+"my apple!~z";
+
+static	ST_MESSAGE mes_w04_data[] = {
+	{ 3, NULL },
+	{    5, mes_w04_1 },
+	{  300, mes_w04_2 },
+	{  650, mes_w04_3 },
+};
+
+
+
+//■ステージ５	マリオ
+//0	(90)
+static	char mes_m05_1[] =
+"~h~0"
+"A beautiful blue~n"
+"sea lies at the~n"
+"edge of the forest.~z";
+
+//140	(78)
+static	char mes_m05_2[] =
+"~h~0"
+"A coconut ~n"
+"falls from~n"
+"a tree and...~z";
+
+//340	(156)
+static	char mes_m05_3[] =
+"~h~0"
+"Wario gets jabbed~n"
+"and swells up~n"
+"like a big balloon!~z";
+
+//500	(36)
+static	char mes_m05_4[] =
+"~h~0"
+"~2Jellybob~0:~n"
+"~2Shwoooo!~z";
+
+static	ST_MESSAGE mes_m05_data[] = {
+	{ 4, NULL },
+	{    5, mes_m05_1 },
+	{  210, mes_m05_2 },
+	{  400, mes_m05_3 },
+	{  650, mes_m05_4 },
+};
+
+
+
+//■ステージ５	ワリオ
+//0	(90)
+static	char mes_w05_1[] =
+"~h~0"
+"A beautiful blue~n"
+"sea lies at the~n"
+"edge of the forest.~z";
+
+//150	(90)
+static	char mes_w05_2[] =
+"~h~0"
+"Watch out!~n"
+"There goes~n"
+"a coconut!~z";
+
+//291	(156)
+static	char mes_w05_3[] =
+"~h~0"
+"Uh-oh! Something's~n"
+"coming up out of~n"
+"the sea!~z";
+
+//481	(60)
+static	char mes_w05_4[] =
+"~h~0"
+"~2Octo~0: ~2Prepare~n"
+"to be punished!~z";
+
+static	ST_MESSAGE mes_w05_data[] = {
+	{ 4, NULL },
+	{    2, mes_w05_1 },
+	{  150+70, mes_w05_2 },
+	{  426+70, mes_w05_3 },
+	{  666+70, mes_w05_4 },
+};
+
+
+
+//■ステージ６	マリオ
+//0	(186)
+static	char mes_m06_1[] =
+"~h~0"
+"There's a path among~n"
+"the clouds. There~n"
+"goes Mad Scienstein.~z";
+
+//281	(186)
+static	char mes_m06_2[] =
+"~h~0"
+"Wario comes~n"
+"floating by, and~n"
+"Helio pops him!~z";
+
+//650	(78)
+static	char mes_m06_3[] =
+"~h~0"
+"~6Wario~0: ~6Why's this~n"
+"happening to me!?!~z";
+
+//700	(42)
+static	char mes_m06_4[] =
+"~h~0"
+"~2Helio~0: ~2Ha-ha! ~n"
+"And you're next!~z";
+
+static	ST_MESSAGE mes_m06_data[] = {
+	{ 4, NULL },
+	{    5, mes_m06_1 },
+	{  300, mes_m06_2 },
+	{  550, mes_m06_3 },
+	{  670+100, mes_m06_4 },
+};
+
+
+
+//■ステージ６	ワリオ
+//0	(138)
+static	char mes_w06_1[] =
+"~h~0"
+"Zzz...zzz...zzz.~n"
+"It's nap time in~n"
+"the mountains.~z";
+
+//521	(90)
+static	char mes_w06_2[] =
+"~h~0"
+"Look out below!~z";
+
+//671	(36)
+static	char mes_w06_3[] =
+"~h~0"
+"~2Lump~0:~n"
+"~2Ribbit.~z";
+
+static	ST_MESSAGE mes_w06_data[] = {
+	{ 3, NULL },
+	{    5, mes_w06_1 },
+	{  580, mes_w06_2 },
+	{  740, mes_w06_3 },
+};
+
+
+
+//■ステージ７	共通
+//236	(246)
+static	char mes_07_1[] =
+"~h~0"
+"Clank, clank...~n"
+"What an odd noise...~n"
+"This can't be good.~z";
+
+//588	(84)
+static	char mes_07_2[] =
+"~h~0"
+"~2Hammer-Bot~0:~n"
+"~2Intruders detected!~n"
+"Eliminate. Eliminate.~z";
+
+//702	(174)
+static	char mes_07_3[] =
+"~h~0"
+"They all want the~n"
+"Megavitamins. Will~n"
+"anyone survive?~z";
+
+//702	(174)	Easy
+static	char mes_07E_3[] =
+"~h~0"
+"Eliminate? But~n"
+"you've come too~n"
+"far to lose now.~z";
+
+static	ST_MESSAGE mes_07_data[] = {
+	{ 3, NULL },
+	{  236-120, mes_07_1 },
+	{  622-60, mes_07_2 },
+	{  751, mes_07_3 },
+};
+
+static	ST_MESSAGE mes_07E_data[] = {
+	{ 3, NULL },
+	{  236-120, mes_07_1 },
+	{  622-60, mes_07_2 },
+	{  751, mes_07E_3 },
+};
+
+
+
+//■ステージ８ー１	共通
+//101	(186)
+static	char mes_08a_1[] =
+"~h~0"
+"Mad Scienstein is so~n"
+"stubborn. He won't~n"
+"return the vitamins!~z";
+
+static	ST_MESSAGE mes_08a_data[] = {
+	{ 1, NULL },
+	{  101, mes_08a_1 },
+};
+
+
+
+//■ステージ８ー１Easy	共通
+static	char mes_08Ea_1[] =
+"~h~0"
+"Mad Scienstein~n"
+"escapes into the ~n"
+"castle! After him!~z";
+
+static	ST_MESSAGE mes_08Ea_data[] = {
+	{ 1, NULL },
+	{  101, mes_08Ea_1 },
+};
+
+
+
+//■ステージ８－２	共通
+//381	(252)
+static	char mes_08b_1[] =
+"~h~0"
+"Deep into the castle~n"
+"they go. Oh my!~n"
+"It's Rudy!~z";
+
+//659	(198)
+static	char mes_08b_2[] =
+"~h~0"
+"~5Rudy~0: ~5Ha-ha-ha...~n"
+"The Megavitamins~n"
+"are mine!~z";
+
+static	ST_MESSAGE mes_08b_data[] = {
+	{ 2, NULL },
+	{  381, mes_08b_1 },
+	{  659, mes_08b_2 },
+};
+
+
+
+//■ステージ９	マリオ
+//0	(120)
+/*
+	static	char mes_m09_1[] =
+	"~h~0"
+	"どうやら、ナゾのゾウも~n"
+	"かぜだったみたい。~z";
+*/
+//112	(174)
+static	char mes_m09_2[] =
+"~h~0"
+"Is that the end~n"
+"of our story? Wait,~n"
+"here comes Wario.~z";
+
+
+//755	(216)
+static	char mes_m09_3[] =
+"~h~0"
+"Gulp, gulp. Wario~n"
+"has eaten the~n"
+"Megavitamins!~z";
+
+//1010	(72)
+static	char mes_m09_4[] =
+"~h~0"
+"~6Vampire Wario~0:~n"
+"~6Bwaa haa haa.~z";
+
+static	ST_MESSAGE mes_m09_data[] = {
+	{ 3, NULL },
+//	{    5, mes_m09_1 },
+	{  112, mes_m09_2 },
+	{  755, mes_m09_3 },
+	{ 1010, mes_m09_4 },
+};
+
+
+//■ステージ９	ワリオ
+//0	(120)
+/*
+	static	char mes_w09_1[] =
+	"~h~0"
+	"どうやら、ナゾのゾウも~n"
+	"かぜだったみたい。~z";
+*/
+//161	(174)
+static	char mes_w09_2[] =
+"~h~0"
+"Is that the end~n"
+"of our story? Wait,~n"
+"here comes Dr. Mario.~z";
+
+//470	(210)
+static	char mes_w09_3[] =
+"~h~0"
+"Wario is escaping~n"
+"with the Megavitamins.~n"
+"Whoa, he's tripped!~z";
+
+//755	(168)
+static	char mes_w09_4[] =
+"~h~0"
+"Oh no! Dr. Mario's ~n"
+"swallowed them all~n"
+"and he's changing!~z";
+
+static	ST_MESSAGE mes_w09_data[] = {
+	{ 3, NULL },
+//	{    5, mes_w09_1 },
+	{  161, mes_w09_2 },
+	{  470, mes_w09_3 },
+	{  700, mes_w09_4 },
+};
+
+
+
+//■バンパイアワリオなしエンディング（END_mario_a)	マリオ
+//20	(252)	へばっているナゾのゾウ。
+static	char mes_m0e1_1[] =
+"~h~0"
+"Rudy's been defeated~n"
+"and he looks terrible.~n"
+"Aha! He's got a cold.~z";
+
+//380	(186)	ナゾのゾウに薬が効き始める。
+static	char mes_m0e1_2[] =
+"~h~0"
+"If it's a cold, I'll~n"
+"cure him. After all,~n"
+"I'm Dr. Mario.~z";
+
+//700	(168)	風邪が治って喜んでいるナゾのゾウ。
+static	char mes_m0e1_3[] =
+"~h~0"
+"Rudy's all better.~n"
+"Now if he'll just~n"
+"stop stealing!~z";
+
+static	ST_MESSAGE mes_m0e1_data[] = {
+	{ 3, NULL },
+	{   20, mes_m0e1_1 },
+	{  380, mes_m0e1_2 },
+	{  700, mes_m0e1_3 },
+};
+
+
+
+//■バンパイアワリオありエンディング(END_mario_c)	マリオ
+//40	(84)	敗北したワリオ。
+static	char mes_m0e2_1[] =
+"~h~0"
+"~6Wario~0: ~6Darn! I~n"
+"won't forget this!~z";
+
+//360	(78)	ナゾのゾウに語りかけるマッドシタイン。
+static	char mes_m0e2_2[] =
+"~h~0"
+"~2Mad Scienstein~0:~n"
+"~2Master Rudy,~n"
+"be strong!~z";
+
+//480	(54)	弱っているナゾのゾウ。
+static	char mes_m0e2_3[] =
+"~h~0"
+"~5Rudy~0:~n"
+"~5Aaahh, owww...~z";
+
+//650	(72)	ナゾのゾウに語りかけるマッドシタイン。
+static	char mes_m0e2_4[] =
+"~h~0"
+"~2Mad Scienstein~0:~n"
+"~2Oh, how~n"
+"heartrending...~z";
+
+//780	(186)	ナゾのゾウに薬を使おうとするマリオ。
+static	char mes_m0e2_5[] =
+"~h~0"
+"If it's a cold, I'll~n"
+"cure him. After all,~n"
+"I'm Dr. Mario.~z";
+
+//1158	(168)	風邪が治って喜んでいるナゾのゾウ。
+static	char mes_m0e2_6[] =
+"~h~0"
+"Rudy's all better.~n"
+"Now if he'll just~n"
+"stop stealing!~z";
+
+static	ST_MESSAGE mes_m0e2_data[] = {
+	{ 6, NULL },
+	{   40, mes_m0e2_1 },
+	{  360-60, mes_m0e2_2 },
+	{  480, mes_m0e2_3 },
+	{  650, mes_m0e2_4 },
+	{  780, mes_m0e2_5 },
+	{ 1158, mes_m0e2_6 },
+};
+
+
+
+//■エンディング	マリオ
+//0	(90)
+static	char mes_m0e_1[] =
+"~h~0"
+"It's time to go home.~n"
+"Home, sweet home.~z";
+
+//150	(222)
+static	char mes_m0e_2[] =
+"~h~0"
+"Dr. Mario used~n"
+"the Megavitamins to~n"
+"cure everyone.~z";
+
+//432	(60)
+static	char mes_m0e_3[] =
+"~h~0"
+"And they all~n"
+"lived happily~n"
+"ever after."
+"~w3~h~z";
+
+static	ST_MESSAGE mes_m0e_data[] = {
+	{ 3, NULL },
+	{    5, mes_m0e_1 },
+	{  150, mes_m0e_2 },
+	{  432, mes_m0e_3 },
+};
+
+
+
+//■エンディング－１	ワリオ
+//0	(180)
+static	char mes_w0e1_1[] =
+"~h~0"
+"Wario's gotten rid~n"
+"of all obstacles.~n"
+"Look at him grin.~z";
+
+//280	(144)
+static	char mes_w0e1_2[] =
+"~h~0"
+"~6Wario~0: ~6Now the~n"
+"Megavitamins~n"
+"belong to me!~z";
+
+//560	(180)
+static	char mes_w0e1_3[] =
+"~h~0"
+"But nothing's that~n"
+"easy. Mad Scienstein~n"
+"grabs them again.~z";
+
+static	ST_MESSAGE mes_w0e1_data[] = {
+	{ 3, NULL },
+	{    5, mes_w0e1_1 },
+	{  280, mes_w0e1_2 },
+	{  560, mes_w0e1_3 },
+};
+
+
+
+//■エンディング－２	ワリオ
+//0	(174)
+static	char mes_w0e2_1[] =
+"~h~0"
+"And the chase goes~n"
+"on and on. Will~n"
+"it ever end?~z";
+
+//294	(30)
+static	char mes_w0e2_2[] =
+"~h~0"
+"The end."
+"~w3~h~z";
+
+static	ST_MESSAGE mes_w0e2_data[] = {
+	{ 2, NULL },
+	{    5, mes_w0e2_1 },
+	{  294, mes_w0e2_2 },
+};
+
+
+
+// ■エピソード(stage_episode)
+//130	(120)
+static	char mes_ep1[] =
+"~h~0"
+"~5???~0: ~5That's the~n"
+"story, is it...~z";
+
+//380	(168)
+static	char mes_ep2[] =
+"~h~0"
+"~5But they'll never make~n"
+"it this far. Hammer-~n"
+"Bot will stop them.~z";
+
+static	ST_MESSAGE mes_ep_data[] = {
+	{ 2, NULL },
+	{  130, mes_ep1 },
+	{  380, mes_ep2 },
+};
+
+
+
+static	ST_MESSAGE *mes_data[] = {
+mes_mo1_data,	// 0
+mes_wo1_data,	// 1
+mes_o2_data,	// 2
+mes_o3_data,	// 3
+mes_01_data,	// 4
+mes_m02a_data,	// 5
+mes_w02a_data,	// 6
+mes_m02b_data,	// 7
+mes_w02b_data,	// 8
+mes_m03_data,	// 9
+mes_w03_data,	// 10
+mes_m04_data,	// 11
+mes_w04_data,	// 12
+mes_m05_data,	// 13
+mes_w05_data,	// 14
+mes_m06_data,	// 15
+mes_w06_data,	// 16
+mes_07_data,	// 17
+mes_08a_data,	// 18
+mes_08b_data,	// 19
+mes_m09_data,	// 20
+mes_w09_data,	// 21
+mes_m0e_data,	// 22
+mes_w0e1_data,	// 23
+mes_w0e2_data,	// 24
+mes_07E_data,	// 25
+mes_08Ea_data,	// 26
+mes_m0e1_data,	// 27
+mes_m0e2_data,	// 28
+mes_ep_data,	// 29
+};

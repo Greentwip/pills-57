@@ -1,0 +1,5 @@
+AddSegment menu_bg2
+UseSegmentNumber true
+SegmentNumber 5
+SegmentAddress 0x80000000
+AddSource menu_bg2.c

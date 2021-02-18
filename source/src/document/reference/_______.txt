@@ -1,0 +1,138 @@
+
+******************************************** タイトル
+
+******************************************** aiGraphic31.c + aiGraphic31.h
+
+u8 demo_select = GSL_1DEMO;				// 1P/2P/4Pのうち、どのゲームデモが流れていたか、または流すのか．
+u8 global_demo_flag = TRUE;				// TRUE になったらゲームデモへ．
+u32 show_count;							// ﾃﾞﾓ ｼｰｹﾝｽﾃﾞｰﾀｶｳﾝﾀ．シーケンスデータ構造体配列のどこを指しているか．
+uObjTxtr title_tex[TEX_MAX];			// ｵﾌｨｼｬﾙ構造体ﾃｸｽﾁｬﾃﾞｰﾀ．
+
+// 31ﾛｰｶﾙ sprite object.
+typedef struct {
+	SPFREE		*spf;					// 蛭田さんDOC参照
+	uObjTxtr	*tex;					// ｵﾌｨｼｬﾙﾃｸｽﾁｬ構造体ﾎﾟｲﾝﾀ
+	u16			*tlut;					// TLUTﾎﾟｲﾝﾀ
+	u16			tsiz;					// ﾃｸｽﾁｬﾋﾞｯﾄｻｲｽﾞ
+	s16			fx,fy;                  // 表示位置
+	u16			iw,ih;                  // ｲﾒｰｼﾞ位置
+	u8			isiz;                   // ｽﾄﾚｨｼﾞ
+	u16			strd;                   // ｲﾒｰｼﾞｻｲｽﾞ
+	void		*how;                   // 関数ﾎﾟｲﾝﾀ
+
+	Behavior	*content;               // 関数のﾜｰｸ用構造体ﾎﾟｲﾝﾀ
+			typedef struct {
+				s16		chk_a;		// 汎用ワーク集
+				s16		chk_b;
+				u16		wide_cnt;
+				s16		cnt_a;
+				s16		cnt_b;
+				void	*b_data;
+				s16		alpha_cnt;	// 半透明ワーク
+				s8		bright_cnt; // フェードアウト／イン・ワーク
+			}Behavior;
+
+	aiAnime		*movie;                 // ｱﾆﾒ用構造体ﾎﾟｲﾝﾀ(詳細は蛭田さんDOC参照)
+			typedef struct {
+				ANIDAT*	ani;		// ｱﾆﾒﾃﾞｰﾀ先頭ｱﾄﾞﾚｽ
+				u8		mov;		// 下記x,yの使用法
+				float	x,y;		// ﾎﾟｼﾞｼｮﾝx,y
+				u8		idx;		// ｱﾆﾒﾃﾞｰﾀｲﾝﾃﾞｸｽ
+				u8		cnt;		// 固定ﾌﾚｰﾑ数
+				u8		spn;		// 使用ｽﾌﾟﾗｲﾄ数( 使用SPFREE数 )
+				u8		sqe;		// 終了時動作
+			}aiAnime;
+
+	void		*wide_p;                // 汎用ﾎﾟｲﾝﾀ
+}tObjSprite;
+tObjSprite title_spr[OBJ_MAX];			// 31ﾛｰｶﾙ構造体ｽﾌﾟﾗｲﾄﾃﾞｰﾀ．
+
+// 31ﾛｰｶﾙ background.
+typedef struct {
+	u8			*tex;					// テクスチャデータポインタ
+	u16			*tlut;					// TLUTポインタ
+	u16			iw,ih;					// イメージがある位置
+	s16			fx,fy;					// フレーム(描画)位置
+	int			(*how)();				// 関数ポインタ
+	Behavior	*content;				// 汎用ワーク構造体ﾎﾟｲﾝﾀ
+}tObjBg;
+tObjBg title_bg[BG_MAX];				// 31ﾛｰｶﾙ構造体BGﾃﾞｰﾀ．
+
+aiAnime spr_anime[ANIME_MAX];			// 31ﾛｰｶﾙ構造体ｱﾆﾒﾃﾞｰﾀ．tObjSprite構造体メンバのmovieが指す実体
+Behavior obj_move[MOVE_MAX];			// 31ﾛｰｶﾙ構造体汎用ﾃﾞｰﾀ．tObjSprite,tObjBg構造体メンバのcontentが指す実体
+
+// show. ｼｰｹﾝｽﾃﾞｰﾀ．
+typedef struct {
+	u16		interval;					// シーケンスデータを実行するまでのインターバル
+	u8		obj_num;					// (0-2:BG 3-10:SP)
+	u8		mode;						// aiAnime or Behavior(ANIME/BEHAVIOR)
+	void	*prog;						// func(BEHAVIOR) or NULL pointer(ANIME)
+	void	*data;						// Behavior or aiAnime pointer
+	void	*b_data;					// 汎用(未使用が多い)
+	s16		chk_a;						// Behaviorメンバに入れる初期値
+	s16		chk_b;
+	u16		wide_cnt;
+	s16		cnt_a;
+	s16		cnt_b;
+	s16		alpha_cnt;					// 半透明カウンタに入れるデータ
+	s8		bright_cnt;					// ﾌｪｰﾄﾞカウンタに入れるデータ
+}ShowST;
+ShowST title_show[SHOW_PROG_MAX];		// ﾃﾞﾓ ｼｰｹﾝｽﾃﾞｰﾀ．
+
+void title_init();
+										// すべてのイニシャライズ
+void title_last_show( u8 * );
+										// 未使用...プロトタイプだけ存在する謎の宣言...
+
+void tex_input( uObjTxtr *, u32, u64 *, u16, u16, u16, u16, u32, u32 );
+										// テクスチャデータに初期データを入れる関数．
+
+void spr_input( tObjSprite *, uObjTxtr *, u16 *, u16, s16, s16, u16, u16, u16, u8, void *, Behavior *, aiAnime *, void *wide_p );
+										// ｽﾌﾟﾗｲﾄ構造体にデータを入れる関数
+
+void bg_input( tObjBg *, u8 *, u16 *, u16, u16, s16, s16, int *, Behavior * );
+										// ＢＧ構造体にデータを入れる関数
+
+void show_input( u16, u8, u8, void *, void *, void *, s16, s16, u16, s16, s16, s16, s8 );
+										// タイトルデモシーケンスデータ配列に初期データを入れる
+
+void content_input( Behavior *, s16, s16, u16, s16, s16, void *, s16, s8 );
+										// Behavior構造体にデータを入れる．
+
+
+
+******************************************* aiGraphic31.c + aiGraphic31.h
+
+// アニメデータ
+ANIDAT op_mario_wait[] = {		// 待ち状態
+ANIDAT op_mario_look[] = {		// 見上げる
+ANIDAT op_mario_slip[] = {		// 苔
+ANIDAT op_mario_down[] = {		// 倒れる
+ANIDAT op_mario_up[] = {		// 起きあがり
+ANIDAT op_mario_kaku[] = {		// 頭かく
+ANIDAT	virus_r_up[] = {		// ｳｨﾙｽﾚｯﾄﾞ起き上がり
+ANIDAT	virus_y_up[] = {		// ｳｨﾙｽｲｴﾛｰ起き上がり
+ANIDAT	virus_b_up[] = {		// ｳｨﾙｽﾌﾞﾙｰ起き上がり
+
+void bg_t2u_set( uObjBg *, tObjBg * );			// tObjBg -> uObjBg へﾃﾞｰﾀを受け渡す
+void ai_alpha_blending( SPFREE *, s16 * );		// 半透明 DL
+u16* bright_fade_out( u16, u16 *, s8 *, SPFREE * );	// ﾌｪｰﾄﾞｱｳﾄ関数のｺｱ
+
+// 以下、Behavior構造体メンバの関数ポインタで呼ばれる関数群
+extern void do_bg_trans( uObjBg *, tObjBg *, Behavior * );			// ＢＧの移動
+extern void do_bg_vibrate( uObjBg *, tObjBg *, Behavior * );		// ＢＧの上下振動
+extern void do_sp_trans( SPFREE *, tObjSprite *, Behavior * );		// スプライトの移動
+extern void do_bg_color( uObjBg *, tObjBg *, Behavior * );			// ＢＧのカラー演出(黄色の明滅)
+extern void do_sp_color16( SPFREE *, tObjSprite *, Behavior * );	// １６色スプライトのカラー演出(パレットアニメ)
+extern void do_virus_trans( SPFREE *, tObjSprite *, Behavior * );	// ウィルスの移動(速度が遅い)
+extern void do_sound_go( SPFREE *, tObjSprite *, Behavior * );		// 効果音を鳴らす
+extern void do_bg_set( uObjBg *, tObjBg *, Behavior * );			// ＢＧの描画位置をリ・セットする
+extern void do_sp_set( SPFREE *, tObjSprite *, Behavior * );		// スプライトの描画位置リ・セットする．
+
+extern void do_btn_pop( SPFREE *, tObjSprite *, Behavior * );		// 未使用 extern.
+extern void do_btn_scale( SPFREE *, tObjSprite *, Behavior * );		// ボタンの拡縮演出用
+extern void ai_alpha_blending( SPFREE *, s16 * );					// 半透明専用の関数(動的ＤＬ)
+extern void do_sp_fadeout( SPFREE *, tObjSprite *, Behavior * );	// スプライトのフェードアウト(bright_fade_outを呼び出し)
+extern void do_bg_fadeout( uObjBg *, tObjBg *, Behavior * );		// ＢＧのフェードアウト(bright_fade_outを呼び出し)
+extern void do_titlebg_fadeout( uObjBg *, tObjBg *, Behavior * );	// 最背面ＢＧ専用のフェードアウト(bright_fade_outを呼び出し)
+

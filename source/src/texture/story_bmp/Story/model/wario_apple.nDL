@@ -1,0 +1,66 @@
+/********************************************************************
+  wario_apple
+	Vert Count = 20
+	Face Count = 18
+	Min X:   -23	Max X:    23
+	Min Y:   -24	Max Y:    24
+	Min Z:     0	Max Z:     0
+	MaxSize = 24
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int wario_apple_box[] = { -23, 23, -24, 24, 0, 0, 24, 0 };
+Vtx wario_apple_vtx[] = {
+	{ 22, -8, 0, 0, 2602, 1121, 38, 38, 38, 255 },
+	{ 8, -23, 0, 0, 1748, 148, 38, 38, 38, 255 },
+	{ 22, -19, 0, 0, 2602, 408, 38, 38, 38, 255 },
+	{ 15, 16, 0, 0, 2175, 2678, 38, 38, 38, 255 },
+	{ 23, 14, 0, 0, 2663, 2548, 38, 38, 38, 255 },
+	{ 18, 18, 0, 0, 2358, 2807, 38, 38, 38, 255 },
+	{ 22, 2, 0, 0, 2602, 1770, 38, 38, 38, 255 },
+	{ 0, -19, 0, 0, 1260, 408, 38, 38, 38, 255 },
+	{ -15, -24, 0, 0, 345, 83, 38, 38, 38, 255 },
+	{ -22, -10, 0, 0, -82, 991, 38, 38, 38, 255 },
+	{ -22, -18, 0, 0, -82, 473, 38, 38, 38, 255 },
+	{ -6, -24, 0, 0, 894, 83, 38, 38, 38, 255 },
+	{ -23, -5, 0, 0, -143, 1316, 38, 38, 38, 255 },
+	{ -18, 8, 0, 0, 162, 2159, 38, 38, 38, 255 },
+	{ -23, 3, 0, 0, -143, 1834, 38, 38, 38, 255 },
+	{ -7, 24, 0, 0, 833, 3196, 38, 38, 38, 255 },
+	{ 7, 24, 0, 0, 1687, 3196, 38, 38, 38, 255 },
+	{ -18, 15, 0, 0, 162, 2613, 38, 38, 38, 255 },
+	{ -20, -7, 0, 0, 40, 1186, 38, 38, 38, 255 },
+	{ 19, -5, 0, 0, 2419, 1316, 38, 38, 38, 255 },
+};
+
+
+Gfx wario_apple_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:wario_apple	Color:wario_apple	Tri:18	Vtx:20 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadTLUT_pal256(wario_apple_lut),
+	gsDPLoadMultiBlock(wario_apple_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 51, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&wario_apple_vtx[0], 20, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(3, 6, 4, 1, 0, 7, 1, 1),
+	gsSP2Triangles(8, 9, 10, 2, 11, 9, 8, 0),
+	gsSP2Triangles(7, 9, 11, 0, 0, 9, 7, 0),
+	gsSP2Triangles(12, 13, 14, 2, 15, 3, 16, 2),
+	gsSP2Triangles(17, 3, 15, 0, 17, 6, 3, 0),
+	gsSP2Triangles(18, 13, 12, 0, 17, 19, 6, 1),
+	gsSP2Triangles(13, 19, 17, 0, 19, 9, 0, 0),
+	gsSP2Triangles(19, 18, 9, 0, 18, 19, 13, 0),
+	gsSPEndDisplayList(),
+};

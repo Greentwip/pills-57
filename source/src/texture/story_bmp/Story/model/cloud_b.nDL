@@ -1,0 +1,51 @@
+/********************************************************************
+  cloud_b
+	Vert Count = 8
+	Face Count = 4
+	Min X:   -31	Max X:    33
+	Min Y:   -20	Max Y:    20
+	Min Z:     0	Max Z:     0
+	MaxSize = 33
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int cloud_b_box[] = { -31, 33, -20, 20, 0, 0, 33, 0 };
+Vtx cloud_b_vtx[] = {
+	{ 1, 20, 0, 0, 2528, 3200, 38, 38, 38, 255 },
+	{ -31, 20, 0, 0, 0, 3200, 38, 38, 38, 255 },
+	{ -31, -20, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 1, -20, 0, 0, 2528, 0, 38, 38, 38, 255 },
+	{ 1, -20, 0, 0, 0, 0, 38, 38, 38, 255 },
+	{ 33, -20, 0, 0, 2528, 0, 38, 38, 38, 255 },
+	{ 33, 20, 0, 0, 2528, 3200, 38, 38, 38, 255 },
+	{ 1, 20, 0, 0, 0, 3200, 38, 38, 38, 255 },
+};
+
+
+Gfx cloud_b_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:cloud_b	Color:cloud_b1	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal16(0, cloud_b1_lut),
+	gsDPLoadMultiBlock_4b(cloud_b1_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 48, 50, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&cloud_b_vtx[0], 8, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+
+/* Group:cloud_b	Color:cloud_b2	Tri:2	Vtx:4 */
+	gsDPLoadTLUT_pal16(0, cloud_b2_lut),
+	gsDPLoadMultiBlock_4b(cloud_b2_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, 48, 50, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(4, 5, 6, 2, 6, 7, 4, 1),
+	gsSPEndDisplayList(),
+};

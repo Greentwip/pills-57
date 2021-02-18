@@ -1,0 +1,59 @@
+/********************************************************************
+  mad_29b
+	Vert Count = 13
+	Face Count = 9
+	Min X:   -26	Max X:    26
+	Min Y:    -5	Max Y:    54
+	Min Z:    -4	Max Z:    -4
+	MaxSize = 54
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mad_29b_box[] = { -26, 26, -5, 54, -4, -4, 54, 0 };
+Vtx mad_29b_vtx[] = {
+	{ 16, 24, -4, 0, 777, -4, 38, 38, 38, 255 },
+	{ 24, 44, -4, 0, 277, 1352, 38, 38, 38, 255 },
+	{ 7, 53, -4, 0, 1384, 1994, 38, 38, 38, 255 },
+	{ -9, 54, -4, 0, 2387, 2077, 38, 38, 38, 255 },
+	{ -22, 46, -4, 0, 3242, 1488, 38, 38, 38, 255 },
+	{ -21, 24, -4, 0, 3185, -31, 38, 38, 38, 255 },
+	{ -3, -3, -4, 0, 2005, 556, 38, 38, 38, 255 },
+	{ 21, -5, -4, 0, 377, 409, 38, 38, 38, 255 },
+	{ 26, 15, -4, 0, 20, 1749, 38, 38, 38, 255 },
+	{ -26, 16, -4, 0, 3509, 1808, 38, 38, 38, 255 },
+	{ -19, -5, -4, 0, 3044, 428, 38, 38, 38, 255 },
+	{ 16, 24, -4, 0, 705, 2318, 38, 38, 38, 255 },
+	{ -21, 24, -4, 0, 3226, 2293, 38, 38, 38, 255 },
+};
+
+
+Gfx mad_29b_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mad_29b	Color:mad_29_a	Tri:4	Vtx:6 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(mad_29_a_lut),
+	gsDPLoadMultiBlock(mad_29_a_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 56, 36, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mad_29b_vtx[0], 13, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(2, 3, 5, 0, 0, 2, 5, 0),
+
+/* Group:mad_29b	Color:mad_29_b	Tri:5	Vtx:7 */
+	gsDPLoadTLUT_pal256(mad_29_b_lut),
+	gsDPLoadMultiBlock(mad_29_b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 56, 36, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsSP2Triangles(6, 7, 8, 2, 9, 10, 6, 1),
+	gsSP2Triangles(9, 6, 8, 0, 11, 12, 9, 1),
+	gsSP1Triangle(8, 11, 9, 0),
+	gsSPEndDisplayList(),
+};

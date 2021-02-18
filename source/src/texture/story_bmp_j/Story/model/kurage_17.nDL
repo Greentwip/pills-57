@@ -1,0 +1,59 @@
+/********************************************************************
+  kurage_17
+	Vert Count = 15
+	Face Count = 13
+	Min X:   -28	Max X:    30
+	Min Y:   -28	Max Y:    37
+	Min Z:     0	Max Z:     0
+	MaxSize = 37
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int kurage_17_box[] = { -28, 30, -28, 37, 0, 0, 37, 0 };
+Vtx kurage_17_vtx[] = {
+	{ 19, -16, 0, 0, 484, 448, 38, 38, 38, 255 },
+	{ 30, -10, 0, 0, -85, 713, 38, 38, 38, 255 },
+	{ 21, 8, 0, 0, 371, 1622, 38, 38, 38, 255 },
+	{ -20, -11, 0, 0, 2623, 674, 38, 38, 38, 255 },
+	{ -25, -20, 0, 0, 2894, 232, 38, 38, 38, 255 },
+	{ -5, -27, 0, 0, 1771, -117, 38, 38, 38, 255 },
+	{ 0, -22, 0, 0, 1506, 130, 38, 38, 38, 255 },
+	{ 15, -28, 0, 0, 701, -158, 38, 38, 38, 255 },
+	{ -5, 21, 0, 0, 1816, 2294, 38, 38, 38, 255 },
+	{ -20, 31, 0, 0, 2618, 2792, 38, 38, 38, 255 },
+	{ -22, 11, 0, 0, 2707, 1795, 38, 38, 38, 255 },
+	{ 24, 26, 0, 0, 208, 2531, 38, 38, 38, 255 },
+	{ 9, 22, 0, 0, 1016, 2343, 38, 38, 38, 255 },
+	{ -28, -4, 0, 0, 3032, 1008, 38, 38, 38, 255 },
+	{ 4, 37, 0, 0, 1279, 3079, 38, 38, 38, 255 },
+};
+
+
+Gfx kurage_17_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:kurage_17	Color:kurage_17	Tri:13	Vtx:15 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(kurage_17_lut),
+	gsDPLoadMultiBlock(kurage_17_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 48, 42, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&kurage_17_vtx[0], 15, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(6, 7, 0, 1, 8, 9, 10, 2),
+	gsSP2Triangles(6, 0, 2, 0, 2, 11, 12, 2),
+	gsSP2Triangles(10, 13, 3, 1, 8, 10, 3, 0),
+	gsSP2Triangles(8, 3, 5, 0, 12, 14, 8, 1),
+	gsSP2Triangles(6, 2, 12, 0, 6, 12, 8, 0),
+	gsSP1Triangle(5, 6, 8, 0),
+	gsSPEndDisplayList(),
+};

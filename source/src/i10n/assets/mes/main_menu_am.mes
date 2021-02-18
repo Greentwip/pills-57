@@ -1,0 +1,578 @@
+// 0:黒 1:青 2:緑 3:水色 4:赤 5:紫 6:黄 7:白
+
+
+//////////////////////////////////////////////////////////////////////////////
+// ●モードセレクト
+// ・ひとりであそぶ
+static const char _mesP1[]=
+	"This is the~n"
+	"one-player mode.~z";
+
+// ・ふたりであそぶ
+static const char _mes2P[]=
+	"This is the~n"
+	"two-player mode.~z";
+
+// ・みんなであそぶ
+static const char _mes4P[]=
+	"This is the~n"
+	"multiplayer mode~n"
+	"for up to~n"
+	"four players.~z";
+
+// ・オプション
+static const char _mesOpt[]=
+	"Various setups~n"
+	"and options are~n"
+	"available here.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●ひとりであそぶ用モードセレクト
+
+// ・おはなし
+static const char _mesSt[]=
+	"The thrilling tale~n"
+	"of Dr. Mario and~n"
+	"the Cold Caper.~w2~h"
+
+	"Force your foe to~n"
+	"retire by sending~n"
+	"them garbage~w2~h"
+
+	"or destroy all~n"
+	"of your own~n"
+	"viruses to win.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・オリジナル
+static const char _mesLv[]=
+	"Continue playing~n"
+	"until you fail~n"
+	"to clear a stage.~w2~h"
+
+	"Destroy all the~n"
+	"viruses to clear~n"
+	"a stage.~w2~h"
+
+	"The higher the~n"
+	"level, the more~n"
+	"viruses you have~n"
+	"to destroy.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・ＶＳＣＯＭ
+static const char _mesVsCom[]=
+	"This is your~n"
+	"chance to play~n"
+	"against the~n"
+	"computer.~w2~h"
+
+	"Play against~n"
+	"any character~n"
+	"you'd like.~w2~h"
+
+	"Force your foe to~n"
+	"retire by sending~n"
+	"them garbage~w2~h"
+
+	"or destroy all~n"
+	"of your own~n"
+	"viruses to win.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・フラッシュ
+static const char _mesVcFlash[]=
+	"Clear levels by~n"
+	"destroying the~n"
+	"flashing viruses.~w2~h"
+
+	"Play against~n"
+	"any character~n"
+	"you'd like.~w2~h"
+
+	"Force your foe to~n"
+	"retire by sending~n"
+	"them garbage~w2~h"
+
+	"or destroy all~n"
+	"of your own~n"
+	"viruses to win.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・たいきゅう
+static const char _mesLvTaiQ[]=
+	"Viruses multiply~n"
+	"rapidly in this~n"
+	"mode.~w2~h"
+
+	"Completing combos~n"
+	"will slow down~n"
+	"the speed of the~n"
+	"virus growth.~w2~h"
+
+	"Destroy the~n"
+	"viruses to keep~n"
+	"the bottle clear.~w2~h"
+
+	"Press the L Button~n"
+	"to speed up the~n"
+	"multiplication~n"
+	"of the viruses.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・スコアアタック
+static const char _mesLvTimeAt[]=
+	"Try to get the~n"
+	"highest score~n"
+	"possible in a set~n"
+	"amount of time.~w2~h"
+
+	"Aim for a high~n"
+	"score by~n"
+	"destroying many~n"
+	"viruses at once.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●名前セレクト（ゲーム）
+
+static const char _mesNs1[]=
+	"Please input~n"
+	"your name.~w2~h"
+
+	"Please select NEW~n"
+	"or GUEST if this~n"
+	"is your first~n"
+	"time playing.~w2~h~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●名前セレクト（オプション）
+
+static const char _mesNs2[]=
+	"Please input~n"
+	"your name.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●ふたりであそぶ用モードセレクト
+
+// ・ＶＳ２Ｐ
+static const char _mesVsMan[]=
+	"Compete against~n"
+	"another player.~w2~h"
+
+	"Force your foe to~n"
+	"retire by sending~n"
+	"them garbage~w2~h"
+
+	"or destroy all~n"
+	"of your own~n"
+	"viruses to win.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・フラッシュ
+static const char _mesVmFlash[]=
+	"Clear levels~n"
+	"by destroying the~n"
+	"flashing viruses.~w2~h"
+
+	"Clear combos to~n"
+	"send garbage to~n"
+	"your opponent.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・スコアアタック
+static const char _mesVmTimeAt[]=
+	"Try to get the~n"
+	"highest score~n"
+	"possible in a set~n"
+	"amount of time.~w2~h"
+
+	"Aim for a high~n"
+	"score by~n"
+	"destroying many~n"
+	"viruses at once.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●参加人数
+
+static const char _mesVsNum[]=
+	"How many players?~z";
+
+//////////////////////////////////////////////////////////////////////////////
+//●たいせんのしかた
+
+// ・ＶＳ　４Ｐ
+static const char _mesVs4P[]=
+	"A four-player~n"
+	"free-for-all.~w2~h"
+
+	"Force your foes to~n"
+	"retire by sending~n"
+	"them garbage~w2~h"
+
+	"or destroy all~n"
+	"of your own~n"
+	"viruses to win.~w2~h"
+
+	"The color of the~n"
+	"combos you clear~n"
+	"determines where~n"
+	"your garbage goes.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・タッグバトル
+static const char _mes4PTag[]=
+	"A two-on-two~n"
+	"battle mode.~w2~h"
+
+	"Force your foes to~n"
+	"retire by sending~n"
+	"them garbage~w2~h"
+
+	"or destroy all~n"
+	"of your own~n"
+	"viruses to win.~w2~h"
+
+	"The color of the~n"
+	"combos you clear~n"
+	"determines where~n"
+	"your garbage goes.~w2~h"
+
+	"Garbage sent to~n"
+	"your partner is~n"
+	"placed in your~w2~h"
+
+	"team bank. This~n"
+	"is then added~n"
+	"to later garbage~w2~h"
+
+	"that either you or~n"
+	"your teammate sends~n"
+	"to your foes.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+// ・フラッシュ
+static const char _mes4PFlash[]=
+	"Clear levels~n"
+	"by destroying the~n"
+	"flashing viruses.~w2~h"
+
+	"You can fill your~n"
+	"rivals' screens~n"
+	"with garbage.~w2~h"
+
+	"The color of the~n"
+	"combos you clear~n"
+	"determines where~n"
+	"your garbage goes.~w2~h"
+
+	"One more thing!~n"
+	"Press any C Button~n"
+	"during game play~n"
+	"to see where the~w2~h"
+
+	"capsule will land.~n"
+	"Press the button~n"
+	"again to turn the~n"
+	"effect OFF.~w2~h~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●オプション
+
+// ・きろく
+static const char _mesRec[]=
+	"This is where~n"
+	"you view~n"
+	"game records.~z";
+
+// ・チュートリアル
+static const char _mesTutol[]=
+	"This is where~n"
+	"you study rules~n"
+	"and techniques.~z";
+
+// ・なまえ
+static const char _mesName[]=
+	"This is where~n"
+	"you change or~n"
+	"delete your name.~z";
+
+// ・たいせんかいすう
+static const char _mesVsCnt[]=
+	"This is where you~n"
+	"set the number of~n"
+	"games in a match.~z";
+
+// ・サウンド
+static const char _mesSnd[]=
+	"This is where you~n"
+	"select the~n"
+	"sound settings.~w2~h"
+
+	"You can also~n"
+	"listen to game~n"
+	"music and sounds.~w2~h~z";
+
+// ・バックアップ
+static const char _mesBak[]=
+	"This is where~n"
+	"you can delete~n"
+	"all saved data.~z";
+
+// ・そのほか
+static const char _mesMisc[]=
+	"This is where you~n"
+	"can set up other~n"
+	"game items.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●きろく用モードセレクト１
+
+static const char _mesRecMs1[]=
+	"Which records do~n"
+	"you want to view?~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●きろく用モードセレクト２
+
+static const char _mesRecMs2[]=
+	"Which mode~n"
+	"records do you~n"
+	"want to view?~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●プレーのしかたセレクト
+
+// ・そうさのしかた
+static const char _mesRule1[]=
+	"These are the~n"
+	"button control~n"
+	"explanations.~z";
+
+// ・きほんのルール
+static const char _mesRule2[]=
+	"This is an~n"
+	"explanation of~n"
+	"basic game play.~z";
+
+// ・２Ｐたいせんのルール
+static const char _mesRule3[]=
+	"These are~n"
+	"explanations of~n"
+	"the two-player~n"
+	"games.~z";
+
+// ・４Ｐたいせんのルール
+static const char _mesRule4[]=
+	"These are~n"
+	"explanations of~n"
+	"the four-player~n"
+	"games.~z";
+
+// ・じょうたつへのみち
+static const char _mesKotu[]=
+	"Let me give~n"
+	"you some advice.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●名前の変更／消去
+
+//名前メニュー
+static const char _mesNameSel[]=
+	"What are you~n"
+	"going to do to~n"
+	"that file name?~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●名前消去
+
+static const char _mesNameErase[]=
+	"Delete that file~n"
+	"name, and you~n"
+	"delete the game~n"
+	"data, too.~w2~h"
+
+	"Do you really~n"
+	"want to delete~n"
+	"that file name?~w2~h~z";
+
+//※名前を消した場合
+static const char _mesNameErase2[]=
+	"The file name~n"
+	"and game data~n"
+	"have been deleted.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●たいせんかいすう
+
+static const char _mesVsCnt2[]=
+	"Select the number~n"
+	"of games to play~n"
+	"in a match.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●サウンド
+
+static const char _mesSound[]=
+	"Select with the~n"
+	"+ Control Pad~n"
+	"and confirm with~n"
+	"the A Button.~z";
+
+static const char _mesStereo[]=
+	"The music will~n"
+	"play in stereo.~z";
+
+static const char _mesMono[]=
+	"The music will~n"
+	"play in mono.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●バックアップ消去
+
+static const char _mesDoErase[]=
+	"Delete all saved~n"
+	"game data at once.~w2~h"
+
+	"Do you really~n"
+	"want to delete~n"
+	"all of the~n"
+	"saved game data?~w2~h~z";
+
+//※バックアップを消した場合
+static const char _mesDoErase1[]=
+	"All of the~n"
+	"saved game data~n"
+	"has been deleted.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●コントローラが足りません
+
+static const char _mesNoCont2[]=
+	"Please power off and insert~n"
+	"more controllers.~z";
+
+static const char _mesNoCont3[]=
+	"Please power off and insert~n"
+	"more controllers.~z";
+
+static const char _mesNoCont4[]=
+	"Please power off and insert~n"
+	"more controllers.~z";
+
+//////////////////////////////////////////////////////////////////////////////
+// ●スコアひょうじ
+
+// ・スコアひょうじ
+static const char _mesScore[]=
+	"You can turn the~n"
+	"on-screen score~n"
+	"display ON or OFF.~z";
+
+// ・ＯＮ
+// ・ＯＦＦ
+static const char _mesScoreOnOff[]=
+	"Please choose a~n"
+	"score display~n"
+	"option.~z";
+

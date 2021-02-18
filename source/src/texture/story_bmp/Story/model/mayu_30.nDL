@@ -1,0 +1,50 @@
+/********************************************************************
+  mayu_30
+	Vert Count = 9
+	Face Count = 7
+	Min X:   -19	Max X:    19
+	Min Y:   -25	Max Y:    25
+	Min Z:     0	Max Z:     0
+	MaxSize = 25
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mayu_30_box[] = { -19, 19, -25, 25, 0, 0, 25, 0 };
+Vtx mayu_30_vtx[] = {
+	{ -13, 25, 0, 0, 498, 3071, 200, 200, 200, 255 },
+	{ 19, -11, 0, 0, 2566, 865, 200, 200, 200, 255 },
+	{ 8, 25, 0, 0, 1855, 3071, 200, 200, 200, 255 },
+	{ -2, -25, 0, 0, 1209, -17, 200, 200, 200, 255 },
+	{ -15, -6, 0, 0, 369, 1180, 200, 200, 200, 255 },
+	{ -16, -17, 0, 0, 305, 487, 200, 200, 200, 255 },
+	{ 11, -25, 0, 0, 2049, -17, 200, 200, 200, 255 },
+	{ -19, 5, 0, 0, 111, 1810, 200, 200, 200, 255 },
+	{ -19, 17, 0, 0, 111, 2567, 200, 200, 200, 255 },
+};
+
+
+Gfx mayu_30_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mayu_30	Color:mayu_30	Tri:7	Vtx:9 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, SHADE, 0, 0, 0, TEXEL0, 0, 0, 0, SHADE),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadTLUT_pal256(mayu_30_lut),
+	gsDPLoadMultiBlock(mayu_30_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 48, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mayu_30_vtx[0], 9, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(1, 3, 6, 2, 1, 4, 3, 0),
+	gsSP2Triangles(0, 4, 1, 0, 0, 7, 4, 1),
+	gsSP1Triangle(7, 0, 8, 2),
+	gsSPEndDisplayList(),
+};

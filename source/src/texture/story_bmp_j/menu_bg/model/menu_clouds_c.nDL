@@ -1,0 +1,54 @@
+/********************************************************************
+  menu_clouds_c
+	Vert Count = 12
+	Face Count = 6
+	Min X:   -71	Max X:    90
+	Min Y:   -90	Max Y:    93
+	Min Z:     0	Max Z:     0
+	MaxSize = 93
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int menu_clouds_c_box[] = { -71, 90, -90, 93, 0, 0, 93, 0 };
+Vtx menu_clouds_c_vtx[] = {
+	{ -19, 93, 0, 0, 2544, 4128, 255, 255, 255, 224 },
+	{ -47, 31, 0, 0, 32, 5872, 255, 255, 255, 224 },
+	{ 1, 57, 0, 0, 2544, 5872, 255, 255, 255, 224 },
+	{ -67, 65, 0, 0, 32, 4128, 255, 255, 255, 224 },
+	{ -71, -63, 0, 0, 2544, 4128, 255, 255, 255, 224 },
+	{ -3, -56, 0, 0, 32, 5872, 255, 255, 255, 224 },
+	{ -50, -28, 0, 0, 2544, 5872, 255, 255, 255, 224 },
+	{ -23, -90, 0, 0, 32, 4128, 255, 255, 255, 224 },
+	{ 90, -30, 0, 0, 2544, 4128, 255, 255, 255, 224 },
+	{ 50, 25, 0, 0, 32, 5872, 255, 255, 255, 224 },
+	{ 49, -29, 0, 0, 2544, 5872, 255, 255, 255, 224 },
+	{ 89, 25, 0, 0, 32, 4128, 255, 255, 255, 224 },
+};
+
+
+Gfx menu_clouds_c_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:menu_clouds_c	Color:menu_cloud_c	Tri:6	Vtx:12 */
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0,
+		PRIMITIVE, COMBINED, ENVIRONMENT, COMBINED, 0, 0, 0, COMBINED),
+
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadMultiBlock_4b(menu_cloud_c_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 64, 0, G_TX_WRAP, G_TX_WRAP, 0, 6, 0, 0),
+	gsDPSetTextureLUT(G_TT_NONE),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&menu_clouds_c_vtx[0], 12, 0),
+	gsSP2Triangles(0, 1, 2, 2, 0, 3, 1, 1),
+	gsSP2Triangles(4, 5, 6, 2, 4, 7, 5, 1),
+	gsSP2Triangles(8, 9, 10, 2, 8, 11, 9, 1),
+	gsSPEndDisplayList(),
+};

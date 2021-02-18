@@ -1,0 +1,102 @@
+ã»Ç…ÇÊÇÈégópâπêFàÍóó
+
+
+Fever								Chill								Dizzy
+	ch 1	:	gm39					ch 1	:	gm40d					ch 1	:	gm39
+	ch 2	:	gm82					ch 2	:	gm103b/gm103b			ch 2	:	gm83
+	ch 3	:	gm04					ch 3	:	gm83					ch 3	:	gm89
+	ch 4	:	gm63d/gm63m				ch 4	:	gm39					ch 10	:	drum
+	ch 5	:	gm101					ch 5	:	gm63m
+	ch 10	:	drum					ch 10	:	drum
+
+
+Title								Menu								Vs_end
+	ch 1	:	gm89					ch 1	:	gm01					ch 1	:	se_win3
+	ch 2	:	gm39					ch 2	:	gm39					ch 3	:	gm04
+	ch 3	:	gm53					ch 3	:	gm63d					ch 4	:	gm39
+	ch 4	:	gm39					ch 4	:	gm106					ch 5	:	gm39
+	ch 10	:	drum					ch 10	:	drum					ch 10	:	drum
+
+
+Win									Lose								Gingle
+	ch 1	:	se_win2					ch 1	:	gm105					ch 1	:	gm39
+	ch 3	:	gm103					ch 2	:	gm39					ch 2	:	gm39
+	ch 4	:	gm52					ch 3	:	se_end					ch 10	:	drum
+	ch 10	:	drum					ch 4	:	se_end2
+										ch 10	:	drum
+
+
+Clear								Clear2
+	ch 1	:	gm89					ch 1	:	gm47
+	ch 2	:	gm75					ch 2	:	gm39
+	ch 3	:	gm51					ch 3	:	gm83
+	ch 4	:	gm47					ch 4	:	gm47
+	ch 10	:	drum					ch 10	:	drum
+
+
+
+
+drmario_inst
+
+	0:	gm01		Acou.Grand Piano
+	1:	gm04		Honky-Tonk Piano
+	2:	gm33		Acou.Bass
+	3:	gm39		Synth Bass1
+	4:	gm40		Synth Bass2
+	5:	gm47		Orchestral Strings
+	6:	gm51		Synth Strings1
+	7:	gm52		Synth Strings2
+	8:	gm53		Choir Aahs
+	9:	gm63		Synth Brass1
+	10:	gm75		Recorder
+	11:	gm82		Sawtooth
+	12:	gm83		Calliope
+	13:	gm89		New Age
+	14:	gm91		PolySynth
+	15:	gm101		Brightness
+	16:	gm103		Echoes
+	17:	gm105		Sitar
+	18:	gm106		Banjo
+	19:	se_end		end_seq
+	20:	se_win2		win_seq
+	21:	se_win3		win_seq
+	22:	se_end2		end_seq
+
+	+ drumkit
+
+sfx_inst
+
+	0:	se00
+	1:	se01
+	2:	se02
+	3:	se03
+	4:	se04
+	5:	se05
+	6:	se06
+	7:	se07
+	8:	se08
+	9:	se09
+	10:	se10
+	11:	se11
+	12:	se13
+
+	ÇrÇdÇÃì‡óeÅAìoò^î‘çÜÇÕï Ãß≤Ÿ(document.txt)éQè∆ÇÃÇ±Ç∆
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

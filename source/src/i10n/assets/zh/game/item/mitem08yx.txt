@@ -1,0 +1,34 @@
+#if defined(USE_TEX_ADDR)
+extern unsigned short mitem08yx_lut[];
+extern unsigned char mitem08yx_tex[];
+void *mitem08yx_tex_addr[] = {
+#if defined(NON_PALETTE)
+	0,
+#else
+	mitem08yx_lut,
+#endif
+#if defined(NON_TEXTURE)
+	0,
+#else
+	mitem08yx_tex,
+#endif
+};
+#endif
+
+#if defined(USE_TEX_SIZE)
+unsigned short mitem08yx_tex_size[] = { 2, 1, 4, 0, };
+#endif
+
+#if !defined(NON_PALETTE)
+unsigned short mitem08yx_lut[] = {
+0x0000,0x0881,0x4a81,0x6341,0x73c1,0x94c1,0xa515,0x6301,0x8409,0x94a1,0x39c1,0x7341,0x8481,0x9d01,0x0501,0x0001,
+};
+#endif
+
+#if !defined(NON_TEXTURE)
+unsigned char mitem08yx_tex[] = {
+0x10,
+0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+};
+#endif
+

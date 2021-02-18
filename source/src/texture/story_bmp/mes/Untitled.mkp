@@ -1,0 +1,5 @@
+AddSegment mes
+UseSegmentNumber true
+SegmentNumber 5
+SegmentAddress 0x80000000
+AddSource mes.c

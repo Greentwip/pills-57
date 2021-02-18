@@ -1,0 +1,56 @@
+/********************************************************************
+  ringo_23b
+	Vert Count = 13
+	Face Count = 11
+	Min X:   -23	Max X:    23
+	Min Y:   -22	Max Y:    22
+	Min Z:     0	Max Z:     0
+	MaxSize = 23
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int ringo_23b_box[] = { -23, 23, -22, 22, 0, 0, 23, 0 };
+Vtx ringo_23b_vtx[] = {
+	{ 21, 9, 0, 0, 2827, 1947, 38, 38, 38, 255 },
+	{ 15, -6, 0, 0, 2444, 1018, 38, 38, 38, 255 },
+	{ 21, -2, 0, 0, 2827, 1266, 38, 38, 38, 255 },
+	{ 13, 22, 0, 0, 2317, 2753, 38, 38, 38, 255 },
+	{ 23, -22, 0, 0, 2954, 27, 38, 38, 38, 255 },
+	{ -23, -7, 0, 0, 84, 956, 38, 38, 38, 255 },
+	{ -23, -22, 0, 0, 84, 27, 38, 38, 38, 255 },
+	{ 4, 22, 0, 0, 1742, 2753, 38, 38, 38, 255 },
+	{ -9, 18, 0, 0, 977, 2505, 38, 38, 38, 255 },
+	{ -17, 11, 0, 0, 467, 2071, 38, 38, 38, 255 },
+	{ -17, 1, 0, 0, 467, 1452, 38, 38, 38, 255 },
+	{ 15, -9, 0, 0, 2444, 832, 38, 38, 38, 255 },
+	{ 23, -16, 0, 0, 2954, 399, 38, 38, 38, 255 },
+};
+
+
+Gfx ringo_23b_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:ringo_23b	Color:ringo_23b	Tri:11	Vtx:13 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadTLUT_pal256(ringo_23b_lut),
+	gsDPLoadMultiBlock(ringo_23b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 48, 42, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&ringo_23b_vtx[0], 13, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 1, 0, 0),
+	gsSP2Triangles(4, 5, 6, 2, 7, 1, 3, 0),
+	gsSP2Triangles(8, 1, 7, 0, 9, 1, 8, 0),
+	gsSP2Triangles(10, 1, 9, 0, 11, 4, 12, 2),
+	gsSP2Triangles(11, 5, 4, 0, 11, 10, 5, 0),
+	gsSP1Triangle(10, 11, 1, 0),
+	gsSPEndDisplayList(),
+};

@@ -1,0 +1,60 @@
+/********************************************************************
+  mario_31board
+	Vert Count = 16
+	Face Count = 14
+	Min X:   -22	Max X:    23
+	Min Y:    -4	Max Y:    45
+	Min Z:     0	Max Z:     0
+	MaxSize = 45
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mario_31board_box[] = { -22, 23, -4, 45, 0, 0, 45, 0 };
+Vtx mario_31board_vtx[] = {
+	{ 2, -2, 0, 0, 1197, 207, 38, 38, 38, 255 },
+	{ 21, 17, 0, 0, 113, 1392, 38, 38, 38, 255 },
+	{ 17, 22, 0, 0, 312, 1717, 38, 38, 38, 255 },
+	{ -16, 23, 0, 0, 2206, 1771, 38, 38, 38, 255 },
+	{ -19, 23, 0, 0, 2398, 1740, 38, 38, 38, 255 },
+	{ 14, -4, 0, 0, 499, 109, 38, 38, 38, 255 },
+	{ 23, 1, 0, 0, -1, 403, 38, 38, 38, 255 },
+	{ 15, 40, 0, 0, 475, 2822, 38, 38, 38, 255 },
+	{ 8, 45, 0, 0, 837, 3115, 38, 38, 38, 255 },
+	{ 2, 42, 0, 0, 1177, 2946, 38, 38, 38, 255 },
+	{ -7, 45, 0, 0, 1686, 3122, 38, 38, 38, 255 },
+	{ -16, 36, 0, 0, 2210, 2553, 38, 38, 38, 255 },
+	{ -14, 28, 0, 0, 2090, 2064, 38, 38, 38, 255 },
+	{ 19, 28, 0, 0, 202, 2105, 38, 38, 38, 255 },
+	{ -22, 5, 0, 0, 2559, 673, 38, 38, 38, 255 },
+	{ -14, -4, 0, 0, 2131, 69, 38, 38, 38, 255 },
+};
+
+
+Gfx mario_31board_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mario_31board	Color:mario31_01	Tri:14	Vtx:16 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(mario31_lut),
+	gsDPLoadMultiBlock(mario31_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 51, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mario_31board_vtx[0], 16, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 0, 1),
+	gsSP2Triangles(2, 3, 0, 0, 5, 6, 1, 1),
+	gsSP2Triangles(0, 5, 1, 0, 7, 8, 9, 2),
+	gsSP2Triangles(9, 10, 11, 2, 9, 11, 12, 2),
+	gsSP2Triangles(13, 7, 9, 0, 13, 9, 12, 0),
+	gsSP2Triangles(14, 15, 0, 1, 4, 14, 0, 0),
+	gsSP2Triangles(2, 13, 12, 0, 2, 12, 3, 0),
+	gsSPEndDisplayList(),
+};

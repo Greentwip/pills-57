@@ -1,0 +1,14 @@
+
+static const char _mesBootTvErr[]=
+"This game is not designed~n"
+"for use on this system.~z";
+
+static const char _mesBootContErr[]=
+"コントローラが、せつぞくされていません。~n"
+"いったん、ほんたいのでんげんをきってから~n"
+"コネクタ１にコントローラを~n"
+"せつぞくしてください。~z";
+
+static const char _mesBootCSumErr[]=
+"バックアップファイルが、はかいされました。~n"
+"Ａボタンをおすと、データをクリアします。~z";

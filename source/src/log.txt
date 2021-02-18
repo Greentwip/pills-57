@@ -1,0 +1,30 @@
+dm_game_def.h:} game_map;
+dm_game_main.h:extern void dm_warning_h_line(game_state *, game_map *);    // 積み上げ警告チェック
+dm_game_main.h:extern void go_down(game_state *, game_map *, int); // 粒落下関数
+dm_game_main.h:extern void erase_anime(game_map *);                // マップ上消滅アニメーション関数
+dm_game_main.h:extern void translate_capsel(game_map *, game_state *, int, int); // カプセル左右移動関数
+dm_game_main.h:extern void rotate_capsel(game_map *, game_cap *, int);           // カプセル左右回転関数
+dm_game_main.h:extern void dm_capsel_down(game_state *, game_map *);       // 操作カプセル落下処理関数
+dm_game_main.h:extern int  dm_check_game_over(game_state *,game_map *);    // ゲームオーバー(積みあがり)判定関数
+dm_game_main.h:extern void dm_virus_anime(game_state *, game_map *);       // ウイルスアニメ関数
+dm_game_main.h:extern void dm_capsel_erase_anime(game_state *, game_map *);// ウイルス(カプセル)消滅関数
+dm_game_main.h:extern int  dm_h_erase_chack(game_map *);                   // 縦消し判定関数
+dm_game_main.h:extern void dm_h_erase_chack_set(game_state *, game_map *); // 縦消し判定と処理開始関数
+dm_game_main.h:extern int  dm_w_erase_chack(game_map *);                   // 横消し判定関数
+dm_game_main.h:extern void dm_w_erase_chack_set(game_state *, game_map *); // 横消し判定と処理開始関数
+dm_game_main.h:extern void dm_h_ball_chack(game_map *);                    // 縦粒判定処理関数
+dm_game_main.h:extern void dm_w_ball_chack(game_map *);                    // 横粒判定処理関数
+dm_game_main.h:extern int  dm_black_up(game_state *,game_map *);           // ゲームオーバーの時の暗くなる関数
+dm_game_main.h:extern void dm_game_graphic_p(game_state *, int, game_map *);    // マップ情報描画関数
+dm_game_main.h:extern void key_control_main(game_state *, game_map *, int, int);// カプセル操作関数
+dm_game_main.h:extern game_map game_map_data[4][GAME_MAP_W * (GAME_MAP_H + 1)];
+dm_virus_init.h:extern void init_map_all(game_map *map);
+dm_virus_init.h:extern	void	clear_map_all( game_map *map );
+dm_virus_init.h:extern	void	clear_map( game_map *map, int x, int y );
+dm_virus_init.h:extern	int		get_map_info( game_map *map, int x, int y );
+dm_virus_init.h:	game_map *map, // マップデータ配列の先頭アドレス
+dm_virus_init.h:	game_map *map,         // マップデータ配列の先頭アドレス
+dm_virus_init.h:extern	int		get_virus_count( game_map *map );
+dm_virus_init.h:extern	int		get_virus_color_count(game_map *map, u8 *r, u8 *y, u8 *b);
+dm_virus_init.h:extern	void	set_map( game_map *map, int x, int y, int item, int col);
+dm_virus_init.h:extern	void	set_virus( game_map *map, int x, int y, int vi, int an );

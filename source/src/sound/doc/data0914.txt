@@ -1,0 +1,38 @@
+
+BGMデータをお送りいたします。
+以前の曲データ（Volume調整等）もお送りしておきます。
+更新してください。
+詳細は以下の通りです。
+
+○データの内容
+
+drmario.ptr	サンプルウエーブのポインタ情報
+drmario.wbk	サンプルウエーブのバイナリデータ
+
+Fever.bin	ゲーム中"Fever"曲データ
+FeverF.bin	ゲーム中"Fever"曲データ		TempoUpバージョン
+Chill.bin	ゲーム中"Chill"曲データ
+ChillF.bin	ゲーム中"Chill"曲データ		TempoUpバージョン
+Game_C.bin	ゲーム中"Game_C"曲データ
+Game_CF.bin	ゲーム中"Game_C"曲データ	TempoUpバージョン
+Game_D.bin	ゲーム中"Game_D"曲データ
+Game_DF.bin	ゲーム中"Game_D"曲データ	TempoUpバージョン
+Game_E.bin	ゲーム中"Game_E"曲データ
+Game_EF.bin	ゲーム中"Game_E"曲データ	TempoUpバージョン
+Menu.bin	"Menu"曲データ
+Title.bin	"Title"曲データ
+Ending.bin	"Ending"曲データ
+Staff.bin	"StaffRoll"曲データ
+End_A.bin	"End_A"曲データ
+End_B.bin	"End_B"曲データ
+End_C.bin	"End_C"曲データ
+Story_A.bin	"Story_A"曲データ
+Story_B.bin	"Story_B"曲データ
+Story_C.bin	"Story_C"曲データ
+Opening.bin	"Opening"曲データ
+
+何か問題などがございましたらご連絡下さい。
+
+Creative section
+
+T's music Co.,ltd.

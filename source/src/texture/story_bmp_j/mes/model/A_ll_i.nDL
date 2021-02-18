@@ -1,0 +1,42 @@
+/********************************************************************
+  A_ll_i
+	Vert Count = 4
+	Face Count = 2
+	Min X:   -20	Max X:    20
+	Min Y:   -12	Max Y:    11
+	Min Z:     0	Max Z:     0
+	MaxSize = 20
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int A_ll_i_box[] = { -20, 20, -12, 11, 0, 0, 20, 0 };
+Vtx A_ll_i_vtx[] = {
+	{ -20, 11, 0, 0, 0, 1565, 0, 0, 0, 255 },
+	{ -20, -12, 0, 0, 0, 0, 0, 0, 0, 255 },
+	{ 20, -12, 0, 0, 2967, 0, 0, 0, 0, 255 },
+	{ 20, 11, 0, 0, 2967, 1565, 0, 0, 0, 255 },
+};
+
+#include	"texture\A_ll_i.txt"
+
+Gfx A_ll_i_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:A_ll_i	Color:A_ll_i	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, TEXEL0, 0, 0, 0, SHADE, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadMultiBlock_4b(A_ll_i_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 25, 0, G_TX_WRAP, G_TX_WRAP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_NONE),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&A_ll_i_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

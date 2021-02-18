@@ -1,0 +1,238 @@
+LWSC
+1
+
+FirstFrame 0
+LastFrame 104
+FrameStep 1
+PreviewFirstFrame 0
+PreviewLastFrame 104
+PreviewFrameStep 1
+FramesPerSecond 60.000000
+
+LoadObject C:\dr_mario\GAMEOVER\model\time_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  12
+  -1 14.75 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  -1 27 0 0 0 0 0.076 1.2 1
+  6 0 0 0 0
+  -1 28.73529 0 0 0 14.4 0.6467059 1.076471 1
+  12 1 0 0 0
+  -1 26.75 0 0 0 -10.7 1 1 1
+  20 1 0 0 0
+  -1 26.13858 0 0 0 12 1.01584 0.9965714 1
+  28 0 0 0 0
+  -1 20.13858 0 0 0 -6.2 1.01584 0.9965714 1
+  36 0 0 0 0
+  -1 14.1929 0 0 0 0 1.0792 0.982857 1
+  48 1 0 0 0
+  -1 14.75 0 0 0 0 1 1 1
+  58 0 0 0 0
+  -1 12.25 0 0 0 -3.8 1 1 1
+  68 0 0 0 0
+  -1 17.25 0 0 0 3.900001 1 1 1
+  76 0 0 0 0
+  -1 21.5 0 0 0 -4.299999 1 1 1
+  84 0 0 0 0
+  -1 15.0821 0 0 0 -0.2201471 1 1 1
+  104 0 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\GAMEOVER\model\over_i.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  12
+  -1 -8.5 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  -1 -19.25 0 0 0 0 0.076 1.2 1
+  6 0 0 0 0
+  -1 -14.70588 0 0 0 -15.8 0.6467059 1.076471 1
+  12 1 0 0 0
+  -1 -16.5 0 0 0 12.3 1 1 1
+  20 1 0 0 0
+  -1 -16.95714 0 0 0 -10.88 1.01584 0.9965714 1
+  28 0 0 0 0
+  -1 -10.45714 0 0 0 2.619999 1.01584 0.9965714 1
+  36 0 0 0 0
+  -1 -8.28571 0 0 0 0 1.0792 0.982857 1
+  48 1 0 0 0
+  -1 -8.5 0 0 0 0 1 1 1
+  58 0 0 0 0
+  -1 -14 0 0 0 7.399999 1 1 1
+  70 1 0 0 0
+  -1 -16.5 0 0 0 -4.5 1 1 1
+  82 0 0 0 0
+  -1 -11 0 0 0 4.200001 1 1 1
+  94 0 0 0 0
+  -1 -8.71731 0 0 0 0.4295429 1 1 1
+  104 0 0 0 0
+EndBehavior 1
+LockedChannels 29
+ShadowOptions 7
+
+LoadObject C:\dr_mario\GAMEOVER\model\time.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  12
+  -1 14.75 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  -1 27 0 0 0 0 0.076 1.2 1
+  6 0 0 0 0
+  -1 28.73529 0 0 0 14.4 0.6467059 1.076471 1
+  12 1 0 0 0
+  -1 26.75 0 0 0 -10.7 1 1 1
+  20 1 0 0 0
+  -1 26.13858 0 0 0 12 1.01584 0.9965714 1
+  28 0 0 0 0
+  -1 20.13858 0 0 0 -6.2 1.01584 0.9965714 1
+  36 0 0 0 0
+  -1 14.1929 0 0 0 0 1.0792 0.982857 1
+  48 1 0 0 0
+  -1 14.75 0 0 0 0 1 1 1
+  58 0 0 0 0
+  -1 12.25 0 0 0 -3.8 1 1 1
+  68 0 0 0 0
+  -1 17.25 0 0 0 3.900001 1 1 1
+  76 0 0 0 0
+  -1 21.5 0 0 0 -4.299999 1 1 1
+  84 0 0 0 0
+  -1 15.0821 0 0 0 -0.2201471 1 1 1
+  104 0 0 0 0
+EndBehavior 1
+LockedChannels 28
+ShadowOptions 7
+
+LoadObject C:\dr_mario\GAMEOVER\model\over.lwo
+ShowObject 4 7
+ObjectMotion (unnamed)
+  9
+  12
+  -1 -8.5 0 0 0 0 0.01 1 1
+  0 1 0 0 0
+  -1 -19.25 0 0 0 0 0.076 1.2 1
+  6 0 0 0 0
+  -1 -14.70588 0 0 0 -15.8 0.6467059 1.076471 1
+  12 1 0 0 0
+  -1 -16.5 0 0 0 12.3 1 1 1
+  20 1 0 0 0
+  -1 -16.95714 0 0 0 -10.88 1.01584 0.9965714 1
+  28 0 0 0 0
+  -1 -10.45714 0 0 0 2.619999 1.01584 0.9965714 1
+  36 0 0 0 0
+  -1 -8.28571 0 0 0 0 1.0792 0.982857 1
+  48 1 0 0 0
+  -1 -8.5 0 0 0 0 1 1 1
+  58 0 0 0 0
+  -1 -14 0 0 0 7.399999 1 1 1
+  70 1 0 0 0
+  -1 -16.5 0 0 0 -4.5 1 1 1
+  82 0 0 0 0
+  -1 -11 0 0 0 4.200001 1 1 1
+  94 0 0 0 0
+  -1 -8.71731 0 0 0 0.4295429 1 1 1
+  104 0 0 0 0
+EndBehavior 1
+LockedChannels 29
+ShadowOptions 7
+
+AmbientColor 255 255 255
+AmbIntensity 0.250000
+
+AddLight
+LightName Light
+ShowLight 1 7
+LightMotion (unnamed)
+  9
+  8
+  -2 2 -2 45 35 0 1 1 1
+  0 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  6 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  12 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  28 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  36 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  48 1 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  58 0 0 0 0
+  -2 2 -2 45 35 0 1 1 1
+  104 0 0 0 0
+EndBehavior 1
+LightColor 255 255 255
+LgtIntensity 1.000000
+LightType 0
+ShadowType 0
+
+ShowCamera 1 7
+CameraMotion (unnamed)
+  9
+  8
+  0 0 -300 0 0 0 1 1 1
+  0 1 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  6 0 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  12 0 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  28 0 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  36 0 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  48 1 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  58 0 0 0 0
+  0 0 -300 0 0 0 1 1 1
+  104 0 0 0 0
+EndBehavior 1
+LockedChannels 3
+ZoomFactor 3.200000
+Resolution 0
+CustomSize 96 208
+PixelAspectRatio 2
+SegmentMemory 2200000
+Antialiasing 1
+AdaptiveSampling 1
+AdaptiveThreshold 16
+FilmSize 2
+FieldRendering 0
+MotionBlur 0
+DepthOfField 0
+
+SolidBackdrop 1
+BackdropColor 0 0 0
+ZenithColor 0 40 80
+SkyColor 120 180 240
+GroundColor 50 40 30
+NadirColor 100 80 60
+FogType 0
+DitherIntensity 1
+AnimatedDither 0
+
+RenderMode 2
+RayTraceEffects 0
+DataOverlayLabel  
+SaveAnimationName C:\dr_mario\GAMEOVER\gameover.avi
+AnimationType 2
+EndPlugin
+
+ViewMode 5
+ViewAimpoint 0.000000 0.000000 0.000000
+ViewDirection 0.235619 -3.338816 0.000000
+ViewZoomFactor 8.418252
+GridNumber 10
+GridSize 50.000000
+ShowMotionPath 1
+ShowBGImage 0
+ShowFogRadius 0
+ShowRedraw 0
+ShowSafeAreas 0
+ShowFieldChart 0

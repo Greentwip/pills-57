@@ -1,0 +1,47 @@
+/********************************************************************
+  trynext
+	Vert Count = 4
+	Face Count = 2
+	Min X:   -40	Max X:    40
+	Min Y:    -8	Max Y:     7
+	Min Z:     0	Max Z:     0
+	MaxSize = 40
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int trynext_box[] = { -40, 40, -8, 7, 0, 0, 40, 0 };
+Vtx trynext_vtx[] = {
+	{ -40, 7, 0, 0, 0, 928, 38, 38, 38, 255 },
+	{ -40, -8, 0, 0, 0, -11, 38, 38, 38, 255 },
+	{ 40, -8, 0, 0, 5120, -11, 38, 38, 38, 255 },
+	{ 40, 7, 0, 0, 5120, 928, 38, 38, 38, 255 },
+};
+
+#if LOCAL==CHINA
+#include	"../../../i10n/assets/zh/story_bmp/mes/texture/trynext.txt"
+#else
+#include	"texture/trynext.txt"
+#endif
+
+Gfx trynext_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:trynext	Color:trynext	Tri:2	Vtx:4 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(trynext_lut),
+	gsDPLoadMultiBlock(trynext_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 80, 15, 0, G_TX_WRAP, G_TX_WRAP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&trynext_vtx[0], 4, 0),
+	gsSP2Triangles(0, 1, 2, 2, 2, 3, 0, 1),
+	gsSPEndDisplayList(),
+};

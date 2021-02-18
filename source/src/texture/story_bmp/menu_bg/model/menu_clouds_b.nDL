@@ -1,0 +1,73 @@
+/********************************************************************
+  menu_clouds_b
+	Vert Count = 24
+	Face Count = 12
+	Min X:  -223	Max X:   221
+	Min Y:  -226	Max Y:   161
+	Min Z:     0	Max Z:     0
+	MaxSize = 226
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int menu_clouds_b_box[] = { -223, 221, -226, 161, 0, 0, 226, 0 };
+Vtx menu_clouds_b_vtx[] = {
+	{ -171, 156, 0, 0, 5056, 144, 255, 255, 255, 224 },
+	{ -159, 29, 0, 0, 80, 3360, 255, 255, 255, 224 },
+	{ -106, 119, 0, 0, 5056, 3360, 255, 255, 255, 224 },
+	{ -223, 65, 0, 0, 80, 160, 255, 255, 255, 224 },
+	{ -50, -226, 0, 0, 5056, 144, 255, 255, 255, 224 },
+	{ 54, -152, 0, 0, 80, 3360, 255, 255, 255, 224 },
+	{ -50, -151, 0, 0, 5056, 3360, 255, 255, 255, 224 },
+	{ 55, -226, 0, 0, 80, 160, 255, 255, 255, 224 },
+	{ 221, 70, 0, 0, 5056, 144, 255, 255, 255, 224 },
+	{ 105, 123, 0, 0, 80, 3360, 255, 255, 255, 224 },
+	{ 156, 32, 0, 0, 5056, 3360, 255, 255, 255, 224 },
+	{ 168, 161, 0, 0, 80, 160, 255, 255, 255, 224 },
+
+	{ 8, 50, 0, 0, 2976, 1808, 255, 255, 255, 192 },
+	{ -22, 15, 0, 0, 48, 4096, 255, 255, 255, 192 },
+	{ 15, 25, 0, 0, 2976, 4096, 255, 255, 255, 192 },
+	{ -28, 40, 0, 0, 48, 1808, 255, 255, 255, 192 },
+	{ -47, -18, 0, 0, 2976, 1808, 255, 255, 255, 192 },
+	{ -2, -26, 0, 0, 48, 4096, 255, 255, 255, 192 },
+	{ -29, 1, 0, 0, 2976, 4096, 255, 255, 255, 192 },
+	{ -21, -45, 0, 0, 48, 1808, 255, 255, 255, 192 },
+	{ 39, -32, 0, 0, 2976, 1808, 255, 255, 255, 192 },
+	{ 24, 11, 0, 0, 48, 4096, 255, 255, 255, 192 },
+	{ 14, -25, 0, 0, 2976, 4096, 255, 255, 255, 192 },
+	{ 49, 5, 0, 0, 48, 1808, 255, 255, 255, 192 },
+};
+
+
+Gfx menu_clouds_b_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:menu_clouds_b	Color:menu_cloud_b	Tri:6	Vtx:12 */
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, TEXEL0, 0, SHADE, 0,
+		PRIMITIVE, COMBINED, ENVIRONMENT, COMBINED, 0, 0, 0, COMBINED),
+
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+	gsDPSetAlphaCompare(G_AC_THRESHOLD),
+	gsDPLoadMultiBlock_4b(menu_cloud_b_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 80, 102, 0, G_TX_WRAP, G_TX_WRAP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_NONE),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&menu_clouds_b_vtx[0], 24, 0),
+	gsSP2Triangles(0, 1, 2, 2, 0, 3, 1, 1),
+	gsSP2Triangles(4, 5, 6, 2, 4, 7, 5, 1),
+	gsSP2Triangles(8, 9, 10, 2, 8, 11, 9, 1),
+
+/* Group:menu_clouds_b	Color:menu_cloud_c	Tri:6	Vtx:12 */
+	gsDPLoadMultiBlock_4b(menu_cloud_c_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_I, 48, 64, 0, G_TX_WRAP, G_TX_WRAP, 0, 6, 0, 0),
+	gsSP2Triangles(12, 13, 14, 2, 12, 15, 13, 1),
+	gsSP2Triangles(16, 17, 18, 2, 16, 19, 17, 1),
+	gsSP2Triangles(20, 21, 22, 2, 20, 23, 21, 1),
+	gsSPEndDisplayList(),
+};

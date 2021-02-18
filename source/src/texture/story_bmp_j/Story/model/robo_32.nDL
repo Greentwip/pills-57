@@ -1,0 +1,57 @@
+/********************************************************************
+  robo_32
+	Vert Count = 14
+	Face Count = 12
+	Min X:   -30	Max X:    32
+	Min Y:   -37	Max Y:    19
+	Min Z:     0	Max Z:     0
+	MaxSize = 37
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int robo_32_box[] = { -30, 32, -37, 19, 0, 0, 37, 0 };
+Vtx robo_32_vtx[] = {
+	{ -30, -10, 0, 0, 3176, 1297, 38, 38, 38, 255 },
+	{ -29, -35, 0, 0, 3083, -54, 38, 38, 38, 255 },
+	{ 0, -37, 0, 0, 1546, -186, 38, 38, 38, 255 },
+	{ 22, -12, 0, 0, 374, 1223, 38, 38, 38, 255 },
+	{ 27, -2, 0, 0, 66, 1770, 38, 38, 38, 255 },
+	{ 17, 7, 0, 0, 604, 2258, 38, 38, 38, 255 },
+	{ 3, 12, 0, 0, 1378, 2560, 38, 38, 38, 255 },
+	{ -8, 14, 0, 0, 1970, 2648, 38, 38, 38, 255 },
+	{ -8, 0, 0, 0, 1970, 1901, 38, 38, 38, 255 },
+	{ 28, -36, 0, 0, 16, -120, 38, 38, 38, 255 },
+	{ 32, -14, 0, 0, -162, 1084, 38, 38, 38, 255 },
+	{ 14, 19, 0, 0, 784, 2912, 38, 38, 38, 255 },
+	{ -17, -3, 0, 0, 2475, 1692, 38, 38, 38, 255 },
+	{ -19, -12, 0, 0, 2563, 1233, 38, 38, 38, 255 },
+};
+
+
+Gfx robo_32_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:robo_32	Color:robo_32	Tri:12	Vtx:14 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE|G_CULL_BACK),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(robo_32_lut),
+	gsDPLoadMultiBlock(robo_32_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 48, 42, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&robo_32_vtx[0], 14, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(6, 7, 8, 2, 2, 9, 10, 2),
+	gsSP2Triangles(5, 11, 6, 1, 5, 6, 8, 0),
+	gsSP2Triangles(3, 5, 8, 0, 8, 12, 13, 2),
+	gsSP2Triangles(3, 8, 13, 0, 2, 10, 3, 0),
+	gsSP2Triangles(13, 0, 2, 0, 2, 3, 13, 0),
+	gsSPEndDisplayList(),
+};

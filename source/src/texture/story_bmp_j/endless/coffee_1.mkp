@@ -1,0 +1,5 @@
+AddSegment coffee01
+UseSegmentNumber true
+SegmentNumber 5
+SegmentAddress 0x80000000
+AddSource coffee1.c

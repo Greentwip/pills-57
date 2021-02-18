@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SuperMario64 Asset Localization Worksheet</title>
+</head>
+
+<body>
+
+<p align="center"><font face="Verdana" size="2">Dr.Mario Asset Localization 
+Worksheet (&#27721;&#21270;&#21046;&#20316;&#34920;)</font></p>
+<p><font face="Verdana" size="2"><b>Message Text Translation </b></font></p>
+<ul>
+  <li><font face="Verdana" size="2">input: assets/mes/*.mes</font></li>
+  <li><font face="Verdana" size="2">output: assets/mes/*_zh.mes</font></li>
+  <li><font face="Verdana" size="2">notes: </font>
+  <ul>
+    <li><font face="Verdana" size="2">translate the text in between double 
+    quotes, preserve the rest of the texts</font></li>
+    <li><font face="Verdana" size="2">preserve all special characters preceded 
+    with &quot;~&quot;</font></li>
+    <li><font face="Verdana" size="2">preserve letters A, B, C, Z, L, R</font></li>
+  </ul>
+  </li>
+</ul>
+<p><b><font face="Verdana" size="2">Character Font Glyph</font></b></p>
+<ul>
+  <li><font face="Verdana" size="2">input: </font>
+  <ul>
+    <li><font face="Verdana" size="2">assets/mes/*_zh.mes</font></li>
+  </ul>
+  </li>
+  <li><font face="Verdana" size="2">output: </font>
+  <ul>
+    <li><font face="Verdana" size="2">assets/font/font_c.bmp, 
+    assets/font/font_c2.bmp (12x12 font glyph bmp)</font></li>
+  </ul>
+  </li>
+  <li><font face="Verdana" size="2">tools: Photoshop, Yongzhi's character 
+  generation tools</font></li>
+  <li><font face="Verdana" size="2">notes: </font>
+  <ul>
+    <li><font face="Verdana" size="2">use assets/font/font_c.bmp &amp; 
+    assets/font/font_c2.bmp as example</font></li>
+    <li><font face="Verdana" size="2">for each unique Chinese character used in 
+    the *_zh.mes files, 
+    generate a font glyph at size 12x12</font></li>
+    <li><font face="Verdana" size="2">the output bmp files should be indexed 
+    8bit bmp, use the same color index table as the ones in assets/font/font_c.bmp 
+    &amp; assets/font/font_c2.bmp</font></li>
+  </ul>
+  </li>
+</ul>
+<p><b><font face="Verdana" size="2">Texture</font></b></p>
+<ul>
+  <li><font face="Verdana" size="2">input: </font>
+  <ul>
+    <li><font face="Verdana" size="2">assets/texture/*/*.bmp</font></li>
+  </ul>
+  </li>
+  <li><font face="Verdana" size="2">output: </font>
+  <ul>
+    <li><font face="Verdana" size="2">assets/texture_zh/*/*.bmp</font></li>
+  </ul>
+  </li>
+  <li><font face="Verdana" size="2">tools: Photoshop</font></li>
+  <li><font face="Verdana" size="2">notes: </font>
+  <ul>
+    <li><font face="Verdana" size="2">translate the bmp files that have English 
+    text in them, generate the corresponding Chinese texture bmp files</font></li>
+    <li><font face="Verdana" size="2">keep color schemes consistent</font></li>
+    <li><font face="Verdana" size="2">keep the original dimension of the images</font></li>
+  </ul>
+  </li>
+</ul>
+<p><b><font face="Verdana" size="2">3D Models &amp; Animations (TBD)</font></b></p>
+<ul>
+  <li><font face="Verdana" size="2">input: assets/story_bmp/*</font></li>
+  <li><font face="Verdana" size="2">output: tranlsated 3D models and animation 
+  sequences</font></li>
+  <li><font face="Verdana" size="2">tools: Maya, lightwave3D (?)</font></li>
+  <li><font face="Verdana" size="2">notes:</font><ul>
+    <li><font face="Verdana" size="2">there are a few animated 3D models in 
+    Dr.Mario (such as Dr.Mario splash screen, &quot;win&quot;, &quot;lose&quot;, 
+    &quot;congratulations&quot;...), they were originally produced using LightWave3D</font></li>
+    <li><font face="Verdana" size="2">if we can use Maya and convert the models 
+    to the LightWave3D format, that would be great</font></li>
+    <li><font face="Verdana" size="2">if not, we need to have LightWave3D</font></li>
+  </ul>
+  </li>
+</ul>
+
+</body>
+
+</html>

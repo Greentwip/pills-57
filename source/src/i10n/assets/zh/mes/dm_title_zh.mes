@@ -1,0 +1,10 @@
+
+static const char _mesBootTvErr[]=
+"本游戏不是为此系统设计的。~z";
+
+static const char _mesBootContErr[]=
+"没有连接~z";
+
+static const char _mesBootCSumErr[]=
+"备份文件已损坏。~n"
+"按A键删除这个文件。~z";

@@ -1,0 +1,53 @@
+/********************************************************************
+  mario_29
+	Vert Count = 11
+	Face Count = 9
+	Min X:   -20	Max X:    23
+	Min Y:   -30	Max Y:    25
+	Min Z:     0	Max Z:     0
+	MaxSize = 30
+********************************************************************/
+/*  MinX, MaxX, MinY, MaxY, MinZ, MaxZ MaxSize dummy */
+int mario_29_box[] = { -20, 23, -30, 25, 0, 0, 30, 0 };
+Vtx mario_29_vtx[] = {
+	{ 2, -30, 0, 0, 1322, -177, 38, 38, 38, 255 },
+	{ 22, -25, 0, 0, 2585, 140, 38, 38, 38, 255 },
+	{ 18, -3, 0, 0, 2355, 1525, 38, 38, 38, 255 },
+	{ 10, 25, 0, 0, 1837, 3369, 38, 38, 38, 255 },
+	{ -11, 24, 0, 0, 498, 3280, 38, 38, 38, 255 },
+	{ -18, 1, 0, 0, 18, 1832, 38, 38, 38, 255 },
+	{ 23, 11, 0, 0, 2644, 2469, 38, 38, 38, 255 },
+	{ -16, -10, 0, 0, 143, 1080, 38, 38, 38, 255 },
+	{ -20, -18, 0, 0, -116, 559, 38, 38, 38, 255 },
+	{ -8, -29, 0, 0, 698, -142, 38, 38, 38, 255 },
+	{ -1, -25, 0, 0, 1107, 93, 38, 38, 38, 255 },
+};
+
+
+Gfx mario_29_dl[] = {
+	gsDPPipeSync(),
+
+/* Group:mario_29	Color:mario29	Tri:9	Vtx:11 */
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsSPClearGeometryMode(0|G_ZBUFFER|G_SHADING_SMOOTH|G_CULL_FRONT|G_CULL_BACK|G_LIGHTING|G_FOG|G_TEXTURE_GEN|G_TEXTURE_GEN_LINEAR|G_CLIPPING|G_LOD|G_TEXTURE_ENABLE),
+	gsSPSetGeometryMode(0|G_SHADE),
+	gsSPTexture(0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineKey(G_CK_NONE),
+	gsDPSetRenderMode(G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPLoadTLUT_pal256(mario_29_lut),
+	gsDPLoadMultiBlock(mario_29_tex, 0, G_TX_RENDERTILE+0, G_IM_FMT_CI, G_IM_SIZ_8b, 40, 51, 0, G_TX_CLAMP, G_TX_CLAMP, 0, 0, 0, 0),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureFilter(G_TF_BILERP),
+	gsDPSetTexturePersp(G_TP_PERSP),
+	gsDPSetTextureLOD(G_TL_TILE),
+	gsDPSetTextureDetail(G_TD_CLAMP),
+	gsSPVertex(&mario_29_vtx[0], 11, 0),
+	gsSP2Triangles(0, 1, 2, 2, 3, 4, 5, 2),
+	gsSP2Triangles(6, 3, 5, 0, 7, 8, 9, 2),
+	gsSP2Triangles(2, 6, 5, 0, 7, 9, 10, 2),
+	gsSP2Triangles(2, 5, 7, 0, 10, 0, 2, 0),
+	gsSP1Triangle(7, 10, 2, 0),
+	gsSPEndDisplayList(),
+};

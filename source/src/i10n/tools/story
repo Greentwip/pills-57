@@ -1,0 +1,22 @@
+#!/bin/sh
+
+BMP2TEX=`pwd`/bmp2tex.py
+
+cd ../assets/zh/story_bmp
+
+cd Story/texture
+$BMP2TEX --RV --TI 0 *.bmp
+cd ../..
+
+cd endless/dir
+$BMP2TEX --RV --TI 0 *.bmp
+cd ../texture
+$BMP2TEX --RV --TI 0 *.bmp
+cd ../..
+
+cd mes/texture
+$BMP2TEX --RV --TI 0 *.bmp
+cd ../txt_dir1
+$BMP2TEX --RV --TI 0 *.bmp
+cd ../txt_dir2
+$BMP2TEX --RV --TI 0 *.bmp

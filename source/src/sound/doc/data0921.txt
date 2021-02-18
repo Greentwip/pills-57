@@ -1,0 +1,22 @@
+
+修正データをお送りいたします。
+お手数ですが更新お願いいたします。
+詳細は以下の通りです。
+
+○データの内容
+
+se.bfx	SoundEffectバイナリデータ
+se.h	SoundEffectヘッダファイル
+
+Fever.bin	ゲーム中"Fever"曲データ
+FeverF.bin	ゲーム中"Fever"曲データ		TempoUpバージョン
+Chill.bin	ゲーム中"Chill"曲データ
+ChillF.bin	ゲーム中"Chill"曲データ		TempoUpバージョン
+Game_CF.bin	ゲーム中"Game_C"曲データ	TempoUpバージョン
+Opening.bin	"Opening"曲データ
+
+何か問題などがございましたらご連絡下さい。
+
+Creative section
+
+T's music Co.,ltd.

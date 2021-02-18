@@ -1,0 +1,281 @@
+
+#define MSG_COLOR "~7"
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_1_1[] =
+MSG_COLOR
+"こんにちは！~n"
+"ぼくカサマル！~w2~z";
+
+static const char mes_1_2[] =
+MSG_COLOR
+"Ｄｒ．ＭＡＲＩＯの~n"
+"あそびかたを~n"
+"おしえてあげる！~n"
+"さいごまでみてね！~w2~z";
+
+static const char mes_1_3[] =
+MSG_COLOR
+"まずはカプセル！~n"
+"このカプセルでビンの~n"
+"なかにいるウイルスを~n"
+"けしていくんだよ。~w2~z";
+
+static const char mes_1_4[] =
+MSG_COLOR
+"ＡボタンかＢボタンで~n"
+"カプセルを、~n"
+"かいてんさせるんだ。~w2~z";
+
+static const char mes_1_5[] =
+MSG_COLOR
+"たてかよこに~n"
+"おなじいろを、~n"
+"４こいじょうならべると~n"
+"きえちゃうんだよ！~w2~z";
+
+static const char mes_1_6[] =
+MSG_COLOR
+"ビンのなかにいる~n"
+"ウイルスをすべて~n"
+"けしたら、~n"
+"ステージクリア！~w2~z";
+
+static const char mes_1_7[] =
+MSG_COLOR
+"カプセルがビンのうえ~n"
+"までつまってしまうと、~n"
+"ゲームオーバー！！~w2~z";
+
+static const char mes_1_8[] =
+MSG_COLOR
+"それでは、~n"
+"こんかいはここまで！~n"
+"それじゃまたね！~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_2_1[] =
+MSG_COLOR
+"こんどは~n"
+"ふたりたいせんの~n"
+"ルールを、~n"
+"おしえてあげるね！~w2~z";
+
+static const char mes_2_2[] =
+MSG_COLOR
+"たいせんはあいてより~n"
+"さきにウイルスを~n"
+"ぜんぶけしたら、~n"
+"かちになるんだ。~w2~z";
+
+static const char mes_2_3[] =
+MSG_COLOR
+"また、カプセルが~n"
+"ビンのうえまで~n"
+"つまってしまうと~n"
+"まけだよ。~w2~z";
+
+static const char mes_2_4[] =
+MSG_COLOR
+"たいせんではれんぞく~n"
+"けしをすると、あいてを~n"
+"こうげきできるよ。~w2~z";
+
+static const char mes_2_5[] =
+MSG_COLOR
+"いちどにたくさん~n"
+"けせばけすほど、~n"
+"たくさん~n"
+"こうげきできるんだ！~w2~z";
+
+static const char mes_2_6[] =
+MSG_COLOR
+"れんぞくけし２れつで、~n"
+"ハーフカプセルが２こ。~w2~z";
+
+static const char mes_2_7[] =
+MSG_COLOR
+"３れつで３こ、~n"
+"４れつで４こ、~n"
+"あいてがわに~n"
+"おっこちるんだ。~w2~z";
+
+static const char mes_2_8[] =
+MSG_COLOR
+"ただし４れついじょう~n"
+"けしても、~n"
+"ハーフカプセルは４こ~n"
+"までしかおちないよ。~w2~z";
+
+static const char mes_2_9[] =
+MSG_COLOR
+"それでは、~n"
+"こんかいはここまで！~n"
+"それじゃまたね！~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_3_1[] =
+MSG_COLOR
+"こんどは~n"
+"よにんたいせんの~n"
+"ルールを、おしえて~n"
+"あげるね！~w2~z";
+
+static const char mes_3_2[] =
+MSG_COLOR
+"たいせんはあいてより~n"
+"さきにウイルスを~n"
+"ぜんぶけしたら、~n"
+"かちになるんだ。~w2~z";
+
+static const char mes_3_3[] =
+MSG_COLOR
+"また、カプセルが~n"
+"ビンのうえまで~n"
+"つまってしまうと~n"
+"まけだよ。~w2~z";
+
+static const char mes_3_4[] =
+MSG_COLOR
+"れんぞくけしをすると、~n"
+"あいてを~n"
+"こうげきできるよ！~w2~z";
+
+static const char mes_3_5[] =
+MSG_COLOR
+"しかも、さいしょに~n"
+"きえたいろで、~n"
+"こうげきするビンが~n"
+"きまるんだ。~w2~z";
+
+static const char mes_3_6[] =
+MSG_COLOR
+"さいしょにきえたいろが~n"
+"あおのときは、~n"
+"１つみぎどなりのビンを~n"
+"こうげき！~w2~z";
+
+static const char mes_3_7[] =
+MSG_COLOR
+"さいしょにきえたいろが~n"
+"きいろのときは、~n"
+"２つみぎどなりのビンを~n"
+"こうげき！！~w2~z";
+
+static const char mes_3_8[] =
+MSG_COLOR
+"さいしょにきえたいろが~n"
+"あかのときは、~n"
+"３つみぎどなりのビンを~n"
+"こうげき！！！~w2~z";
+
+static const char mes_3_9[] =
+MSG_COLOR
+"さいしょにきえたいろが~n"
+"２しょくのときは、~n"
+"２つのビンをいちどに~n"
+"こうげきできるんだ！~w2~z";
+
+static const char mes_3_10[] =
+MSG_COLOR
+"もしみぎどなりにビンが~n"
+"ないときは、いちばん~n"
+"ひだりにもどるからね。~w2~z";
+
+static const char mes_3_11[] =
+MSG_COLOR
+"それと、~n"
+"タッグバトルで~n"
+"みかたを~n"
+"こうげきしたとき、~w2~z";
+
+static const char mes_3_12[] =
+MSG_COLOR
+"カプセルは~n"
+"らっかしないで、~n"
+"ストックされるんだ。~w2~z";
+
+static const char mes_3_13[] =
+MSG_COLOR
+"ストックされた~n"
+"カプセルは・・・~w2~z";
+
+static const char mes_3_14[] =
+MSG_COLOR
+"あいてチームを~n"
+"こうげきするときに~n"
+"つかわれるよ。~w2~z";
+
+static const char mes_3_15[] =
+MSG_COLOR
+"それでは、~n"
+"こんかいはここまで！~n"
+"それじゃまたね！~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
+
+static const char mes_4_1[] =
+MSG_COLOR
+"こんかいはアドバイスを~n"
+"してあげるね！~w2~z";
+
+static const char mes_4_2[] =
+MSG_COLOR
+"はじめはいろをよこに~n"
+"そろえるよりも、たてに~n"
+"そろえたほうが~n"
+"かんたんだよ。~w2~z";
+
+static const char mes_4_3[] =
+MSG_COLOR
+"でも、なれてきたら~n"
+"よこけしもねらって~n"
+"いこう！~w2~z";
+
+static const char mes_4_4[] =
+MSG_COLOR
+"れんぞくけしをすると、~n"
+"メロディーで~n"
+"わかるんだ！~w2~z";
+
+static const char mes_4_5[] =
+MSG_COLOR
+"カプセルのらっか~n"
+"スピードは、１０こふる~n"
+"ごとにはやくなるから~n"
+"ちゅういしよう！！~w2~z";
+
+static const char mes_4_6[] =
+MSG_COLOR
+"ウイルスのかずがのこり~n"
+"すくなくなると、~n"
+"ミュージックが~n"
+"はやくなるよ。~w2~z";
+
+static const char mes_4_7[] =
+MSG_COLOR
+"カプセルがビンのくち~n"
+"ちかくまでつまれると、~n"
+"けいこくおんが~n"
+"なるんだ。~w2~z";
+
+static const char mes_4_8[] =
+MSG_COLOR
+"さあたいへん、~n"
+"いそがなくっちゃ・・！~w2~z";
+
+static const char mes_4_9[] =
+MSG_COLOR
+"これでボクからの~n"
+"せつめいは、ぜんぶ~n"
+"おしまい。~w2~z";
+
+static const char mes_4_10[] =
+MSG_COLOR
+"じゃあまたね！~n"
+"バイバイ！~w2~z";
+
+//////////////////////////////////////////////////////////////////////////////
