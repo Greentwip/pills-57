@@ -244,10 +244,10 @@ enum DM_GAME_RET: Int{
 }
 
 
-
+/*
 #if 0 // �폜
 
-/*
+
 
 #define dm_1_VS_3				0x0e	// ����p 1 �� 1 �̂Ƃ�
 
@@ -255,10 +255,10 @@ enum DM_GAME_RET: Int{
 
 #define dm_3_VS_1				0x08	// ����p 3 �� 1�̂Ƃ�
 
-*/
+
 
 #endif
-
+*/
 
 
 
@@ -291,53 +291,53 @@ let dm_wold_y				=   46;
 
 
 
+/*
 #if 0 // �폜
 
-/*
 
 #define dm_next_y				36		// �l�N�X�g�J�v�Z���̂x���W(1P�E2P)
 
-*/
+
 
 #endif
+*/
 
 
 
+let dm_wold_x_vs_1p			= 28;
 
-#define dm_wold_x_vs_1p			28		// 2P�p 1P ��w���W
-
-#define dm_wold_x_vs_2p			212		// 2P�p 2P ��w���W
-
-
-
-#define dm_wold_x_4p			20		// 4P�p��w���W
-
-#define dm_wold_y_4p			46		// 4P�p��x���W
+let dm_wold_x_vs_2p			= 212;
 
 
 
-#if 0 // �폜
+let dm_wold_x_4p			= 20;
+
+let dm_wold_y_4p			= 46;
+
 
 /*
+#if 0 // �폜
+
+
 
 #define dm_next_y_4p			44		// 4P�l�N�X�g�J�v�Z���̂x���W
 
-*/
 
 #endif
 
+*/
 
 
-#define dm_wold_x_4p_1p			20		// 4P�p 1P ��w���W
+let dm_wold_x_4p_1p			= 20;		
 
-#define dm_wold_x_4p_2p			92		// 4P�p 2P ��w���W
+let dm_wold_x_4p_2p			= 92;
 
-#define dm_wold_x_4p_3p			164		// 4P�p 3P ��w���W
+let dm_wold_x_4p_3p			= 164;
 
-#define dm_wold_x_4p_4p			236		// 4P�p 4P ��w���W
+let dm_wold_x_4p_4p			= 236;
 
 
-enum CapselVirus1 {
+enum CapselVirus {
 
 	case capsel_u,		
 
@@ -404,9 +404,9 @@ enum Capsel{
 };
 
 
-#define GAME_MAP_W 8
+let GAME_MAP_W = 8;
 
-#define GAME_MAP_H 16
+let GAME_MAP_H = 16;
 
 
 
@@ -435,6 +435,39 @@ struct game_a_cap{
 }
 
 
+let SPEED_LOW = 0;
+
+let SPEED_MID = 1;
+
+let SPEED_HIGH = 2;
+
+let SPEED_MAX  = 3;
+
+
+
+let PUF_PlayerMAN = 0;
+
+let PUF_PlayerCPU = 1;
+
+
+let PMD_CPU0 = 0;
+
+let PMD_CPU1 = 1;
+
+let PMD_CPU2 = 2;
+
+let TEAM_MARIO  = 0;
+
+let TEAM_ENEMY  = 1;
+
+let TEAM_ENEMY2 = 2;
+
+let TEAM_ENEMY3 = 3;
+
+let DAMAGE_MAX = 0x10;
+
+let FLASH_VIRUS_MAX = 9;
+
 struct game_state{
 
 	var game_score: UInt32?;
@@ -461,203 +494,140 @@ struct game_state{
 
 	var virus_order_number: UInt8?;
 
-	u8 virus_number;      // �E�C���X��
+	var virus_number: UInt8?;
 
-	u8 virus_level;       // �E�C���X���x��
+	var virus_level: UInt8?; 
 
-	u8 virus_anime;       // �E�C���X�A�j���[�V�����ԍ�
+	var virus_anime: UInt8?; 
 
-	s8 virus_anime_vec;   // �E�C���X�A�j���[�V�����i�s����
+	var virus_anime_vec: Int8?;
 
-	u8 virus_anime_count; // �E�C���X�A�j���[�V�����J�E���^
+	var virus_anime_count: UInt8?;
 
-	u8 virus_anime_max;   // �E�C���X�A�j���[�V�����̍ő�R�}��
+	var virus_anime_max: UInt8?;
 
-	u8 virus_anime_spead; // �E�C���X�A�j���[�V�������x
+	var virus_anime_spead: UInt8?;
 
 
 
-	u8 cap_def_speed; // �J�v�Z�����x(SPEED_?(LOW/MID/HIGH/MAX))
+	var cap_def_speed: UInt8;
 
-		#define SPEED_LOW  0
+	var cap_speed: UInt8?;
 
-		#define SPEED_MID  1
+	var cap_count: UInt8?;
 
-		#define SPEED_HIGH 2
+	var cap_speed_count: UInt8?;
 
-		#define SPEED_MAX  3
+	var cap_speed_vec: UInt8?;
 
-	u8 cap_speed;         // �J�v�Z�����x
+	var cap_speed_max: UInt8?;
 
-	u8 cap_count;         // �J�v�Z��������
+	var cap_magazine_cnt: UInt8?;
 
-	u8 cap_speed_count;   // �J�v�Z�������p�J�E���^
+	var cap_magazine_save: UInt8?;
 
-	u8 cap_speed_vec;     // �J�v�Z�������p�J�E���^�����l
+	var cap_move_se_flg: Int8?;
 
-	u8 cap_speed_max;     // �J�v�Z���������x(�J�E���^�����̐��l�ȏ�ɂȂ�ƂP�i����)
 
-	u8 cap_magazine_cnt;  // �J�v�Z���}�K�W���Q�Ɨp�ϐ�
 
-	u8 cap_magazine_save; // �J�v�Z���}�K�W���Q�Ɨp�ۑ��ϐ�
+	var erase_anime: UInt8?;
 
-	s8 cap_move_se_flg;   // �J�v�Z�����E�ړ����̂r�d��炷���߂̃t���O
+	var erase_anime_count: UInt8?;
 
+	var erase_virus_count: UInt8?;
 
+	var erase_virus_count_old: UInt8?;
 
-	u8 erase_anime;       // ���ŃA�j���[�V�����R�}��
 
-	u8 erase_anime_count; // ���ŃA�j���[�V�����J�E���^, �������̃J�E���^�����˂�
 
-	u8 erase_virus_count; // ���ŃE�C���X��
+	var chain_count: UInt8?;
 
-	u8 erase_virus_count_old;
+	var chain_line: UInt8?;
 
+	var chain_line_max: UInt8?;
 
+	var chain_color: [UInt8]?; //[4]
 
-	u8 chain_count;    // �A����
+		// 0: 
 
-	u8 chain_line;     // ���ŗ�
+		// 1: 
 
-	u8 chain_line_max; // �ő���ŗ�
+		// 2: 
 
-	u8 chain_color[4];
+		// 3: 
 
-		// 0: ��
 
-		// 1: ��
+	var black_up_count: UInt8?;
 
-		// 2: �� �������F���J�E���g����B
+	var warning_se_flag: Int?;
 
-		// 3: �A���J�n���ɏ������F�̃r�b�g�𗧂Ă�
 
-		//    0x01:��
+	var flg_retire: UInt8?;
 
-		//    0x02:��
+	var flg_game_over: UInt8?;
 
-		//    0x04:��
+	var flg_training: UInt8?;
 
-		//    �E�C���X�܂ޏꍇ 0x80 �̃r�b�g�𗧂Ă�
 
 
+	var player_no: UInt8?;
 
-	// ���オ�菈���J�E���^
+	var player_type: UInt8?;
 
-	u8 black_up_count;
+	var think_type: UInt8?;
 
+	var think_level: UInt8?;
 
+	var team_no: UInt8?;
 
-	// �x������炷���߂̃J�E���^
+	var cap_attack_work: [[UInt16]]?; // [DAMAGE_MAX][2];
 
-	int warning_se_flag;
 
+	var charNo: Int?;
 
+	var anime: SAnimeState?;
 
-	u8 flg_retire;    // ���^�C�A�t���O
 
-	u8 flg_game_over; // �Q�[���I�[�o�[
+	var flash_virus_pos: [[Int]]?; //[FLASH_VIRUS_MAX][3];
 
-	u8 flg_training;  // �g���[�j���O�t���O
+	var flash_virus_bak: [Int]?; //[FLASH_VIRUS_MAX];
 
+	var flash_virus_count: Int?;
 
 
-	u8 player_no;   // �v���C���[�̔ԍ�
+	var bottom_up_scroll: Int?;
 
-	u8 player_type; // �v���C���[�̎��
 
-		#define PUF_PlayerMAN  0
+	var game_level: Int?;
 
-		#define PUF_PlayerCPU  1
 
-	u8 think_type;  // �G�v�l�L����
 
-	u8 think_level; // �b�o�t���x��
+	var total_erase_count: Int?;
 
-		#define PMD_CPU0 0
+	var total_chain_count: Int?;
 
-		#define PMD_CPU1 1
 
-		#define PMD_CPU2 2
 
-	u8 team_no;     // �`�[���ԍ�
+	var now_cap: game_cap?;
 
-		#define TEAM_MARIO  0
+	var next_cap: game_cap?;
 
-		#define TEAM_ENEMY  1
 
-		#define TEAM_ENEMY2 2
 
-		#define TEAM_ENEMY3 3
+	var ai: AIWORK?;
 
+	var pn: UInt8?;
 
+	var gs: UInt8?;
 
-	// 0:�����ɗ�������U���J�v�Z���̃��[�N(2bit�Ő���,01:��,10:��,11:��,00:����)
+	var lv: UInt8?;
 
-	// 1:�U�����Ă�������
+	var vs: UInt8?;
 
-	#define DAMAGE_MAX 0x10
 
-	u16 cap_attack_work[DAMAGE_MAX][2];
+	var blk: [[AIBLK]]?; // [MFieldY+1][MFieldX]; 
 
-
-
-	int         charNo;   // �L�����N�^�ԍ�
-
-	SAnimeState anime;    // �A�j���[�V��������
-
-
-
-	// �t���b�V���E�B���X�̈ʒu [0]:X, [1]:Y, [2]:COLOR
-
-	#define FLASH_VIRUS_MAX 9
-
-	int flash_virus_pos[FLASH_VIRUS_MAX][3];
-
-	int flash_virus_bak[FLASH_VIRUS_MAX];
-
-	int flash_virus_count;
-
-
-
-	// �r�̒��g����i�グ�鎞�̃J�E���^
-
-	int bottom_up_scroll;
-
-
-
-	// "�t���b�V��", "�ϋv", "�^�C�A�^" ���̓�Փx
-
-	int game_level;
-
-
-
-	int total_erase_count; // ���݂̃E�B���X������
-
-	int total_chain_count; // ���v�A����
-
-
-
-	game_cap    now_cap;  // ���ݑ��삷��J�v�Z��
-
-	game_cap    next_cap; // ���̃J�v�Z��
-
-
-
-	AIWORK ai; // COM�v�l�pܰ�
-
-	u8     pn; // ��ڲ԰ no.
-
-	u8     gs; // �ްѽð��
-
-	u8     lv; // �ݒ�����(0-29)
-
-	u8     vs; // ��ٽ�c��(�����ł͂Ȃ��A����Ă��Ƃ�ϯ���ް��ォ��T��������������)
-
-
-
-	AIBLK  blk[MFieldY+1][MFieldX]; //��ۯ�ܰ�
-
-	AICAPS cap;
+	var cap: AICAPS?;
 
 }
 

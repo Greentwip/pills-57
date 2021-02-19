@@ -57,6 +57,9 @@
     <Compile Include="main1x.swift" />
     <Compile Include="dm_game_main.swift" />
     <Compile Include="dm_game_def.swift" />
+    <Compile Include="char_anime.swift" />
+    <Compile Include="tex_func.swift" />
+    <Compile Include="aidef.swift" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>
