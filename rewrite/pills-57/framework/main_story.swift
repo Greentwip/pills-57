@@ -1,1 +1,3 @@
-﻿
+﻿class main_story{
+
+}

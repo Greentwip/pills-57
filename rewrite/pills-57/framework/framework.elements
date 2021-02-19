@@ -54,6 +54,9 @@
     <Content Include="packages - Copy.config" />
     <Compile Include="main.swift" />
     <Compile Include="main_story.swift" />
+    <Compile Include="main1x.swift" />
+    <Compile Include="dm_game_main.swift" />
+    <Compile Include="dm_game_def.swift" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\RemObjects Software\Elements\RemObjects.Elements.targets" />
 </Project>

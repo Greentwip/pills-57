@@ -22,14 +22,16 @@ class main{
 
     }
 
-	func setIdleFunc(_ action: () -> void){
+	func setIdleFunc(_ action: () -> Void){
 
 	}
+	
+
 
 	func update(){
 		main_bak = main_no;
 
-		switch(self.main_no){
+		/*switch(self.main_no){
 			case .MAIN_11:
 				self.main_no = main11();
 			    break;
@@ -53,11 +55,7 @@ class main{
 			case .MAIN_TECHMES:
 				self.main_no = main_techmes();
 
-
-
-
-		
-        }
+        }*/
     }
 
 }
