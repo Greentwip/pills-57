@@ -4,12 +4,13 @@
 
     }
 
-	func main11(){
+	func main11() -> MAIN_NO{
         var no = MAIN_NO.MAIN_TITLE;
-        var i = 0;
 
         for i in 0...3{
 
         }
+
+        return no;
     }
 }
