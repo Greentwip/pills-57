@@ -1,166 +1,332 @@
-
-#include <ultra64.h>
-#include <PR/ramrom.h>
-#include <PR/gs2dex.h>
-#include <assert.h>
-
-#include "def.h"
-#include "segment.h"
-#include "message.h"
-#include "nnsched.h"
-#include "main.h"
-#include "joy.h"
-#include "audio.h"
-#include "graphic.h"
-#include "evsworks.h"
-#include "aiset.h"
-
-#include "record.h"
-#include "main_menu.h"
-#include "main_story.h"
-#include "local.h"
-
-//////////////////////////////////////////////////////////////////////////////
-// •Ï”
-
-NNSched sched;
-MAIN_NO main_no;
-MAIN_NO main_old;
-
-//////////////////////////////////////////////////////////////////////////////
-// ŠO•”ŠÖ”éŒ¾
-
-extern int main11(void);
-extern int main12(void);
-extern void main_story(NNSched*);
-extern void main60(NNSched*);
-
-#include "dm_game_main.h"
-#include "dm_manual_main.h"
-#include "dm_title_main.h"
-
-//////////////////////////////////////////////////////////////////////////////
-// Ò²İÌßÛ¼°¼Ş¬
-void mainproc(void* arg)
-{
-	MAIN_NO main_bak;
-
-	EepRom_DumpDataSize();
-
-	// ½¹¼Ş­°×½Ú¯ÄŞ‚Ìì¬
-	switch ( osTvType ) {
-	case OS_TV_NTSC:
-		// NTSC
-		nnScCreateScheduler(&sched, OS_VI_NTSC_LAN1, 1);
-		main_no = MAIN_11;
-		break;
-	case OS_TV_MPAL:
-		// MPAL
-		nnScCreateScheduler(&sched, OS_VI_MPAL_LAN1, 1);
-#if LOCAL==JAPAN
-		main_no = MAIN_TV_ERROR;
-#elif LOCAL==AMERICA
-		// ƒAƒƒŠƒJ”Å‚ÍAMPAL‚à“®ì‰Â”\B
-		main_no = MAIN_11;
-#elif LOCAL==CHINA
-		main_no = MAIN_11;
-#endif
-		break;
-	case OS_TV_PAL:
-		// PAL
-		nnScCreateScheduler(&sched, OS_VI_PAL_LAN1, 1);
-		main_no = MAIN_TV_ERROR;
-		break;
-	default:
-		nnScCreateScheduler(&sched, OS_VI_NTSC_LAN1, 1);
-		main_no = MAIN_TV_ERROR;
-		break;
-	}
-
-	// ƒTƒEƒ“ƒhƒhƒ‰ƒCƒo[‚ğ‰Šú‰»
-	dm_audio_init_driver(&sched);
-
-	// graphic library ‚Ì‰Šú‰», ¸Ş×Ì¨¯¸½Ú¯ÄŞ‚Ìì¬, ‹N“®
-	gfxInit(_gfxfreeSegmentStart);
-	gfxCreateGraphicThread(&sched);
-
-	// VI²İÀ°Ì´°½‚Ìİ’è
-	osViSetSpecialFeatures(OS_VI_DITHER_FILTER_ON | OS_VI_GAMMA_OFF | OS_VI_GAMMA_DITHER_OFF);
-
-	// ºİÄÛ°×‰Šú‰», ½Ú¯ÄŞ‚Ìì¬, ‹N“®
-	joyInit(MAXCONTROLLERS);
-	evs_playmax = joyResponseCheck();
-	if(evs_playmax == 0 && main_no == MAIN_11) {
-		main_no = MAIN_CONT_ERROR;
-	}
-
-	// ‚`‚h‚Ìƒ[ƒN‚ğ‰Šú‰»
-	aifFirstInit();
-
-	// vlŠÖ”‚ğƒAƒCƒhƒ‹ˆ—‚Éİ’è
-	setIdleFunc(make_ai_main);
-
-	// ¹Ş°ÑÒ²İÙ°Ìß
-	while(1){
-		main_bak = main_no;
-
-		switch(main_no) {
-		case MAIN_11: // ÌßÚ²Ô°ÒÓØ²Æ¼¬×²½Ş
-			main_no = main11();
-			break;
-
-		case MAIN_12: // Še¹Ş°Ñ‚Ö˜A—
-			main_no = main12();
-			break;
-
-		case MAIN_TITLE: // Vƒ^ƒCƒgƒ‹
-			main_no = dm_title_main(&sched);
-			break;
-
-		case MAIN_MANUAL: // ‘€ìà–¾
-			main_no = dm_manual_main(&sched);
-			break;
-
-		case MAIN_GAME: // ƒQ[ƒ€
-			main_no = dm_game_main(&sched);
-			break;
-
-		case MAIN_MENU:
-			main_no = main_menu(&sched);
-			break;
-
-		case MAIN_TECHMES:
-			main_no = main_techmes(&sched);
-			break;
-
-		case MAIN_CONT_ERROR:
-		case MAIN_TV_ERROR:
-		case MAIN_CSUM_ERROR:
-			main_no = main_boot_error(&sched);
-			break;
-
-		case MAIN_STORY: // ƒXƒg[ƒŠ[
-			main_story(&sched);
-
-			if(story_proc_no == STORY_M_OPEN || story_proc_no == STORY_W_OPEN) {
-				story_proc_no++;
-				main_no = MAIN_STORY;
-			}
-			else if(story_proc_no == STORY_M_END || story_proc_no == STORY_M_END2
-				|| story_proc_no == STORY_W_END || story_proc_no == STORY_W_END2)
-			{
-				main_no = MAIN_TECHMES;
-			}
-			else{
-				main_no = MAIN_12;
-			}
-			break;
-
-		default:
-			break;
-		}
-
-		main_old = main_bak;
-	}
-}
-
+
+
+#include <ultra64.h>
+
+#include <PR/ramrom.h>
+
+#include <PR/gs2dex.h>
+
+#include <assert.h>
+
+
+
+#include "def.h"
+
+#include "segment.h"
+
+#include "message.h"
+
+#include "nnsched.h"
+
+#include "main.h"
+
+#include "joy.h"
+
+#include "audio.h"
+
+#include "graphic.h"
+
+#include "evsworks.h"
+
+#include "aiset.h"
+
+
+
+#include "record.h"
+
+#include "main_menu.h"
+
+#include "main_story.h"
+
+#include "local.h"
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+// ï¿½Ïï¿½
+
+
+
+NNSched sched;
+
+MAIN_NO main_no;
+
+MAIN_NO main_old;
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+// ï¿½Oï¿½ï¿½ï¿½Öï¿½ï¿½éŒ¾
+
+
+
+extern int main11(void);
+
+extern int main12(void);
+
+extern void main_story(NNSched*);
+
+extern void main60(NNSched*);
+
+
+
+#include "dm_game_main.h"
+
+#include "dm_manual_main.h"
+
+#include "dm_title_main.h"
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+// Ò²ï¿½ï¿½ï¿½Û¼ï¿½ï¿½Ş¬
+
+void mainproc(void* arg)
+
+{
+
+	MAIN_NO main_bak;
+
+
+
+	EepRom_DumpDataSize();
+
+
+
+	// ï¿½ï¿½ï¿½Ş­ï¿½×½Ú¯ï¿½Ş‚Ìì¬
+
+	switch ( osTvType ) {
+
+	case OS_TV_NTSC:
+
+		// NTSC
+
+		nnScCreateScheduler(&sched, OS_VI_NTSC_LAN1, 1);
+
+		main_no = MAIN_11;
+
+		break;
+
+	case OS_TV_MPAL:
+
+		// MPAL
+
+		nnScCreateScheduler(&sched, OS_VI_MPAL_LAN1, 1);
+
+#if LOCAL==JAPAN
+
+		main_no = MAIN_TV_ERROR;
+
+#elif LOCAL==AMERICA
+
+		// ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½Å‚ÍAMPALï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â”\ï¿½B
+
+		main_no = MAIN_11;
+
+#elif LOCAL==CHINA
+
+		main_no = MAIN_11;
+
+#endif
+
+		break;
+
+	case OS_TV_PAL:
+
+		// PAL
+
+		nnScCreateScheduler(&sched, OS_VI_PAL_LAN1, 1);
+
+		main_no = MAIN_TV_ERROR;
+
+		break;
+
+	default:
+
+		nnScCreateScheduler(&sched, OS_VI_NTSC_LAN1, 1);
+
+		main_no = MAIN_TV_ERROR;
+
+		break;
+
+	}
+
+
+
+	// ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½hï¿½ï¿½ï¿½Cï¿½oï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+	dm_audio_init_driver(&sched);
+
+
+
+	// graphic library ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½Ú¯ï¿½Ş‚Ìì¬, ï¿½Nï¿½ï¿½
+
+	gfxInit(_gfxfreeSegmentStart);
+
+	gfxCreateGraphicThread(&sched);
+
+
+
+	// VIï¿½ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½Ìİ’ï¿½
+
+	osViSetSpecialFeatures(OS_VI_DITHER_FILTER_ON | OS_VI_GAMMA_OFF | OS_VI_GAMMA_DITHER_OFF);
+
+
+
+	// ï¿½ï¿½ï¿½Û°×ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ú¯ï¿½Ş‚Ìì¬, ï¿½Nï¿½ï¿½
+
+	joyInit(MAXCONTROLLERS);
+
+	evs_playmax = joyResponseCheck();
+
+	if(evs_playmax == 0 && main_no == MAIN_11) {
+
+		main_no = MAIN_CONT_ERROR;
+
+	}
+
+
+
+	// ï¿½`ï¿½hï¿½Ìƒï¿½ï¿½[ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+	aifFirstInit();
+
+
+
+	// ï¿½vï¿½lï¿½Öï¿½ï¿½ï¿½ï¿½Aï¿½Cï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éİ’ï¿½
+
+	setIdleFunc(make_ai_main);
+
+
+
+	// ï¿½Ş°ï¿½Ò²ï¿½Ù°ï¿½ï¿½
+
+	while(1){
+
+		main_bak = main_no;
+
+
+
+		switch(main_no) {
+
+		case MAIN_11: // ï¿½ï¿½Ú²Ô°ï¿½ï¿½Ø²Æ¼ï¿½×²ï¿½ï¿½
+
+			main_no = main11();
+
+			break;
+
+
+
+		case MAIN_12: // ï¿½eï¿½Ş°Ñ‚Ö˜Aï¿½ï¿½
+
+			main_no = main12();
+
+			break;
+
+
+
+		case MAIN_TITLE: // ï¿½Vï¿½^ï¿½Cï¿½gï¿½ï¿½
+
+			main_no = dm_title_main(&sched);
+
+			break;
+
+
+
+		case MAIN_MANUAL: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+			main_no = dm_manual_main(&sched);
+
+			break;
+
+
+
+		case MAIN_GAME: // ï¿½Qï¿½[ï¿½ï¿½
+
+			main_no = dm_game_main(&sched);
+
+			break;
+
+
+
+		case MAIN_MENU:
+
+			main_no = main_menu(&sched);
+
+			break;
+
+
+
+		case MAIN_TECHMES:
+
+			main_no = main_techmes(&sched);
+
+			break;
+
+
+
+		case MAIN_CONT_ERROR:
+
+		case MAIN_TV_ERROR:
+
+		case MAIN_CSUM_ERROR:
+
+			main_no = main_boot_error(&sched);
+
+			break;
+
+
+
+		case MAIN_STORY: // ï¿½Xï¿½gï¿½[ï¿½ï¿½ï¿½[
+
+			main_story(&sched);
+
+
+
+			if(story_proc_no == STORY_M_OPEN || story_proc_no == STORY_W_OPEN) {
+
+				story_proc_no++;
+
+				main_no = MAIN_STORY;
+
+			}
+
+			else if(story_proc_no == STORY_M_END || story_proc_no == STORY_M_END2
+
+				|| story_proc_no == STORY_W_END || story_proc_no == STORY_W_END2)
+
+			{
+
+				main_no = MAIN_TECHMES;
+
+			}
+
+			else{
+
+				main_no = MAIN_12;
+
+			}
+
+			break;
+
+
+
+		default:
+
+			break;
+
+		}
+
+
+
+		main_old = main_bak;
+
+	}
+
+}
+
+
+
